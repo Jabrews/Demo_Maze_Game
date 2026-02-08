@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://d0psyk5yhw3bf"]
+
+[ext_resource type="MeshLibrary" uid="uid://ds1cj1p52mdm3" path="res://models/gridmaps/office_props/office_props.tres" id="1_2q6dc"]
+
+[node name="Level" type="Node3D" unique_id=379238339]
+
+[node name="OfficeProps" type="GridMap" parent="." unique_id=1026450500]
+mesh_library = ExtResource("1_2q6dc")
+data = {
+"cells": PackedInt32Array(0, 0, 8, 65535, 65535, 1441794, 65535, 0, 1441792, 0, 1, 6)
+}
