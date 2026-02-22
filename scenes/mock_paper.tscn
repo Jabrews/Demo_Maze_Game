@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://uikfe4mpjiaq"]
+
+[ext_resource type="Script" uid="uid://61y2bbv1iwaj" path="res://scripts/mock_paper.gd" id="1_6xekt"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_pyiol"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6xekt"]
+
+[node name="MockPaper" type="Area3D" unique_id=363549447]
+collision_layer = 8
+script = ExtResource("1_6xekt")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=135444034]
+mesh = SubResource("BoxMesh_pyiol")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1575160222]
+shape = SubResource("BoxShape3D_6xekt")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

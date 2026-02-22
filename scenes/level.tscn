@@ -1,38 +1,1528 @@
 [gd_scene format=3 uid="uid://d0psyk5yhw3bf"]
 
-[ext_resource type="MeshLibrary" uid="uid://b54fpisblubnc" path="res://models/gridmaps/office_structure/office_tilemap_011.tres" id="1_w8frs"]
 [ext_resource type="MeshLibrary" uid="uid://chpdpdsl5w3b0" path="res://models/gridmaps/office_props/furniture01/office_furniture_tilemap_1.tres" id="2_w7c3h"]
+[ext_resource type="PackedScene" uid="uid://b3i6rxq0kq080" path="res://scenes/lights/ceiling_light.tscn" id="3_wc255"]
+[ext_resource type="PackedScene" uid="uid://cu65l7pv5maay" path="res://scenes/lights/table_light.tscn" id="4_arp2o"]
 [ext_resource type="PackedScene" uid="uid://b45wx2nog1t4w" path="res://scenes/player.tscn" id="4_mx8sn"]
+[ext_resource type="PackedScene" uid="uid://c661mjxnic7xh" path="res://scenes/door.tscn" id="4_ppgk2"]
+[ext_resource type="MeshLibrary" uid="uid://cnvou5p8pn7h7" path="res://models/gridmaps/office_props/cubbys/office_cubby03.tres" id="5_2r41h"]
+[ext_resource type="PackedScene" uid="uid://boj3uawll08sg" path="res://scenes/lights/stairwell_light.tscn" id="5_8iemx"]
+[ext_resource type="MeshLibrary" uid="uid://bm3ifiy0dko4v" path="res://models/gridmaps/office_structure/office_structure_168.tres" id="9_cmcjb"]
+[ext_resource type="MeshLibrary" uid="uid://bcv20a3nanxsh" path="res://models/gridmaps/office_stairwell/office_stairway_122.tres" id="11_64w2a"]
+[ext_resource type="MeshLibrary" uid="uid://bd4jv0nvulc6y" path="res://models/gridmaps/office_props/poster01/office_posters_03.tres" id="12_xy2fk"]
+[ext_resource type="PackedScene" uid="uid://uikfe4mpjiaq" path="res://scenes/mock_paper.tscn" id="13_64w2a"]
+[ext_resource type="MeshLibrary" uid="uid://b43eyskypxj0s" path="res://models/gridmaps/office_stairwell_railing/office_stairwell_railing06.tres" id="14_h6wmr"]
+[ext_resource type="Script" uid="uid://cyn3m2jb5s5bp" path="res://scripts/sound_manager/player_sounds.gd" id="14_wc255"]
+[ext_resource type="MeshLibrary" uid="uid://c2354fp36e81i" path="res://models/gridmaps/office_props_2/office_props_2_02.tres" id="15_3ies3"]
+[ext_resource type="AudioStream" uid="uid://burcua1l6mb1i" path="res://sounds/player_carpet_footsteps.mp3" id="15_wc255"]
+[ext_resource type="AudioStream" uid="uid://de4tlyuivhkon" path="res://sounds/door_open.mp3" id="16_8gofh"]
+[ext_resource type="AudioStream" uid="uid://d347eayw7ylih" path="res://sounds/player_stairwell_footsteps.mp3" id="16_82cfe"]
+[ext_resource type="Script" uid="uid://bppki3mmlmigc" path="res://scripts/sound_manager/door_sounds.gd" id="16_h6wmr"]
+[ext_resource type="Script" uid="uid://dbfsd0c6oyn5c" path="res://scripts/stairway_entrance/enter_area.gd" id="16_ux5qa"]
+[ext_resource type="AudioStream" uid="uid://dn48nhktwhyr0" path="res://sounds/player_carpet_run2.mp3" id="16_wu01b"]
+[ext_resource type="MeshLibrary" uid="uid://jlo0emqf2di0" path="res://models/gridmaps/breakroom_props/break_room_props_01.tres" id="16_xy2fk"]
+[ext_resource type="AudioStream" uid="uid://cv5mbfdrityan" path="res://sounds/player_stairwell_run.mp3" id="17_3ies3"]
+[ext_resource type="Script" uid="uid://c5oeuwfuytod3" path="res://scripts/stairway_entrance/exit_area.gd" id="17_82cfe"]
+[ext_resource type="MeshLibrary" uid="uid://bifsdj3gqetly" path="res://models/gridmaps/office_props_3/office_props_3.tres" id="17_cmcjb"]
+[ext_resource type="AudioStream" uid="uid://dd3vli071tc0r" path="res://sounds/door_close.mp3" id="17_h6wmr"]
+[ext_resource type="PackedScene" uid="uid://d003mkrsise2p" path="res://addons/dither3d/full-screen-effect/Dither3DMonochrome.tscn" id="17_ux5qa"]
+[ext_resource type="PackedScene" uid="uid://ci5jwosxjf1r2" path="res://scenes/ui.tscn" id="22_pqd0y"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_w8frs"]
+[sub_resource type="Environment" id="Environment_arp2o"]
+background_mode = 1
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.2
 
-[sub_resource type="Sky" id="Sky_ctmmb"]
-sky_material = SubResource("ProceduralSkyMaterial_w8frs")
+[sub_resource type="BoxShape3D" id="BoxShape3D_wc255"]
+size = Vector3(1, 1, 3.1937256)
 
-[sub_resource type="Environment" id="Environment_mx8sn"]
-background_mode = 2
-sky = SubResource("Sky_ctmmb")
+[sub_resource type="BoxShape3D" id="BoxShape3D_arp2o"]
+size = Vector3(1, 1, 5.150757)
 
 [node name="Level" type="Node3D" unique_id=857092677]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=473276242]
-environment = SubResource("Environment_mx8sn")
+environment = SubResource("Environment_arp2o")
 
-[node name="OfficeTiles" type="GridMap" parent="." unique_id=821066032]
-mesh_library = ExtResource("1_w8frs")
-cell_size = Vector3(1, 1, 1)
-data = {
-"cells": PackedInt32Array(0, 0, 11, 2, 0, 11, 0, 2, 11, 2, 2, 11, 65534, 0, 11, 65534, 2, 11, 65534, 4, 11, 0, 4, 11, 2, 4, 11, 6, 2, 9, 12, 2, 9, 12, 8, 9, 6, 8, 9, 0, 8, 9, 0, 14, 9, 6, 14, 9, 12, 14, 9, 131088, 16, 655360, 131088, 14, 655360, 131088, 12, 655360, 131088, 10, 655360, 131088, 8, 655360, 131088, 6, 655360, 131088, 4, 655360, 131088, 2, 655360, 131088, 0, 655360, 196604, 6, 0, 196604, 4, 0, 196604, 2, 0, 196604, 0, 0, 196604, 10, 1, 196604, 14, 0, 196604, 16, 0, 196606, 18, 1048576, 131072, 18, 1048576, 131074, 18, 1048576, 131086, 18, 1048576, 131084, 18, 1048576, 131080, 18, 1048579, 131083, 18, 1048576, 655369, 18, 1048581, 655367, 18, 1048581, 786440, 18, 1048581, 786441, 18, 1048581, 983038, 14, 1048589, 983038, 8, 1048589, 983038, 2, 1048589, 917506, 16, 13, 917512, 16, 13, 917518, 16, 13, 917518, 12, 1441805, 917518, 6, 1441805, 917518, 2, 1441804, 917518, 0, 1441804, 917514, 0, 655373, 917508, 0, 655373, 917504, 0, 655372, 917506, 14, 1441807, 917508, 14, 1441807, 917510, 14, 1441807, 917512, 14, 1441807, 917514, 14, 1441807, 917516, 12, 15, 917516, 10, 15, 917516, 8, 15, 917516, 6, 15, 917516, 4, 15, 917514, 2, 1048591, 917512, 2, 1048591, 917510, 2, 1048591, 917508, 2, 1048591, 917506, 2, 1048591, 917504, 12, 655375, 917504, 10, 655375, 917504, 8, 655375, 917504, 6, 655375, 917504, 4, 655375, 917504, 2, 1048594, 917504, 14, 655378, 917516, 2, 18, 917516, 14, 1441810, 917510, 8, 1048593, 6, 18, 655371, 8, 18, 655371, 131073, 65534, 1441794, 131083, 65534, 1441794, 131078, 65534, 1441792, 786438, 18, 1048581, 131076, 18, 1048576, 655366, 18, 1048581)
-}
-metadata/_editor_floor_ = Vector3(0, 10, 0)
+[node name="FloorOne" type="Node" parent="." unique_id=717615685]
 
-[node name="OfficeProps" type="GridMap" parent="." unique_id=1579755417]
+[node name="Doors" type="Node" parent="FloorOne" unique_id=556261155]
+
+[node name="Door" parent="FloorOne/Doors" unique_id=1486850066 instance=ExtResource("4_ppgk2")]
+transform = Transform3D(-4.371139e-08, 0, 1.035743, 0, 1, 0, -1, 0, -4.5273765e-08, 1.4244959, 2.5, 18.406096)
+
+[node name="Door2" parent="FloorOne/Doors" unique_id=1599348339 instance=ExtResource("4_ppgk2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.07171, 2.5126586, 21.577755)
+
+[node name="Door3" parent="FloorOne/Doors" unique_id=1683838228 instance=ExtResource("4_ppgk2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69.265884, 2.5126586, 25.624)
+
+[node name="Door10" parent="FloorOne/Doors" unique_id=1676549764 instance=ExtResource("4_ppgk2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 116.08947, 2.5126586, 24.676044)
+
+[node name="Door4" parent="FloorOne/Doors" unique_id=714012550 instance=ExtResource("4_ppgk2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.87472, 2.5126586, 65.68734)
+
+[node name="Door7" parent="FloorOne/Doors" unique_id=631067730 instance=ExtResource("4_ppgk2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.87472, 2.5126586, 65.68734)
+
+[node name="Door8" parent="FloorOne/Doors" unique_id=423240498 instance=ExtResource("4_ppgk2")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 91.61986, 2.5126586, 57.155014)
+
+[node name="Door11" parent="FloorOne/Doors" unique_id=80741587 instance=ExtResource("4_ppgk2")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 91.61986, 2.5126586, 57.155014)
+
+[node name="Door9" parent="FloorOne/Doors" unique_id=1301261462 instance=ExtResource("4_ppgk2")]
+transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, 91.616516, 2.5126586, 39.055504)
+
+[node name="Door14" parent="FloorOne/Doors" unique_id=1565050500 instance=ExtResource("4_ppgk2")]
+transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, 129.68709, 2.5126586, 35.217552)
+
+[node name="Door12" parent="FloorOne/Doors" unique_id=2039783328 instance=ExtResource("4_ppgk2")]
+transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, 93.67754, 2.5126586, -23.473352)
+
+[node name="Door13" parent="FloorOne/Doors" unique_id=1368283572 instance=ExtResource("4_ppgk2")]
+transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, 59.644474, 2.5126586, -23.473352)
+
+[node name="Door6" parent="FloorOne/Doors" unique_id=270575153 instance=ExtResource("4_ppgk2")]
+transform = Transform3D(-0.99999994, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -0.99999994, 48.33959, 2.5126586, 67.57689)
+
+[node name="Door5" parent="FloorOne/Doors" unique_id=774004535 instance=ExtResource("4_ppgk2")]
+transform = Transform3D(-0.99999994, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -0.99999994, 48.33959, 2.5126586, 71.322754)
+
+[node name="Lights" type="Node" parent="FloorOne" unique_id=193625474]
+
+[node name="CeilingLight" parent="FloorOne/Lights" unique_id=1898912589 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7433128, 14.513282, 24.600708)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight7" parent="FloorOne/Lights" unique_id=748668403 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.9113846, 14.513282, 24.600708)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight2" parent="FloorOne/Lights" unique_id=627272649 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3094368, 14.273384, 24.59533)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight3" parent="FloorOne/Lights" unique_id=1284481063 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.457167, 14.273384, 24.59533)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight6" parent="FloorOne/Lights" unique_id=585514713 instance=ExtResource("3_wc255")]
+transform = Transform3D(0.49205896, -0.8705619, 0, 0.8705619, 0.49205896, 0, 0, 0, 1, 0.9836347, 15.321749, 8.406108)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight4" parent="FloorOne/Lights" unique_id=1774538941 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.70976, 14.273384, 24.59533)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight59" parent="FloorOne/Lights" unique_id=1277116122 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 124.31824, 14.513282, 28.470976)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight84" parent="FloorOne/Lights" unique_id=274576030 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 130.53879, 14.273384, 28.423977)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight91" parent="FloorOne/Lights" unique_id=456360461 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 136.73802, 14.273384, 28.423977)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight85" parent="FloorOne/Lights" unique_id=381630 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 143.5187, 14.273384, 28.465597)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight87" parent="FloorOne/Lights" unique_id=409279524 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 133.5279, 14.45779, 51.614098)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight88" parent="FloorOne/Lights" unique_id=1385670750 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 126.53546, 14.45779, 44.38232)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight89" parent="FloorOne/Lights" unique_id=113344727 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 140.40236, 14.45779, 44.38232)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight90" parent="FloorOne/Lights" unique_id=1409815974 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 133.34428, 14.45779, 37.56441)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight86" parent="FloorOne/Lights" unique_id=1004181226 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 154.19511, 14.273384, 28.227476)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight8" parent="FloorOne/Lights" unique_id=1849157367 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.548576, 14.4609375, 24.59533)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight9" parent="FloorOne/Lights" unique_id=854257295 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.57795, 14.4609375, 24.59533)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight10" parent="FloorOne/Lights" unique_id=198408806 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.595715, 14.4609375, 24.59533)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight57" parent="FloorOne/Lights" unique_id=1788730514 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.496212, 14.4609375, -5.060627)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight58" parent="FloorOne/Lights" unique_id=1775804812 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.496212, 14.4609375, -10.664458)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight60" parent="FloorOne/Lights" unique_id=2104188036 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.661903, 14.4609375, -16.438576)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight61" parent="FloorOne/Lights" unique_id=499295926 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.475258, 14.4609375, -17.522118)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight62" parent="FloorOne/Lights" unique_id=78992107 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.55418, 14.4609375, -17.565302)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight72" parent="FloorOne/Lights" unique_id=1084783674 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.53584, 14.4609375, -29.87189)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight73" parent="FloorOne/Lights" unique_id=554402232 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.387806, 14.4609375, -29.500849)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight74" parent="FloorOne/Lights" unique_id=1513098421 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.44752, 14.4609375, -33.47666)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight75" parent="FloorOne/Lights" unique_id=981618055 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.387806, 14.4609375, -33.409645)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight76" parent="FloorOne/Lights" unique_id=1779719348 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.53584, 14.4609375, -37.557365)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight77" parent="FloorOne/Lights" unique_id=237362355 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.514957, 14.4609375, -37.519554)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight78" parent="FloorOne/Lights" unique_id=630785350 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 101.65123, 14.4609375, -29.87189)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight79" parent="FloorOne/Lights" unique_id=1764379419 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 89.5032, 14.4609375, -29.500849)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight80" parent="FloorOne/Lights" unique_id=1323149888 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 101.562904, 14.4609375, -33.47666)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight81" parent="FloorOne/Lights" unique_id=741105372 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 89.5032, 14.4609375, -33.409645)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight82" parent="FloorOne/Lights" unique_id=192215873 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 101.65123, 14.4609375, -37.557365)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight83" parent="FloorOne/Lights" unique_id=737832134 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 89.63035, 14.4609375, -37.519554)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight63" parent="FloorOne/Lights" unique_id=665744216 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74.67461, 14.4609375, -17.565302)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight64" parent="FloorOne/Lights" unique_id=1708470041 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 82.80062, 14.4609375, -17.565302)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight65" parent="FloorOne/Lights" unique_id=1449298445 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 90.80604, 14.4609375, -17.565302)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight66" parent="FloorOne/Lights" unique_id=1632243954 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98.709496, 14.4609375, -17.565302)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight67" parent="FloorOne/Lights" unique_id=2066137390 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 106.57004, 14.4609375, -17.565302)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight68" parent="FloorOne/Lights" unique_id=550818927 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 108.631775, 14.4609375, -10.497038)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight69" parent="FloorOne/Lights" unique_id=401903431 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 108.631775, 14.4609375, -2.5108418)
+
+[node name="CeilingLight70" parent="FloorOne/Lights" unique_id=1397316146 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 108.631775, 14.4609375, 5.4678216)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight71" parent="FloorOne/Lights" unique_id=1496928365 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 106.57004, 14.4609375, 11.608442)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight11" parent="FloorOne/Lights" unique_id=912917117 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.625854, 14.4609375, 24.59533)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight12" parent="FloorOne/Lights" unique_id=1305255874 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.548576, 14.4609375, 32.52238)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight13" parent="FloorOne/Lights" unique_id=742973881 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.57795, 14.4609375, 32.52238)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight14" parent="FloorOne/Lights" unique_id=1328629506 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.595715, 14.4609375, 32.52238)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight25" parent="FloorOne/Lights" unique_id=2128433042 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.595715, 14.4609375, 52.25393)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight26" parent="FloorOne/Lights" unique_id=905069674 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.595715, 14.4609375, 60.4675)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight27" parent="FloorOne/Lights" unique_id=1203828102 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.595715, 14.4609375, 68.54697)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight28" parent="FloorOne/Lights" unique_id=1630012185 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.595715, 14.4609375, 68.54697)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight29" parent="FloorOne/Lights" unique_id=1706169127 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.595715, 14.4609375, 80.5064)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight30" parent="FloorOne/Lights" unique_id=2055120324 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.595715, 14.4609375, 88.4676)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight31" parent="FloorOne/Lights" unique_id=1733523039 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.595715, 14.4609375, 96.48205)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight32" parent="FloorOne/Lights" unique_id=1246131649 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.33283, 14.510574, 87.51366)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight35" parent="FloorOne/Lights" unique_id=2075586136 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.32031, 14.510574, 87.368256)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight36" parent="FloorOne/Lights" unique_id=276657191 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.565952, 14.510574, 87.368256)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight33" parent="FloorOne/Lights" unique_id=1999505562 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.50903, 14.510574, 95.95621)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight39" parent="FloorOne/Lights" unique_id=71505496 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 87.45412, 14.510574, 96.301384)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight40" parent="FloorOne/Lights" unique_id=571488550 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.44062, 14.510574, 96.301384)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight45" parent="FloorOne/Lights" unique_id=820639404 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 90.385704, 14.510574, 53.54909)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight46" parent="FloorOne/Lights" unique_id=266965489 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 90.385704, 14.510574, 43.259754)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight47" parent="FloorOne/Lights" unique_id=1955997712 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 102.49851, 14.510574, 43.259754)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight48" parent="FloorOne/Lights" unique_id=1992610759 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 102.49851, 14.510574, 51.664993)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight41" parent="FloorOne/Lights" unique_id=490165920 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.47473, 14.510574, 87.32781)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight42" parent="FloorOne/Lights" unique_id=1095550613 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.415985, 14.510574, 79.26815)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight43" parent="FloorOne/Lights" unique_id=1522252465 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.481445, 14.510574, 71.53044)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight44" parent="FloorOne/Lights" unique_id=481780384 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.481445, 14.510574, 63.481575)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight34" parent="FloorOne/Lights" unique_id=334218165 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.50903, 14.510574, 103.97066)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight37" parent="FloorOne/Lights" unique_id=1593061415 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.6073, 14.510574, 103.97066)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight38" parent="FloorOne/Lights" unique_id=2140479638 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.21109, 14.510574, 103.97066)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight20" parent="FloorOne/Lights" unique_id=542512369 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.595715, 14.4609375, 40.312782)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight15" parent="FloorOne/Lights" unique_id=296738093 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.625854, 14.4609375, 32.52238)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight49" parent="FloorOne/Lights" unique_id=1685033235 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78.395325, 14.4609375, 33.491047)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight50" parent="FloorOne/Lights" unique_id=490558514 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.54781, 14.4609375, 33.491047)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight51" parent="FloorOne/Lights" unique_id=611852941 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98.65475, 14.4609375, 33.491047)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight52" parent="FloorOne/Lights" unique_id=1230677635 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 108.328476, 14.4609375, 33.491047)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight53" parent="FloorOne/Lights" unique_id=70325322 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78.395325, 14.4609375, 25.499779)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight54" parent="FloorOne/Lights" unique_id=546101920 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.54781, 14.4609375, 25.499779)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight55" parent="FloorOne/Lights" unique_id=780006878 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98.65475, 14.4609375, 25.499779)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight56" parent="FloorOne/Lights" unique_id=190384993 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 108.328476, 14.4609375, 25.499779)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight16" parent="FloorOne/Lights" unique_id=374128457 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.548576, 14.4609375, 16.43686)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight17" parent="FloorOne/Lights" unique_id=874945743 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.57795, 14.4609375, 16.43686)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight18" parent="FloorOne/Lights" unique_id=654848317 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.595715, 14.4609375, 16.43686)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight22" parent="FloorOne/Lights" unique_id=1885213130 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.57812, 14.4609375, 10.479617)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight23" parent="FloorOne/Lights" unique_id=1795165037 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.59248, 14.4609375, 38.607048)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight24" parent="FloorOne/Lights" unique_id=83574600 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.462696, 14.4609375, 38.379475)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight21" parent="FloorOne/Lights" unique_id=1494860241 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.62161, 14.4609375, 8.4872465)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight19" parent="FloorOne/Lights" unique_id=1804193972 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.625854, 14.4609375, 16.43686)
+metadata/_edit_group_ = true
+
+[node name="TableLight" parent="FloorOne/Lights" unique_id=552603425 instance=ExtResource("4_arp2o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.880758, 4.5601707, 15.499888)
+
+[node name="TableLight2" parent="FloorOne/Lights" unique_id=1121312528 instance=ExtResource("4_arp2o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.3216724, 4.5601707, 1.2768352)
+
+[node name="TableLight7" parent="FloorOne/Lights" unique_id=1780529566 instance=ExtResource("4_arp2o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.4212, 4.5601707, 66.00763)
+
+[node name="TableLight10" parent="FloorOne/Lights" unique_id=483495352 instance=ExtResource("4_arp2o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.03264, 4.5601707, 66.00763)
+
+[node name="TableLight8" parent="FloorOne/Lights" unique_id=2091595075 instance=ExtResource("4_arp2o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.63127, 4.5601707, 93.22169)
+
+[node name="TableLight9" parent="FloorOne/Lights" unique_id=1973581515 instance=ExtResource("4_arp2o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 109.39347, 4.92813, 37.120174)
+
+[node name="TableLight11" parent="FloorOne/Lights" unique_id=518025451 instance=ExtResource("4_arp2o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 125.87305, 4.5399647, 39.949364)
+
+[node name="TableLight12" parent="FloorOne/Lights" unique_id=2074118860 instance=ExtResource("4_arp2o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 125.87305, 6.909477, 46.342686)
+
+[node name="TableLight13" parent="FloorOne/Lights" unique_id=1408755590 instance=ExtResource("4_arp2o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 141.51118, 4.4810114, 43.814716)
+
+[node name="TableLight4" parent="FloorOne/Lights" unique_id=1265232574 instance=ExtResource("4_arp2o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.613804, 3.7358408, 5.8347163)
+
+[node name="TableLight5" parent="FloorOne/Lights" unique_id=1669893229 instance=ExtResource("4_arp2o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.157303, 4.648397, 35.7564)
+
+[node name="TableLight3" parent="FloorOne/Lights" unique_id=489716016 instance=ExtResource("4_arp2o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6909297, 2.5059958, 16.54028)
+
+[node name="1StairFoward" type="Node" parent="FloorOne/Lights" unique_id=1470906937]
+
+[node name="stairwell_light16" parent="FloorOne/Lights/1StairFoward" unique_id=394640768 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -28.196865, 11.409634, 21.868515)
+
+[node name="stairwell_light17" parent="FloorOne/Lights/1StairFoward/stairwell_light16" unique_id=1822713084 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.3042316)
+
+[node name="stairwell_light17" parent="FloorOne/Lights/1StairFoward" unique_id=1117140352 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -28.196865, 11.409634, 28.342896)
+
+[node name="stairwell_light17" parent="FloorOne/Lights/1StairFoward/stairwell_light17" unique_id=652702136 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.3042316)
+
+[node name="stairwell_light18" parent="FloorOne/Lights/1StairFoward" unique_id=2106641337 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -28.196865, 17.910631, 21.868515)
+
+[node name="stairwell_light17" parent="FloorOne/Lights/1StairFoward/stairwell_light18" unique_id=731410791 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.3042316)
+
+[node name="stairwell_light19" parent="FloorOne/Lights/1StairFoward" unique_id=410654001 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -28.196865, 17.910631, 28.342896)
+
+[node name="stairwell_light17" parent="FloorOne/Lights/1StairFoward/stairwell_light19" unique_id=1960944004 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.3042316)
+
+[node name="stairwell_light20" parent="FloorOne/Lights/1StairFoward" unique_id=257023913 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -28.196865, 23.240587, 21.868515)
+
+[node name="stairwell_light17" parent="FloorOne/Lights/1StairFoward/stairwell_light20" unique_id=1615120439 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.3042316)
+
+[node name="stairwell_light21" parent="FloorOne/Lights/1StairFoward" unique_id=1203800709 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -28.196865, 23.240587, 28.342896)
+
+[node name="stairwell_light17" parent="FloorOne/Lights/1StairFoward/stairwell_light21" unique_id=386397684 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.3042316)
+
+[node name="stairwell_light22" parent="FloorOne/Lights/1StairFoward" unique_id=654127332 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -28.196865, 28.176268, 21.868515)
+
+[node name="stairwell_light17" parent="FloorOne/Lights/1StairFoward/stairwell_light22" unique_id=16797794 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.3042316)
+
+[node name="stairwell_light23" parent="FloorOne/Lights/1StairFoward" unique_id=1252599817 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -28.196865, 28.176268, 28.342896)
+
+[node name="stairwell_light17" parent="FloorOne/Lights/1StairFoward/stairwell_light23" unique_id=770785064 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.3042316)
+
+[node name="stairwell_light24" parent="FloorOne/Lights/1StairFoward" unique_id=869964889 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -28.196865, 32.945313, 21.868515)
+
+[node name="stairwell_light17" parent="FloorOne/Lights/1StairFoward/stairwell_light24" unique_id=663146186 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.3042316)
+
+[node name="stairwell_light25" parent="FloorOne/Lights/1StairFoward" unique_id=135877980 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -28.196865, 32.945313, 28.342896)
+
+[node name="stairwell_light17" parent="FloorOne/Lights/1StairFoward/stairwell_light25" unique_id=1581504306 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.3042316)
+
+[node name="stairwell_light26" parent="FloorOne/Lights/1StairFoward" unique_id=1033109582 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -28.196865, 37.940125, 21.868515)
+
+[node name="stairwell_light17" parent="FloorOne/Lights/1StairFoward/stairwell_light26" unique_id=635635589 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.3042316)
+
+[node name="stairwell_light27" parent="FloorOne/Lights/1StairFoward" unique_id=261461695 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -28.196865, 37.940125, 28.342896)
+
+[node name="stairwell_light17" parent="FloorOne/Lights/1StairFoward/stairwell_light27" unique_id=1835228976 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.3042316)
+
+[node name="1StairBack" type="Node" parent="FloorOne/Lights" unique_id=1488344035]
+
+[node name="stairwell_light9" parent="FloorOne/Lights/1StairBack" unique_id=1431431205 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -16.876005, 11.409634, 25.033392)
+
+[node name="stairwell_light10" parent="FloorOne/Lights/1StairBack" unique_id=1390881542 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -16.876005, 16.574665, 25.553057)
+
+[node name="stairwell_light11" parent="FloorOne/Lights/1StairBack" unique_id=1375131445 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -16.876005, 20.588688, 25.736729)
+
+[node name="stairwell_light12" parent="FloorOne/Lights/1StairBack" unique_id=751793529 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -15.35468, 32.265175, 25.736729)
+
+[node name="stairwell_light13" parent="FloorOne/Lights/1StairBack" unique_id=1912661302 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -15.35468, 32.265175, 25.736729)
+
+[node name="stairwell_light14" parent="FloorOne/Lights/1StairBack/stairwell_light13" unique_id=1617071016 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.4132099)
+
+[node name="stairwell_light15" parent="FloorOne/Lights/1StairBack" unique_id=1856163278 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -15.35468, 37.161568, 25.736729)
+
+[node name="stairwell_light14" parent="FloorOne/Lights/1StairBack/stairwell_light15" unique_id=2072025131 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.4132099)
+
+[node name="stairwell_light14" parent="FloorOne/Lights/1StairBack" unique_id=959493650 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -15.35468, 26.779743, 25.736729)
+
+[node name="stairwell_light14" parent="FloorOne/Lights/1StairBack/stairwell_light14" unique_id=1232408713 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.4132099)
+
+[node name="1StairLeft" type="Node" parent="FloorOne/Lights" unique_id=1046791549]
+
+[node name="stairwell_light2" parent="FloorOne/Lights/1StairLeft" unique_id=270688337 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -22.82802, 6.547062, 34.972176)
+
+[node name="stairwell_light" parent="FloorOne/Lights/1StairLeft/stairwell_light2" unique_id=1054318628 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -1.9853401)
+
+[node name="stairwell_light3" parent="FloorOne/Lights/1StairLeft" unique_id=1216667143 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -22.82802, 11.81163, 33.190506)
+
+[node name="stairwell_light" parent="FloorOne/Lights/1StairLeft/stairwell_light3" unique_id=653059008 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -1.9853401)
+
+[node name="stairwell_light4" parent="FloorOne/Lights/1StairLeft" unique_id=1152379780 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -22.82802, 16.741337, 33.190506)
+
+[node name="stairwell_light" parent="FloorOne/Lights/1StairLeft/stairwell_light4" unique_id=902774531 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -1.9853401)
+
+[node name="stairwell_light5" parent="FloorOne/Lights/1StairLeft" unique_id=201071045 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -22.82802, 21.719557, 33.190506)
+
+[node name="stairwell_light" parent="FloorOne/Lights/1StairLeft/stairwell_light5" unique_id=1602874555 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -1.9853401)
+
+[node name="stairwell_light6" parent="FloorOne/Lights/1StairLeft" unique_id=1933812013 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -22.82802, 26.611511, 33.190506)
+
+[node name="stairwell_light" parent="FloorOne/Lights/1StairLeft/stairwell_light6" unique_id=1587983604 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -1.9853401)
+
+[node name="stairwell_light7" parent="FloorOne/Lights/1StairLeft" unique_id=1447333578 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -22.82802, 31.719076, 33.190506)
+
+[node name="stairwell_light" parent="FloorOne/Lights/1StairLeft/stairwell_light7" unique_id=851943679 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -1.9853401)
+
+[node name="stairwell_light8" parent="FloorOne/Lights/1StairLeft" unique_id=781464541 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -22.82802, 36.591995, 33.190506)
+
+[node name="stairwell_light" parent="FloorOne/Lights/1StairLeft/stairwell_light8" unique_id=1504586718 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -1.9853401)
+
+[node name="stairwell_light9" parent="FloorOne/Lights/1StairLeft" unique_id=2027995877 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -22.82802, 6.547062, 34.972176)
+
+[node name="stairwell_light" parent="FloorOne/Lights/1StairLeft/stairwell_light9" unique_id=1754023605 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -1.9853401)
+
+[node name="stairwell_light10" parent="FloorOne/Lights/1StairLeft" unique_id=1767874765 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -22.82802, 11.81163, 33.190506)
+
+[node name="stairwell_light" parent="FloorOne/Lights/1StairLeft/stairwell_light10" unique_id=494066166 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -1.9853401)
+
+[node name="stairwell_light11" parent="FloorOne/Lights/1StairLeft" unique_id=702793650 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -22.82802, 16.741337, 33.190506)
+
+[node name="stairwell_light" parent="FloorOne/Lights/1StairLeft/stairwell_light11" unique_id=1926846062 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -1.9853401)
+
+[node name="stairwell_light12" parent="FloorOne/Lights/1StairLeft" unique_id=1073011925 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -22.82802, 21.719557, 33.190506)
+
+[node name="stairwell_light" parent="FloorOne/Lights/1StairLeft/stairwell_light12" unique_id=993489614 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -1.9853401)
+
+[node name="stairwell_light13" parent="FloorOne/Lights/1StairLeft" unique_id=994150705 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -22.82802, 26.611511, 33.190506)
+
+[node name="stairwell_light" parent="FloorOne/Lights/1StairLeft/stairwell_light13" unique_id=1141567819 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -1.9853401)
+
+[node name="stairwell_light14" parent="FloorOne/Lights/1StairLeft" unique_id=2066880395 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -22.82802, 31.719076, 33.190506)
+
+[node name="stairwell_light" parent="FloorOne/Lights/1StairLeft/stairwell_light14" unique_id=1784575811 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -1.9853401)
+
+[node name="stairwell_light15" parent="FloorOne/Lights/1StairLeft" unique_id=788318191 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -22.82802, 36.591995, 33.190506)
+
+[node name="stairwell_light" parent="FloorOne/Lights/1StairLeft/stairwell_light15" unique_id=13082254 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -1.9853401)
+
+[node name="1StairRight" type="Node" parent="FloorOne/Lights" unique_id=1862610793]
+
+[node name="stairwell_light2" parent="FloorOne/Lights/1StairRight" unique_id=1123288833 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.82802, 6.983656, 17.855703)
+
+[node name="stairwell_light" parent="FloorOne/Lights/1StairRight/stairwell_light2" unique_id=645332153 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.9853401)
+
+[node name="stairwell_light3" parent="FloorOne/Lights/1StairRight" unique_id=1215329825 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.82802, 12.248224, 17.855703)
+
+[node name="stairwell_light" parent="FloorOne/Lights/1StairRight/stairwell_light3" unique_id=715850363 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.9853401)
+
+[node name="stairwell_light4" parent="FloorOne/Lights/1StairRight" unique_id=1414109292 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.82802, 17.17793, 17.855703)
+
+[node name="stairwell_light" parent="FloorOne/Lights/1StairRight/stairwell_light4" unique_id=90117789 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.9853401)
+
+[node name="stairwell_light5" parent="FloorOne/Lights/1StairRight" unique_id=280776249 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.82802, 22.15615, 17.855703)
+
+[node name="stairwell_light" parent="FloorOne/Lights/1StairRight/stairwell_light5" unique_id=127764626 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.9853401)
+
+[node name="stairwell_light6" parent="FloorOne/Lights/1StairRight" unique_id=956420960 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.82802, 27.048105, 17.855703)
+
+[node name="stairwell_light" parent="FloorOne/Lights/1StairRight/stairwell_light6" unique_id=1993200340 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.9853401)
+
+[node name="stairwell_light7" parent="FloorOne/Lights/1StairRight" unique_id=250563744 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.82802, 32.15567, 17.855703)
+
+[node name="stairwell_light" parent="FloorOne/Lights/1StairRight/stairwell_light7" unique_id=334235979 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.9853401)
+
+[node name="stairwell_light8" parent="FloorOne/Lights/1StairRight" unique_id=1410626511 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.82802, 37.028587, 17.855703)
+
+[node name="stairwell_light" parent="FloorOne/Lights/1StairRight/stairwell_light8" unique_id=445291033 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.9853401)
+
+[node name="1StairFoward2" type="Node" parent="FloorOne/Lights" unique_id=1605739434]
+
+[node name="stairwell_light16" parent="FloorOne/Lights/1StairFoward2" unique_id=1400731926 instance=ExtResource("5_8iemx")]
+transform = Transform3D(0.0034383275, 0, -0.99999404, 0, 1, 0, 0.99999404, 0, 0.0034383275, 165.03665, 11.409634, 31.236814)
+
+[node name="stairwell_light17" parent="FloorOne/Lights/1StairFoward2/stairwell_light16" unique_id=1420100650 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.3042316)
+
+[node name="stairwell_light17" parent="FloorOne/Lights/1StairFoward2" unique_id=442998601 instance=ExtResource("5_8iemx")]
+transform = Transform3D(0.0034383275, 0, -0.99999404, 0, 1, 0, 0.99999404, 0, 0.0034383275, 165.01439, 11.409634, 24.762474)
+
+[node name="stairwell_light17" parent="FloorOne/Lights/1StairFoward2/stairwell_light17" unique_id=473716341 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.3042316)
+
+[node name="stairwell_light18" parent="FloorOne/Lights/1StairFoward2" unique_id=1631491312 instance=ExtResource("5_8iemx")]
+transform = Transform3D(0.0034383275, 0, -0.99999404, 0, 1, 0, 0.99999404, 0, 0.0034383275, 165.03665, 17.910631, 31.236814)
+
+[node name="stairwell_light17" parent="FloorOne/Lights/1StairFoward2/stairwell_light18" unique_id=591886412 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.3042316)
+
+[node name="stairwell_light19" parent="FloorOne/Lights/1StairFoward2" unique_id=143340211 instance=ExtResource("5_8iemx")]
+transform = Transform3D(0.0034383275, 0, -0.99999404, 0, 1, 0, 0.99999404, 0, 0.0034383275, 165.01439, 17.910631, 24.762474)
+
+[node name="stairwell_light17" parent="FloorOne/Lights/1StairFoward2/stairwell_light19" unique_id=1076427052 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.3042316)
+
+[node name="stairwell_light20" parent="FloorOne/Lights/1StairFoward2" unique_id=1094584672 instance=ExtResource("5_8iemx")]
+transform = Transform3D(0.0034383275, 0, -0.99999404, 0, 1, 0, 0.99999404, 0, 0.0034383275, 165.03665, 23.240587, 31.236814)
+
+[node name="stairwell_light17" parent="FloorOne/Lights/1StairFoward2/stairwell_light20" unique_id=629904151 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.3042316)
+
+[node name="stairwell_light21" parent="FloorOne/Lights/1StairFoward2" unique_id=1791297093 instance=ExtResource("5_8iemx")]
+transform = Transform3D(0.0034383275, 0, -0.99999404, 0, 1, 0, 0.99999404, 0, 0.0034383275, 165.01439, 23.240587, 24.762474)
+
+[node name="stairwell_light17" parent="FloorOne/Lights/1StairFoward2/stairwell_light21" unique_id=968996792 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.3042316)
+
+[node name="stairwell_light22" parent="FloorOne/Lights/1StairFoward2" unique_id=1993574020 instance=ExtResource("5_8iemx")]
+transform = Transform3D(0.0034383275, 0, -0.99999404, 0, 1, 0, 0.99999404, 0, 0.0034383275, 165.03665, 28.176268, 31.236814)
+
+[node name="stairwell_light17" parent="FloorOne/Lights/1StairFoward2/stairwell_light22" unique_id=1163575793 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.3042316)
+
+[node name="stairwell_light23" parent="FloorOne/Lights/1StairFoward2" unique_id=47513 instance=ExtResource("5_8iemx")]
+transform = Transform3D(0.0034383275, 0, -0.99999404, 0, 1, 0, 0.99999404, 0, 0.0034383275, 165.01439, 28.176268, 24.762474)
+
+[node name="stairwell_light17" parent="FloorOne/Lights/1StairFoward2/stairwell_light23" unique_id=992840421 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.3042316)
+
+[node name="stairwell_light24" parent="FloorOne/Lights/1StairFoward2" unique_id=1662265204 instance=ExtResource("5_8iemx")]
+transform = Transform3D(0.0034383275, 0, -0.99999404, 0, 1, 0, 0.99999404, 0, 0.0034383275, 165.03665, 32.945313, 31.236814)
+
+[node name="stairwell_light17" parent="FloorOne/Lights/1StairFoward2/stairwell_light24" unique_id=722118433 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.3042316)
+
+[node name="stairwell_light25" parent="FloorOne/Lights/1StairFoward2" unique_id=1305016841 instance=ExtResource("5_8iemx")]
+transform = Transform3D(0.0034383275, 0, -0.99999404, 0, 1, 0, 0.99999404, 0, 0.0034383275, 165.01439, 32.945313, 24.762474)
+
+[node name="stairwell_light17" parent="FloorOne/Lights/1StairFoward2/stairwell_light25" unique_id=250998777 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.3042316)
+
+[node name="stairwell_light26" parent="FloorOne/Lights/1StairFoward2" unique_id=1884321422 instance=ExtResource("5_8iemx")]
+transform = Transform3D(0.0034383275, 0, -0.99999404, 0, 1, 0, 0.99999404, 0, 0.0034383275, 165.03665, 37.940125, 31.236814)
+
+[node name="stairwell_light17" parent="FloorOne/Lights/1StairFoward2/stairwell_light26" unique_id=1316599454 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.3042316)
+
+[node name="stairwell_light27" parent="FloorOne/Lights/1StairFoward2" unique_id=1083650989 instance=ExtResource("5_8iemx")]
+transform = Transform3D(0.0034383275, 0, -0.99999404, 0, 1, 0, 0.99999404, 0, 0.0034383275, 165.01439, 37.940125, 24.762474)
+
+[node name="stairwell_light17" parent="FloorOne/Lights/1StairFoward2/stairwell_light27" unique_id=1137934883 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.3042316)
+
+[node name="1StairBack2" type="Node" parent="FloorOne/Lights" unique_id=109287472]
+
+[node name="stairwell_light9" parent="FloorOne/Lights/1StairBack2" unique_id=442206163 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-0.003438238, 0, 0.99999404, 0, 1, 0, -0.99999404, 0, -0.003438238, 153.70497, 11.409634, 28.110882)
+
+[node name="stairwell_light10" parent="FloorOne/Lights/1StairBack2" unique_id=1695079510 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-0.003438238, 0, 0.99999404, 0, 1, 0, -0.99999404, 0, -0.003438238, 153.70319, 16.574665, 27.59122)
+
+[node name="stairwell_light11" parent="FloorOne/Lights/1StairBack2" unique_id=693469196 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-0.003438238, 0, 0.99999404, 0, 1, 0, -0.99999404, 0, -0.003438238, 153.70256, 20.588688, 27.407549)
+
+[node name="stairwell_light12" parent="FloorOne/Lights/1StairBack2" unique_id=1771381548 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-0.003438238, 0, 0.99999404, 0, 1, 0, -0.99999404, 0, -0.003438238, 152.18124, 32.265175, 27.41278)
+
+[node name="stairwell_light13" parent="FloorOne/Lights/1StairBack2" unique_id=300378167 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-0.003438238, 0, 0.99999404, 0, 1, 0, -0.99999404, 0, -0.003438238, 152.18124, 32.265175, 27.41278)
+
+[node name="stairwell_light14" parent="FloorOne/Lights/1StairBack2/stairwell_light13" unique_id=378171683 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.4132099)
+
+[node name="stairwell_light15" parent="FloorOne/Lights/1StairBack2" unique_id=1867923469 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-0.003438238, 0, 0.99999404, 0, 1, 0, -0.99999404, 0, -0.003438238, 152.18124, 37.161568, 27.41278)
+
+[node name="stairwell_light14" parent="FloorOne/Lights/1StairBack2/stairwell_light15" unique_id=101228640 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.4132099)
+
+[node name="stairwell_light14" parent="FloorOne/Lights/1StairBack2" unique_id=1050372807 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-0.003438238, 0, 0.99999404, 0, 1, 0, -0.99999404, 0, -0.003438238, 152.18124, 26.779743, 27.41278)
+
+[node name="stairwell_light14" parent="FloorOne/Lights/1StairBack2/stairwell_light14" unique_id=1955988468 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.4132099)
+
+[node name="1StairLeft2" type="Node" parent="FloorOne/Lights" unique_id=1154288515]
+
+[node name="stairwell_light2" parent="FloorOne/Lights/1StairLeft2" unique_id=1727834830 instance=ExtResource("5_8iemx")]
+transform = Transform3D(0.99999404, 0, 0.0034383684, 0, 1, 0, -0.0034383684, 0, 0.99999404, 159.62279, 6.547062, 18.151691)
+
+[node name="stairwell_light" parent="FloorOne/Lights/1StairLeft2/stairwell_light2" unique_id=137563032 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -1.9853401)
+
+[node name="stairwell_light3" parent="FloorOne/Lights/1StairLeft2" unique_id=717054179 instance=ExtResource("5_8iemx")]
+transform = Transform3D(0.99999404, 0, 0.0034383684, 0, 1, 0, -0.0034383684, 0, 0.99999404, 159.6289, 11.81163, 19.933352)
+
+[node name="stairwell_light" parent="FloorOne/Lights/1StairLeft2/stairwell_light3" unique_id=979605590 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -1.9853401)
+
+[node name="stairwell_light4" parent="FloorOne/Lights/1StairLeft2" unique_id=1325131813 instance=ExtResource("5_8iemx")]
+transform = Transform3D(0.99999404, 0, 0.0034383684, 0, 1, 0, -0.0034383684, 0, 0.99999404, 159.6289, 16.741337, 19.933352)
+
+[node name="stairwell_light" parent="FloorOne/Lights/1StairLeft2/stairwell_light4" unique_id=318125609 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -1.9853401)
+
+[node name="stairwell_light5" parent="FloorOne/Lights/1StairLeft2" unique_id=979608028 instance=ExtResource("5_8iemx")]
+transform = Transform3D(0.99999404, 0, 0.0034383684, 0, 1, 0, -0.0034383684, 0, 0.99999404, 159.6289, 21.719557, 19.933352)
+
+[node name="stairwell_light" parent="FloorOne/Lights/1StairLeft2/stairwell_light5" unique_id=1993965400 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -1.9853401)
+
+[node name="stairwell_light6" parent="FloorOne/Lights/1StairLeft2" unique_id=131135097 instance=ExtResource("5_8iemx")]
+transform = Transform3D(0.99999404, 0, 0.0034383684, 0, 1, 0, -0.0034383684, 0, 0.99999404, 159.6289, 26.611511, 19.933352)
+
+[node name="stairwell_light" parent="FloorOne/Lights/1StairLeft2/stairwell_light6" unique_id=978848416 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -1.9853401)
+
+[node name="stairwell_light7" parent="FloorOne/Lights/1StairLeft2" unique_id=481602003 instance=ExtResource("5_8iemx")]
+transform = Transform3D(0.99999404, 0, 0.0034383684, 0, 1, 0, -0.0034383684, 0, 0.99999404, 159.6289, 31.719076, 19.933352)
+
+[node name="stairwell_light" parent="FloorOne/Lights/1StairLeft2/stairwell_light7" unique_id=30489812 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -1.9853401)
+
+[node name="stairwell_light8" parent="FloorOne/Lights/1StairLeft2" unique_id=1556931138 instance=ExtResource("5_8iemx")]
+transform = Transform3D(0.99999404, 0, 0.0034383684, 0, 1, 0, -0.0034383684, 0, 0.99999404, 159.6289, 36.591995, 19.933352)
+
+[node name="stairwell_light" parent="FloorOne/Lights/1StairLeft2/stairwell_light8" unique_id=1661754036 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -1.9853401)
+
+[node name="stairwell_light9" parent="FloorOne/Lights/1StairLeft2" unique_id=280192904 instance=ExtResource("5_8iemx")]
+transform = Transform3D(0.99999404, 0, 0.0034383684, 0, 1, 0, -0.0034383684, 0, 0.99999404, 159.62279, 6.547062, 18.151691)
+
+[node name="stairwell_light" parent="FloorOne/Lights/1StairLeft2/stairwell_light9" unique_id=1145487632 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -1.9853401)
+
+[node name="stairwell_light10" parent="FloorOne/Lights/1StairLeft2" unique_id=613588388 instance=ExtResource("5_8iemx")]
+transform = Transform3D(0.99999404, 0, 0.0034383684, 0, 1, 0, -0.0034383684, 0, 0.99999404, 159.6289, 11.81163, 19.933352)
+
+[node name="stairwell_light" parent="FloorOne/Lights/1StairLeft2/stairwell_light10" unique_id=1062060142 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -1.9853401)
+
+[node name="stairwell_light11" parent="FloorOne/Lights/1StairLeft2" unique_id=274336211 instance=ExtResource("5_8iemx")]
+transform = Transform3D(0.99999404, 0, 0.0034383684, 0, 1, 0, -0.0034383684, 0, 0.99999404, 159.6289, 16.741337, 19.933352)
+
+[node name="stairwell_light" parent="FloorOne/Lights/1StairLeft2/stairwell_light11" unique_id=1118471780 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -1.9853401)
+
+[node name="stairwell_light12" parent="FloorOne/Lights/1StairLeft2" unique_id=1800809988 instance=ExtResource("5_8iemx")]
+transform = Transform3D(0.99999404, 0, 0.0034383684, 0, 1, 0, -0.0034383684, 0, 0.99999404, 159.6289, 21.719557, 19.933352)
+
+[node name="stairwell_light" parent="FloorOne/Lights/1StairLeft2/stairwell_light12" unique_id=2010641938 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -1.9853401)
+
+[node name="stairwell_light13" parent="FloorOne/Lights/1StairLeft2" unique_id=2123199998 instance=ExtResource("5_8iemx")]
+transform = Transform3D(0.99999404, 0, 0.0034383684, 0, 1, 0, -0.0034383684, 0, 0.99999404, 159.6289, 26.611511, 19.933352)
+
+[node name="stairwell_light" parent="FloorOne/Lights/1StairLeft2/stairwell_light13" unique_id=2004869320 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -1.9853401)
+
+[node name="stairwell_light14" parent="FloorOne/Lights/1StairLeft2" unique_id=216769308 instance=ExtResource("5_8iemx")]
+transform = Transform3D(0.99999404, 0, 0.0034383684, 0, 1, 0, -0.0034383684, 0, 0.99999404, 159.6289, 31.719076, 19.933352)
+
+[node name="stairwell_light" parent="FloorOne/Lights/1StairLeft2/stairwell_light14" unique_id=1260833469 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -1.9853401)
+
+[node name="stairwell_light15" parent="FloorOne/Lights/1StairLeft2" unique_id=945388918 instance=ExtResource("5_8iemx")]
+transform = Transform3D(0.99999404, 0, 0.0034383684, 0, 1, 0, -0.0034383684, 0, 0.99999404, 159.6289, 36.591995, 19.933352)
+
+[node name="stairwell_light" parent="FloorOne/Lights/1StairLeft2/stairwell_light15" unique_id=260530039 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -1.9853401)
+
+[node name="1StairRight2" type="Node" parent="FloorOne/Lights" unique_id=401467933]
+
+[node name="stairwell_light2" parent="FloorOne/Lights/1StairRight2" unique_id=911391927 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-0.99999404, 0, -0.0034382828, 0, 1, 0, 0.0034382828, 0, -0.99999404, 159.68164, 6.983656, 35.268066)
+
+[node name="stairwell_light" parent="FloorOne/Lights/1StairRight2/stairwell_light2" unique_id=44253994 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.9853401)
+
+[node name="stairwell_light3" parent="FloorOne/Lights/1StairRight2" unique_id=1344076345 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-0.99999404, 0, -0.0034382828, 0, 1, 0, 0.0034382828, 0, -0.99999404, 159.68164, 12.248224, 35.268066)
+
+[node name="stairwell_light" parent="FloorOne/Lights/1StairRight2/stairwell_light3" unique_id=819034898 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.9853401)
+
+[node name="stairwell_light4" parent="FloorOne/Lights/1StairRight2" unique_id=1791869591 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-0.99999404, 0, -0.0034382828, 0, 1, 0, 0.0034382828, 0, -0.99999404, 159.68164, 17.17793, 35.268066)
+
+[node name="stairwell_light" parent="FloorOne/Lights/1StairRight2/stairwell_light4" unique_id=1678141727 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.9853401)
+
+[node name="stairwell_light5" parent="FloorOne/Lights/1StairRight2" unique_id=1142339297 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-0.99999404, 0, -0.0034382828, 0, 1, 0, 0.0034382828, 0, -0.99999404, 159.68164, 22.15615, 35.268066)
+
+[node name="stairwell_light" parent="FloorOne/Lights/1StairRight2/stairwell_light5" unique_id=1808023131 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.9853401)
+
+[node name="stairwell_light6" parent="FloorOne/Lights/1StairRight2" unique_id=1371448158 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-0.99999404, 0, -0.0034382828, 0, 1, 0, 0.0034382828, 0, -0.99999404, 159.68164, 27.048105, 35.268066)
+
+[node name="stairwell_light" parent="FloorOne/Lights/1StairRight2/stairwell_light6" unique_id=1229013788 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.9853401)
+
+[node name="stairwell_light7" parent="FloorOne/Lights/1StairRight2" unique_id=1708116112 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-0.99999404, 0, -0.0034382828, 0, 1, 0, 0.0034382828, 0, -0.99999404, 159.68164, 32.15567, 35.268066)
+
+[node name="stairwell_light" parent="FloorOne/Lights/1StairRight2/stairwell_light7" unique_id=1190501918 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.9853401)
+
+[node name="stairwell_light8" parent="FloorOne/Lights/1StairRight2" unique_id=568638695 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-0.99999404, 0, -0.0034382828, 0, 1, 0, 0.0034382828, 0, -0.99999404, 159.68164, 37.028587, 35.268066)
+
+[node name="stairwell_light" parent="FloorOne/Lights/1StairRight2/stairwell_light8" unique_id=1963358818 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.9853401)
+
+[node name="1StairFoward" type="Node" parent="FloorOne/Lights/1StairRight2" unique_id=407219099]
+
+[node name="stairwell_light16" parent="FloorOne/Lights/1StairRight2/1StairFoward" unique_id=1188823354 instance=ExtResource("5_8iemx")]
+transform = Transform3D(0.0034383275, 0, -0.99999404, 0, 1, 0, 0.99999404, 0, 0.0034383275, 165.03665, 11.409634, 31.236814)
+
+[node name="stairwell_light17" parent="FloorOne/Lights/1StairRight2/1StairFoward/stairwell_light16" unique_id=493234767 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.3042316)
+
+[node name="stairwell_light17" parent="FloorOne/Lights/1StairRight2/1StairFoward" unique_id=1882144611 instance=ExtResource("5_8iemx")]
+transform = Transform3D(0.0034383275, 0, -0.99999404, 0, 1, 0, 0.99999404, 0, 0.0034383275, 165.01439, 11.409634, 24.762474)
+
+[node name="stairwell_light17" parent="FloorOne/Lights/1StairRight2/1StairFoward/stairwell_light17" unique_id=1895134624 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.3042316)
+
+[node name="stairwell_light18" parent="FloorOne/Lights/1StairRight2/1StairFoward" unique_id=162472612 instance=ExtResource("5_8iemx")]
+transform = Transform3D(0.0034383275, 0, -0.99999404, 0, 1, 0, 0.99999404, 0, 0.0034383275, 165.03665, 17.910631, 31.236814)
+
+[node name="stairwell_light17" parent="FloorOne/Lights/1StairRight2/1StairFoward/stairwell_light18" unique_id=1751931412 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.3042316)
+
+[node name="stairwell_light19" parent="FloorOne/Lights/1StairRight2/1StairFoward" unique_id=226730854 instance=ExtResource("5_8iemx")]
+transform = Transform3D(0.0034383275, 0, -0.99999404, 0, 1, 0, 0.99999404, 0, 0.0034383275, 165.01439, 17.910631, 24.762474)
+
+[node name="stairwell_light17" parent="FloorOne/Lights/1StairRight2/1StairFoward/stairwell_light19" unique_id=1414767144 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.3042316)
+
+[node name="stairwell_light20" parent="FloorOne/Lights/1StairRight2/1StairFoward" unique_id=620359668 instance=ExtResource("5_8iemx")]
+transform = Transform3D(0.0034383275, 0, -0.99999404, 0, 1, 0, 0.99999404, 0, 0.0034383275, 165.03665, 23.240587, 31.236814)
+
+[node name="stairwell_light17" parent="FloorOne/Lights/1StairRight2/1StairFoward/stairwell_light20" unique_id=1352473604 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.3042316)
+
+[node name="stairwell_light21" parent="FloorOne/Lights/1StairRight2/1StairFoward" unique_id=1842702134 instance=ExtResource("5_8iemx")]
+transform = Transform3D(0.0034383275, 0, -0.99999404, 0, 1, 0, 0.99999404, 0, 0.0034383275, 165.01439, 23.240587, 24.762474)
+
+[node name="stairwell_light17" parent="FloorOne/Lights/1StairRight2/1StairFoward/stairwell_light21" unique_id=1196893721 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.3042316)
+
+[node name="stairwell_light22" parent="FloorOne/Lights/1StairRight2/1StairFoward" unique_id=343106178 instance=ExtResource("5_8iemx")]
+transform = Transform3D(0.0034383275, 0, -0.99999404, 0, 1, 0, 0.99999404, 0, 0.0034383275, 165.03665, 28.176268, 31.236814)
+
+[node name="stairwell_light17" parent="FloorOne/Lights/1StairRight2/1StairFoward/stairwell_light22" unique_id=215524612 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.3042316)
+
+[node name="stairwell_light23" parent="FloorOne/Lights/1StairRight2/1StairFoward" unique_id=1848755221 instance=ExtResource("5_8iemx")]
+transform = Transform3D(0.0034383275, 0, -0.99999404, 0, 1, 0, 0.99999404, 0, 0.0034383275, 165.01439, 28.176268, 24.762474)
+
+[node name="stairwell_light17" parent="FloorOne/Lights/1StairRight2/1StairFoward/stairwell_light23" unique_id=596669939 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.3042316)
+
+[node name="stairwell_light24" parent="FloorOne/Lights/1StairRight2/1StairFoward" unique_id=235871414 instance=ExtResource("5_8iemx")]
+transform = Transform3D(0.0034383275, 0, -0.99999404, 0, 1, 0, 0.99999404, 0, 0.0034383275, 165.03665, 32.945313, 31.236814)
+
+[node name="stairwell_light17" parent="FloorOne/Lights/1StairRight2/1StairFoward/stairwell_light24" unique_id=456041125 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.3042316)
+
+[node name="stairwell_light25" parent="FloorOne/Lights/1StairRight2/1StairFoward" unique_id=1608985190 instance=ExtResource("5_8iemx")]
+transform = Transform3D(0.0034383275, 0, -0.99999404, 0, 1, 0, 0.99999404, 0, 0.0034383275, 165.01439, 32.945313, 24.762474)
+
+[node name="stairwell_light17" parent="FloorOne/Lights/1StairRight2/1StairFoward/stairwell_light25" unique_id=179212089 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.3042316)
+
+[node name="stairwell_light26" parent="FloorOne/Lights/1StairRight2/1StairFoward" unique_id=1358477157 instance=ExtResource("5_8iemx")]
+transform = Transform3D(0.0034383275, 0, -0.99999404, 0, 1, 0, 0.99999404, 0, 0.0034383275, 165.03665, 37.940125, 31.236814)
+
+[node name="stairwell_light17" parent="FloorOne/Lights/1StairRight2/1StairFoward/stairwell_light26" unique_id=922381611 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.3042316)
+
+[node name="stairwell_light27" parent="FloorOne/Lights/1StairRight2/1StairFoward" unique_id=545892621 instance=ExtResource("5_8iemx")]
+transform = Transform3D(0.0034383275, 0, -0.99999404, 0, 1, 0, 0.99999404, 0, 0.0034383275, 165.01439, 37.940125, 24.762474)
+
+[node name="stairwell_light17" parent="FloorOne/Lights/1StairRight2/1StairFoward/stairwell_light27" unique_id=1438906065 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.3042316)
+
+[node name="1StairBack" type="Node" parent="FloorOne/Lights/1StairRight2" unique_id=1712060653]
+
+[node name="stairwell_light9" parent="FloorOne/Lights/1StairRight2/1StairBack" unique_id=618320012 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-0.003438238, 0, 0.99999404, 0, 1, 0, -0.99999404, 0, -0.003438238, 153.70497, 11.409634, 28.110882)
+
+[node name="stairwell_light10" parent="FloorOne/Lights/1StairRight2/1StairBack" unique_id=1802550821 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-0.003438238, 0, 0.99999404, 0, 1, 0, -0.99999404, 0, -0.003438238, 153.70319, 16.574665, 27.59122)
+
+[node name="stairwell_light11" parent="FloorOne/Lights/1StairRight2/1StairBack" unique_id=960327320 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-0.003438238, 0, 0.99999404, 0, 1, 0, -0.99999404, 0, -0.003438238, 153.70256, 20.588688, 27.407549)
+
+[node name="stairwell_light12" parent="FloorOne/Lights/1StairRight2/1StairBack" unique_id=510475102 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-0.003438238, 0, 0.99999404, 0, 1, 0, -0.99999404, 0, -0.003438238, 152.18124, 32.265175, 27.41278)
+
+[node name="stairwell_light13" parent="FloorOne/Lights/1StairRight2/1StairBack" unique_id=769663062 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-0.003438238, 0, 0.99999404, 0, 1, 0, -0.99999404, 0, -0.003438238, 152.18124, 32.265175, 27.41278)
+
+[node name="stairwell_light14" parent="FloorOne/Lights/1StairRight2/1StairBack/stairwell_light13" unique_id=549668353 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.4132099)
+
+[node name="stairwell_light15" parent="FloorOne/Lights/1StairRight2/1StairBack" unique_id=653437218 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-0.003438238, 0, 0.99999404, 0, 1, 0, -0.99999404, 0, -0.003438238, 152.18124, 37.161568, 27.41278)
+
+[node name="stairwell_light14" parent="FloorOne/Lights/1StairRight2/1StairBack/stairwell_light15" unique_id=1520708583 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.4132099)
+
+[node name="stairwell_light14" parent="FloorOne/Lights/1StairRight2/1StairBack" unique_id=1516498008 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-0.003438238, 0, 0.99999404, 0, 1, 0, -0.99999404, 0, -0.003438238, 152.18124, 26.779743, 27.41278)
+
+[node name="stairwell_light14" parent="FloorOne/Lights/1StairRight2/1StairBack/stairwell_light14" unique_id=178243060 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.4132099)
+
+[node name="1StairLeft" type="Node" parent="FloorOne/Lights/1StairRight2" unique_id=1194308734]
+
+[node name="stairwell_light2" parent="FloorOne/Lights/1StairRight2/1StairLeft" unique_id=766049701 instance=ExtResource("5_8iemx")]
+transform = Transform3D(0.99999404, 0, 0.0034383684, 0, 1, 0, -0.0034383684, 0, 0.99999404, 159.62279, 6.547062, 18.151691)
+
+[node name="stairwell_light" parent="FloorOne/Lights/1StairRight2/1StairLeft/stairwell_light2" unique_id=1172049737 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -1.9853401)
+
+[node name="stairwell_light3" parent="FloorOne/Lights/1StairRight2/1StairLeft" unique_id=272999694 instance=ExtResource("5_8iemx")]
+transform = Transform3D(0.99999404, 0, 0.0034383684, 0, 1, 0, -0.0034383684, 0, 0.99999404, 159.6289, 11.81163, 19.933352)
+
+[node name="stairwell_light" parent="FloorOne/Lights/1StairRight2/1StairLeft/stairwell_light3" unique_id=384281731 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -1.9853401)
+
+[node name="stairwell_light4" parent="FloorOne/Lights/1StairRight2/1StairLeft" unique_id=1159391650 instance=ExtResource("5_8iemx")]
+transform = Transform3D(0.99999404, 0, 0.0034383684, 0, 1, 0, -0.0034383684, 0, 0.99999404, 159.6289, 16.741337, 19.933352)
+
+[node name="stairwell_light" parent="FloorOne/Lights/1StairRight2/1StairLeft/stairwell_light4" unique_id=487680372 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -1.9853401)
+
+[node name="stairwell_light5" parent="FloorOne/Lights/1StairRight2/1StairLeft" unique_id=549807731 instance=ExtResource("5_8iemx")]
+transform = Transform3D(0.99999404, 0, 0.0034383684, 0, 1, 0, -0.0034383684, 0, 0.99999404, 159.6289, 21.719557, 19.933352)
+
+[node name="stairwell_light" parent="FloorOne/Lights/1StairRight2/1StairLeft/stairwell_light5" unique_id=1363993649 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -1.9853401)
+
+[node name="stairwell_light6" parent="FloorOne/Lights/1StairRight2/1StairLeft" unique_id=746728687 instance=ExtResource("5_8iemx")]
+transform = Transform3D(0.99999404, 0, 0.0034383684, 0, 1, 0, -0.0034383684, 0, 0.99999404, 159.6289, 26.611511, 19.933352)
+
+[node name="stairwell_light" parent="FloorOne/Lights/1StairRight2/1StairLeft/stairwell_light6" unique_id=1298724907 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -1.9853401)
+
+[node name="stairwell_light7" parent="FloorOne/Lights/1StairRight2/1StairLeft" unique_id=81171178 instance=ExtResource("5_8iemx")]
+transform = Transform3D(0.99999404, 0, 0.0034383684, 0, 1, 0, -0.0034383684, 0, 0.99999404, 159.6289, 31.719076, 19.933352)
+
+[node name="stairwell_light" parent="FloorOne/Lights/1StairRight2/1StairLeft/stairwell_light7" unique_id=1664829848 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -1.9853401)
+
+[node name="stairwell_light8" parent="FloorOne/Lights/1StairRight2/1StairLeft" unique_id=645000922 instance=ExtResource("5_8iemx")]
+transform = Transform3D(0.99999404, 0, 0.0034383684, 0, 1, 0, -0.0034383684, 0, 0.99999404, 159.6289, 36.591995, 19.933352)
+
+[node name="stairwell_light" parent="FloorOne/Lights/1StairRight2/1StairLeft/stairwell_light8" unique_id=1055803370 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -1.9853401)
+
+[node name="stairwell_light9" parent="FloorOne/Lights/1StairRight2/1StairLeft" unique_id=109202230 instance=ExtResource("5_8iemx")]
+transform = Transform3D(0.99999404, 0, 0.0034383684, 0, 1, 0, -0.0034383684, 0, 0.99999404, 159.62279, 6.547062, 18.151691)
+
+[node name="stairwell_light" parent="FloorOne/Lights/1StairRight2/1StairLeft/stairwell_light9" unique_id=1293844958 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -1.9853401)
+
+[node name="stairwell_light10" parent="FloorOne/Lights/1StairRight2/1StairLeft" unique_id=1145291853 instance=ExtResource("5_8iemx")]
+transform = Transform3D(0.99999404, 0, 0.0034383684, 0, 1, 0, -0.0034383684, 0, 0.99999404, 159.6289, 11.81163, 19.933352)
+
+[node name="stairwell_light" parent="FloorOne/Lights/1StairRight2/1StairLeft/stairwell_light10" unique_id=478826270 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -1.9853401)
+
+[node name="stairwell_light11" parent="FloorOne/Lights/1StairRight2/1StairLeft" unique_id=1029845424 instance=ExtResource("5_8iemx")]
+transform = Transform3D(0.99999404, 0, 0.0034383684, 0, 1, 0, -0.0034383684, 0, 0.99999404, 159.6289, 16.741337, 19.933352)
+
+[node name="stairwell_light" parent="FloorOne/Lights/1StairRight2/1StairLeft/stairwell_light11" unique_id=523393398 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -1.9853401)
+
+[node name="stairwell_light12" parent="FloorOne/Lights/1StairRight2/1StairLeft" unique_id=1366137859 instance=ExtResource("5_8iemx")]
+transform = Transform3D(0.99999404, 0, 0.0034383684, 0, 1, 0, -0.0034383684, 0, 0.99999404, 159.6289, 21.719557, 19.933352)
+
+[node name="stairwell_light" parent="FloorOne/Lights/1StairRight2/1StairLeft/stairwell_light12" unique_id=324216151 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -1.9853401)
+
+[node name="stairwell_light13" parent="FloorOne/Lights/1StairRight2/1StairLeft" unique_id=1781262255 instance=ExtResource("5_8iemx")]
+transform = Transform3D(0.99999404, 0, 0.0034383684, 0, 1, 0, -0.0034383684, 0, 0.99999404, 159.6289, 26.611511, 19.933352)
+
+[node name="stairwell_light" parent="FloorOne/Lights/1StairRight2/1StairLeft/stairwell_light13" unique_id=1681930349 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -1.9853401)
+
+[node name="stairwell_light14" parent="FloorOne/Lights/1StairRight2/1StairLeft" unique_id=522979839 instance=ExtResource("5_8iemx")]
+transform = Transform3D(0.99999404, 0, 0.0034383684, 0, 1, 0, -0.0034383684, 0, 0.99999404, 159.6289, 31.719076, 19.933352)
+
+[node name="stairwell_light" parent="FloorOne/Lights/1StairRight2/1StairLeft/stairwell_light14" unique_id=746362567 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -1.9853401)
+
+[node name="stairwell_light15" parent="FloorOne/Lights/1StairRight2/1StairLeft" unique_id=1393540331 instance=ExtResource("5_8iemx")]
+transform = Transform3D(0.99999404, 0, 0.0034383684, 0, 1, 0, -0.0034383684, 0, 0.99999404, 159.6289, 36.591995, 19.933352)
+
+[node name="stairwell_light" parent="FloorOne/Lights/1StairRight2/1StairLeft/stairwell_light15" unique_id=1547038186 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -1.9853401)
+
+[node name="1StairRight" type="Node" parent="FloorOne/Lights/1StairRight2" unique_id=865070724]
+
+[node name="stairwell_light2" parent="FloorOne/Lights/1StairRight2/1StairRight" unique_id=2063372779 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-0.99999404, 0, -0.0034382828, 0, 1, 0, 0.0034382828, 0, -0.99999404, 159.68164, 6.983656, 35.268066)
+
+[node name="stairwell_light" parent="FloorOne/Lights/1StairRight2/1StairRight/stairwell_light2" unique_id=780721962 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.9853401)
+
+[node name="stairwell_light3" parent="FloorOne/Lights/1StairRight2/1StairRight" unique_id=1791439909 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-0.99999404, 0, -0.0034382828, 0, 1, 0, 0.0034382828, 0, -0.99999404, 159.68164, 12.248224, 35.268066)
+
+[node name="stairwell_light" parent="FloorOne/Lights/1StairRight2/1StairRight/stairwell_light3" unique_id=759171039 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.9853401)
+
+[node name="stairwell_light4" parent="FloorOne/Lights/1StairRight2/1StairRight" unique_id=54099852 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-0.99999404, 0, -0.0034382828, 0, 1, 0, 0.0034382828, 0, -0.99999404, 159.68164, 17.17793, 35.268066)
+
+[node name="stairwell_light" parent="FloorOne/Lights/1StairRight2/1StairRight/stairwell_light4" unique_id=4400658 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.9853401)
+
+[node name="stairwell_light5" parent="FloorOne/Lights/1StairRight2/1StairRight" unique_id=324828037 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-0.99999404, 0, -0.0034382828, 0, 1, 0, 0.0034382828, 0, -0.99999404, 159.68164, 22.15615, 35.268066)
+
+[node name="stairwell_light" parent="FloorOne/Lights/1StairRight2/1StairRight/stairwell_light5" unique_id=83074187 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.9853401)
+
+[node name="stairwell_light6" parent="FloorOne/Lights/1StairRight2/1StairRight" unique_id=2102021274 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-0.99999404, 0, -0.0034382828, 0, 1, 0, 0.0034382828, 0, -0.99999404, 159.68164, 27.048105, 35.268066)
+
+[node name="stairwell_light" parent="FloorOne/Lights/1StairRight2/1StairRight/stairwell_light6" unique_id=1863729218 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.9853401)
+
+[node name="stairwell_light7" parent="FloorOne/Lights/1StairRight2/1StairRight" unique_id=834534141 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-0.99999404, 0, -0.0034382828, 0, 1, 0, 0.0034382828, 0, -0.99999404, 159.68164, 32.15567, 35.268066)
+
+[node name="stairwell_light" parent="FloorOne/Lights/1StairRight2/1StairRight/stairwell_light7" unique_id=1498485354 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.9853401)
+
+[node name="stairwell_light8" parent="FloorOne/Lights/1StairRight2/1StairRight" unique_id=349051931 instance=ExtResource("5_8iemx")]
+transform = Transform3D(-0.99999404, 0, -0.0034382828, 0, 1, 0, 0.0034382828, 0, -0.99999404, 159.68164, 37.028587, 35.268066)
+
+[node name="stairwell_light" parent="FloorOne/Lights/1StairRight2/1StairRight/stairwell_light8" unique_id=1223059687 instance=ExtResource("5_8iemx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.9853401)
+
+[node name="GridMaps" type="Node" parent="FloorOne" unique_id=1932705437]
+
+[node name="OfficeProps1" type="GridMap" parent="FloorOne/GridMaps" unique_id=1579755417]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh_library = ExtResource("2_w7c3h")
+cell_size = Vector3(0.5, 0.85, 0.5)
+cell_octant_size = 7
+collision_layer = 2
+collision_mask = 0
+data = {
+"cells": PackedInt32Array(65547, 15, 1441794, 65548, 14, 1048577, 65550, 9, 8, 65550, 5, 8, 65542, 1, 1048581, 65542, 3, 1048577, 65538, 1, 1048582, 65537, 1, 1048583, 131070, 4, 655370, 65536, 10, 1, 131065, 20, 1048577, 131067, 20, 1048577, 131069, 20, 1048577, 131065, 28, 1441800, 65556, 20, 1048578, 65553, 20, 1441798, 65580, 17, 1441796, 65593, 36, 1441797, 65587, 36, 1441797, 65581, 36, 1441797, 65581, 30, 1048581, 65587, 30, 1048581, 65593, 30, 1048581, 131117, 30, 655361, 65587, 35, 1048576, 65594, 35, 1048577, 65581, 35, 1048577, 65581, 15, 1048576, 65583, 17, 1441798, 65584, 17, 1441798, 65576, 4, 1048584, 65572, 7, 655368, 65572, 12, 655368, 65581, 4, 1048584, 65584, 5, 1048576, 65584, 19, 1048586, 65602, 8, 7, 65602, 10, 6, 65602, 12, 6, 65572, 36, 655367, 65572, 38, 655366, 65572, 40, 655366, 65572, 42, 655366, 65581, 42, 1441801, 65577, 42, 1441801, 65587, 18, 655361, 65587, 16, 655361, 131052, 2, 1441797, 131051, 1, 1441797, 131050, 1, 1441797, 131049, 0, 1441797, 65594, 61, 8, 65575, 67, 3, 65573, 67, 655360, 65579, 72, 1441802, 65580, 62, 1048583, 65579, 62, 1048582, 65582, 72, 1441793, 65604, 65, 1048581, 65604, 66, 1441793, 65607, 71, 1441801, 65588, 97, 655369, 65588, 94, 655366, 65588, 93, 655366, 65582, 88, 655361, 65583, 84, 1, 65596, 86, 1048581, 65602, 86, 1048581, 65610, 83, 655363, 65612, 83, 1, 65613, 80, 1048584, 65598, 99, 1048582, 65597, 99, 1048583, 65596, 99, 1048582, 65596, 93, 1048579, 65602, 93, 1048579, 65602, 99, 1048581, 65602, 101, 1441793, 65596, 94, 1441793, 65602, 87, 1441793, 65627, 77, 655362, 65628, 77, 1, 65627, 83, 655362, 65629, 84, 1441792, 65627, 71, 655366, 65627, 70, 655367, 65635, 96, 10, 65633, 100, 1441802, 65637, 46, 655361, 65641, 47, 1441793, 65642, 42, 1, 65622, 37, 1441797, 65614, 37, 1441797, 65618, 37, 1441797, 65622, 36, 1048577, 65614, 36, 1048577, 65618, 35, 1441793, 65639, 37, 1441798, 65641, 37, 1441798, 65643, 37, 1441798, 65645, 37, 1441799, 65647, 37, 1441798, 65646, 37, 1441798, 65644, 37, 1441798, 65642, 37, 1441798, 65640, 37, 1441798, 65636, 37, 1441793, 65649, 37, 1441793, 65622, 65504, 1048584, 65625, 65504, 1048584, 65621, 65502, 655366, 65621, 65501, 655366, 65621, 65500, 655367, 65639, 65505, 1048579, 65638, 65499, 1048579, 65638, 65500, 1441792, 65639, 65506, 1441792, 65629, 65496, 1048586, 65632, 65496, 1048586, 65645, 65502, 0, 65645, 65500, 0, 65645, 65498, 0, 65635, 65496, 1048584, 65588, 65501, 655368, 65610, 65501, 8, 65588, 65505, 655370, 65610, 65505, 10, 65592, 65496, 1048582, 65593, 65496, 1048582, 65594, 65496, 1048582, 65595, 65496, 1048582, 65596, 65496, 1048582, 65597, 65496, 1048582, 65598, 65496, 1048582, 65599, 65496, 1048583, 65602, 65496, 1048583, 65600, 65496, 1048582, 65601, 65496, 1048582, 65603, 65496, 1048582, 65604, 65496, 1048582, 65605, 65496, 1048582, 65606, 65496, 1048582, 65598, 65505, 1048578, 65598, 65501, 1441794, 65598, 65506, 1441793, 65598, 65500, 1048577, 65608, 65497, 1441793, 65640, 6, 655369, 65641, 0, 655363, 65641, 65530, 655363, 65642, 65530, 0, 65643, 0, 1441792, 65627, 65522, 1441798, 65628, 65522, 1441798, 65629, 65522, 1441798, 65626, 65522, 1441798, 65625, 65522, 1441799, 65661, 43, 655363, 65677, 42, 2, 65662, 43, 0, 65676, 42, 655360, 65661, 47, 655369, 65661, 39, 655370, 65676, 33, 1441797, 65677, 32, 1048577, 65673, 33, 1441798, 65679, 33, 1441798)
+}
+metadata/_editor_floor_ = Vector3(0, 1, 0)
+
+[node name="OfficeCubbys" type="GridMap" parent="FloorOne/GridMaps" unique_id=2093025889]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+mesh_library = ExtResource("5_2r41h")
+cell_size = Vector3(1, 1, 1)
+collision_layer = 2
+collision_mask = 0
+data = {
+"cells": PackedInt32Array(65564, 20, 655360, 65564, 24, 0, 65565, 19, 1441792, 65565, 25, 1048576, 65567, 19, 1441792, 65567, 25, 1048576, 65568, 20, 0, 65568, 24, 0, 65569, 19, 1048576, 65569, 25, 1048576, 65571, 19, 1048576, 65571, 25, 1048576, 65572, 20, 655360, 65572, 24, 0, 65573, 19, 1441792, 65573, 25, 1048576, 65575, 19, 1441792, 65575, 25, 1048576, 65576, 20, 0, 65576, 24, 0, 65564, 12, 1048577, 65563, 11, 1, 65563, 9, 1, 65566, 12, 1441793, 65568, 12, 1441793, 65569, 11, 655361, 65575, 56, 1048577, 65574, 57, 1, 65577, 56, 1441793, 65578, 57, 655361, 65579, 56, 1048577, 65581, 56, 1048577, 65582, 57, 1, 65584, 55, 655360, 65584, 57, 655360, 65585, 58, 1048577, 65582, 62, 655361, 65581, 61, 1048577, 65579, 61, 1048577, 65578, 62, 1, 65577, 61, 1441793, 65575, 61, 1441793, 65574, 62, 655361, 65575, 65, 1048577, 65577, 65, 1048577, 65579, 65, 1048577, 65581, 65, 1048577, 65582, 66, 1, 65578, 66, 1, 65597, 53, 1441793, 65597, 49, 1441793, 65597, 57, 1441793, 65595, 24, 1, 65586, 24, 1, 65586, 22, 655361, 65595, 22, 655360, 65603, 65510, 1441793, 65605, 65510, 1048577, 65606, 65511, 1, 65602, 65511, 1, 65602, 65515, 1, 65603, 65514, 1441793, 65605, 65514, 1441793, 65606, 65515, 655361, 65577, 65514, 1441793, 65579, 65514, 1441793, 65575, 65514, 1441793, 65574, 65513, 655361, 65580, 65513, 655361, 65580, 65515, 655361, 65574, 65515, 655361, 65606, 2, 1048576, 65605, 1, 0, 65605, 65535, 0, 65606, 65534, 1441792, 65605, 65533, 655360, 65605, 65531, 655360, 65606, 65530, 1048576)
+}
+metadata/_editor_floor_ = Vector3(0, 1, 0)
+
+[node name="BreakRoomProps" type="GridMap" parent="FloorOne/GridMaps" unique_id=1933953372]
+mesh_library = ExtResource("16_xy2fk")
 cell_size = Vector3(1, 1, 1)
 data = {
-"cells": PackedInt32Array(131084, 16, 1441794, 131084, 15, 1048577, 131086, 9, 3, 131085, 9, 655360)
+"cells": PackedInt32Array(131178, 53, 655362, 131178, 50, 655362, 131177, 46, 655361, 131177, 42, 655361, 131174, 42, 655361, 131156, 51, 0, 131156, 44, 0, 131174, 46, 1441793, 131163, 21, 1441792, 131158, 21, 1441793, 131168, 21, 1441793, 131153, 21, 1441792, 196589, 32, 1048578, 131161, 65514, 1441792, 131151, 65514, 1441792, 131156, 65514, 1441793, 131166, 65514, 1441793, 131146, 65514, 1441793, 131176, 65514, 1441794, 131179, 65514, 1441794, 131182, 65514, 1441794, 131124, 65509, 2, 131146, 65522, 1048578, 131141, 65522, 1048578, 131136, 65522, 1048578, 131123, 65524, 0, 131123, 65519, 1441793, 131123, 65529, 1441793, 131205, 51, 1048576, 131217, 23, 1441792, 131212, 23, 1048577, 131227, 20, 1441794)
 }
 metadata/_editor_floor_ = Vector3(0, 2, 0)
 
+[node name="OfficeProps3" type="GridMap" parent="FloorOne/GridMaps" unique_id=309718336]
+mesh_library = ExtResource("17_cmcjb")
+cell_size = Vector3(1, 1, 1)
+data = {
+"cells": PackedInt32Array(131196, 22, 2, 131185, 4, 1441794, 131185, 11, 1441794, 131157, 65497, 655360, 131159, 65495, 1, 131159, 65497, 655360, 131124, 65496, 655361, 131126, 65496, 655360, 131124, 65498, 655360, 131202, 23, 655360, 131200, 23, 655361, 196736, 23, 327680)
+}
+metadata/_editor_floor_ = Vector3(0, 3, 0)
+
+[node name="OfficeProps2" type="GridMap" parent="FloorOne/GridMaps" unique_id=1787671029]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
+mesh_library = ExtResource("15_3ies3")
+cell_size = Vector3(1, 1, 1)
+data = {
+"cells": PackedInt32Array(131119, 9, 1441793, 131122, 9, 1441793, 131119, 13, 1441793, 131122, 13, 1441793, 262186, 25, 1441792, 262192, 30, 1048576, 262181, 14, 1048576, 131126, 35, 3, 131127, 16, 655362, 131102, 60, 1048579, 131132, 54, 3, 131135, 84, 655361, 131135, 87, 655361, 131132, 87, 655361, 131138, 90, 655363, 131138, 67, 655363, 131121, 88, 655363, 131115, 75, 2, 131115, 82, 2, 262199, 82, 1441792, 262194, 71, 1441792, 262205, 69, 0, 131141, 77, 655363, 131141, 83, 655363, 262220, 70, 1048576, 131148, 55, 1, 131148, 53, 1, 131148, 46, 1048579, 131154, 46, 1048579, 131157, 47, 1048578, 131158, 47, 1048578, 131148, 34, 1441794, 131146, 34, 1441795, 131131, 18, 1048579, 131131, 30, 1048579, 262216, 31, 1048576, 262209, 31, 1048576, 262212, 31, 1048576, 131147, 30, 1, 131147, 28, 1, 131147, 26, 1, 131163, 65514, 1048579, 131143, 65514, 1048579, 131143, 65512, 1, 131147, 65503, 1441794, 262229, 65505, 1441792, 131159, 14, 1048579, 131165, 14, 1048579, 131157, 65525, 1441795, 131121, 65528, 655361, 131121, 65531, 655361, 131189, 32, 655361, 131176, 42, 655363, 131189, 42, 655363, 262248, 36, 0, 131190, 41, 1441794, 131171, 20, 655363, 131171, 27, 655363, 131185, 19, 1441794, 262231, 0, 0)
+}
+metadata/_editor_floor_ = Vector3(0, 16, 0)
+
+[node name="FloorTwo" type="Node" parent="." unique_id=1216889843]
+
+[node name="Lights" type="Node" parent="FloorTwo" unique_id=497471588]
+
+[node name="CeilingLight5" parent="FloorTwo/Lights" unique_id=563009578 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0246205, 30.472841, 24.59533)
+metadata/_edit_group_ = true
+
+[node name="CeilingLight6" parent="FloorTwo/Lights" unique_id=1376999782 instance=ExtResource("3_wc255")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 146.5843, 30.472841, 28.436144)
+metadata/_edit_group_ = true
+
+[node name="GridMaps" type="Node" parent="FloorTwo" unique_id=1971426250]
+
+[node name="OfficeProps1" type="GridMap" parent="FloorTwo/GridMaps" unique_id=750486490]
+mesh_library = ExtResource("2_w7c3h")
+
+[node name="OfficeProps2" type="GridMap" parent="FloorTwo/GridMaps" unique_id=1529152658]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh_library = ExtResource("15_3ies3")
+cell_size = Vector3(1, 1, 1)
+data = {
+"cells": PackedInt32Array(2228348, 60, 3, 2228340, 60, 3, 2228328, 78, 1441795, 2228328, 86, 1441795, 2228264, 78, 1441795, 2228264, 86, 1441795, 2228248, 62, 1441795, 2228240, 62, 1441795, 2228248, 65535, 1441795, 2228240, 65535, 1441795, 2228262, 65525, 1441795, 2228262, 65513, 1441795, 2228327, 65525, 1441795, 2228327, 65513, 1441795, 2228340, 0, 1441795, 2228348, 0, 1441795, 2228298, 40, 655363, 2228290, 40, 655363, 2228290, 13, 655363, 2228298, 13, 655363, 2228338, 65524, 1441793, 2228342, 65524, 1441793, 2228346, 65524, 1441793, 2228338, 65520, 1048577, 2228342, 65520, 1048577, 2228346, 65520, 1048577, 2228338, 65516, 1441793, 2228342, 65516, 1441793, 2228346, 65516, 1441793)
+}
+metadata/_editor_floor_ = Vector3(0, 34, 0)
+
+[node name="OfficeProps3" type="GridMap" parent="FloorTwo/GridMaps" unique_id=1243527350]
+mesh_library = ExtResource("17_cmcjb")
+
+[node name="BreakRoomProps" type="GridMap" parent="FloorTwo/GridMaps" unique_id=182888311]
+mesh_library = ExtResource("16_xy2fk")
+
+[node name="OfficeCubbys" type="GridMap" parent="FloorTwo/GridMaps" unique_id=423074536]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.62, 0)
+mesh_library = ExtResource("5_2r41h")
+cell_size = Vector3(1, 1, 1)
+cell_center_y = false
+metadata/_editor_floor_ = Vector3(0, 35, 0)
+
+[node name="Shader" type="Node" parent="." unique_id=1201745328]
+
+[node name="Dither3DMonochrome" parent="Shader" unique_id=988938001 instance=ExtResource("17_ux5qa")]
+dark_color = Color(0.0253638, 0.0253638, 0.025363795, 1)
+light_color = Color(0.9004175, 0.80598444, 0.5833873, 1)
+
+[node name="DELpapers" type="Node" parent="." unique_id=1928005113]
+
+[node name="MockPaper" parent="DELpapers" unique_id=363549447 instance=ExtResource("13_64w2a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.67555, 3.4445257, 25.543205)
+
+[node name="MockPaper2" parent="DELpapers" unique_id=2123114970 instance=ExtResource("13_64w2a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.67555, 3.4445257, 26.966446)
+
+[node name="MockPaper3" parent="DELpapers" unique_id=2103516040 instance=ExtResource("13_64w2a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.67555, 3.4445257, 28.339678)
+
+[node name="MockPaper4" parent="DELpapers" unique_id=983583419 instance=ExtResource("13_64w2a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.67555, 3.4445257, 29.633093)
+
+[node name="MockPaper5" parent="DELpapers" unique_id=760970092 instance=ExtResource("13_64w2a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.67555, 3.4445257, 29.633093)
+
+[node name="MockPaper6" parent="DELpapers" unique_id=678992070 instance=ExtResource("13_64w2a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.67555, 3.4445257, 30.793232)
+
+[node name="MockPaper7" parent="DELpapers" unique_id=937005513 instance=ExtResource("13_64w2a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.67555, 3.4445257, 31.864021)
+
+[node name="GridMaps" type="Node" parent="." unique_id=889340775]
+
+[node name="OfficeTiles" type="GridMap" parent="GridMaps" unique_id=821066032]
+mesh_library = ExtResource("9_cmcjb")
+cell_size = Vector3(1, 1, 1)
+collision_layer = 2
+collision_mask = 0
+data = {
+"cells": PackedInt32Array(6, 2, 9, 12, 2, 9, 12, 8, 9, 6, 8, 9, 0, 8, 9, 0, 14, 9, 6, 14, 9, 12, 14, 9, 131088, 16, 655360, 131088, 14, 655360, 131088, 12, 655360, 131088, 10, 655360, 131088, 8, 655360, 131088, 6, 655360, 131088, 4, 655360, 131088, 2, 655360, 131088, 0, 655360, 196604, 6, 0, 196604, 4, 0, 196604, 2, 0, 196604, 0, 0, 196604, 10, 1, 196604, 14, 0, 196604, 16, 0, 196606, 18, 1048576, 131072, 18, 1048576, 131086, 18, 1048576, 131084, 18, 1048576, 131073, 65534, 1441794, 131083, 65534, 1441794, 131078, 65534, 1441792, 0, 2, 1441801, 131077, 18, 1048582, 131082, 18, 1048576, 4, 18, 1048588, 6, 18, 1048588, 6, 20, 1048588, 4, 20, 1048588, 2, 20, 1048588, 0, 20, 1048588, 65534, 20, 1048588, 8, 20, 1048588, 10, 20, 1048588, 12, 20, 1048588, 14, 20, 1048588, 14, 22, 1048588, 12, 22, 1048588, 10, 22, 1048588, 8, 22, 1048588, 6, 22, 1048588, 4, 22, 1048588, 2, 22, 1048588, 0, 22, 1048588, 65534, 22, 1048588, 0, 26, 1441802, 6, 26, 1441802, 12, 26, 1441802, 18, 26, 1441802, 18, 20, 1441802, 24, 20, 1441802, 24, 26, 1441802, 30, 26, 1441802, 30, 20, 1441802, 65530, 26, 1441802, 65530, 20, 1441802, 65524, 20, 1441802, 65524, 26, 1048586, 196598, 30, 1048577, 196594, 30, 1048576, 196602, 30, 1048576, 196604, 30, 1048576, 196606, 30, 1048576, 131072, 30, 1048576, 131074, 30, 1048576, 131076, 30, 1048576, 131081, 30, 1048578, 131086, 30, 1048576, 131088, 30, 1048576, 131090, 30, 1048576, 131092, 30, 1048576, 131094, 30, 1048576, 131096, 30, 1048576, 131098, 30, 1048576, 131100, 30, 1048576, 131102, 30, 1048576, 131104, 30, 1048576, 196592, 25, 5, 196604, 18, 1441792, 196602, 18, 1441792, 196600, 18, 1441792, 196598, 18, 1441792, 196596, 18, 1441792, 131106, 25, 655366, 131106, 20, 655360, 131106, 18, 655360, 131098, 16, 1441794, 131093, 16, 1441792, 131088, 18, 1441792, 131090, 18, 1441792, 131091, 16, 1048576, 131103, 16, 1048576, 34, 24, 655372, 34, 26, 655372, 36, 26, 655372, 36, 24, 655372, 36, 28, 655372, 36, 22, 655372, 36, 20, 655372, 1245172, 33, 1048576, 1245174, 33, 1048576, 1245176, 33, 1048576, 1245178, 33, 1048576, 1245178, 31, 0, 1245178, 29, 0, 1245178, 27, 0, 1245172, 15, 1441792, 1245174, 15, 1441792, 1245176, 15, 1441792, 1245178, 16, 655360, 1245180, 33, 1048576, 1245182, 33, 1048576, 1245180, 16, 1048576, 1245182, 16, 1048576, 1179648, 33, 1048576, 1179648, 16, 1048576, 1245178, 22, 5, 1114099, 24, 1441799, 1114099, 26, 1441799, 1114099, 28, 1441799, 1114099, 30, 1441799, 1114101, 16, 655368, 1114101, 22, 1441799, 1114101, 24, 1441799, 1114101, 26, 1441799, 1114101, 28, 1441799, 1114101, 30, 1441799, 1114101, 31, 655368, 1114103, 18, 655367, 1114103, 20, 655367, 1114103, 22, 655367, 1114103, 24, 1441799, 1114103, 26, 1441799, 1114103, 28, 655367, 1114103, 29, 1441799, 1114105, 17, 1048583, 1114105, 21, 1441800, 1114105, 27, 1441800, 1114105, 31, 1441799, 1114107, 23, 1441800, 1114109, 17, 1048585, 1114109, 23, 1441800, 1114109, 29, 1048585, 1114111, 23, 1441800, 1114101, 18, 1048583, 1114101, 20, 1048583, 917525, 18, 1048592, 917531, 18, 1048592, 917537, 18, 1048592, 917537, 24, 1048592, 917531, 24, 1048592, 917525, 24, 1048592, 917519, 18, 1048592, 917513, 18, 1048592, 917507, 18, 1048592, 917507, 24, 1048592, 917513, 24, 1048592, 917519, 24, 1048592, 917507, 30, 1048592, 917513, 30, 1048592, 917519, 30, 1048592, 917525, 30, 1048592, 917531, 30, 1048592, 917537, 30, 1048592, 983037, 18, 1048592, 983031, 18, 1048592, 983027, 16, 1048590, 983026, 16, 1048590, 983033, 26, 1048592, 983027, 26, 1048591, 983029, 26, 1048591, 983037, 22, 15, 983031, 22, 15, 983027, 22, 14, 983027, 20, 14, 983025, 20, 14, 983025, 22, 14, 983025, 24, 14, 983025, 26, 14, 983025, 28, 14, 917518, 12, 14, 917518, 10, 14, 917518, 8, 14, 917518, 6, 14, 917518, 4, 14, 917518, 2, 14, 917518, 0, 14, 917516, 0, 14, 917514, 0, 14, 917512, 0, 14, 917510, 0, 14, 917508, 0, 14, 917506, 0, 14, 917504, 0, 14, 983038, 0, 14, 983036, 0, 14, 983038, 2, 14, 983038, 4, 14, 983038, 6, 14, 983038, 8, 14, 983038, 10, 14, 983038, 14, 14, 917504, 2, 1048596, 917516, 2, 20, 917504, 8, 655377, 917504, 6, 655377, 917504, 4, 655377, 917504, 10, 655377, 917504, 12, 655377, 917506, 2, 1048593, 917508, 2, 1048593, 917510, 2, 1048593, 917512, 2, 1048593, 917514, 2, 1048593, 917516, 4, 17, 917516, 6, 17, 917516, 8, 17, 917516, 10, 17, 917516, 12, 17, 917514, 14, 1441809, 917512, 14, 1441809, 917510, 14, 1441809, 917510, 8, 1441811, 917508, 14, 1441809, 917506, 14, 1441809, 917518, 14, 1441806, 917516, 14, 1441812, 917504, 14, 655380, 983038, 12, 655374, 2031606, 31, 655376, 2031606, 25, 655376, 2031606, 19, 655376, 2031610, 31, 1048591, 2031612, 31, 1048591, 2031614, 31, 1048591, 1966080, 31, 1048591, 2031612, 25, 1048592, 2031612, 19, 1048592, 1966080, 19, 1048591, 1966080, 25, 1048591, 1114099, 22, 1048583, 1114099, 20, 1048583, 1114099, 18, 1048583, 2162675, 20, 655367, 2162675, 18, 655367, 2162676, 22, 655367, 2162676, 16, 655367, 2162676, 24, 655367, 2162676, 26, 655367, 2162676, 28, 655367, 2162676, 30, 655367, 2162676, 32, 655367, 2162678, 32, 655367, 2162678, 30, 655367, 2162678, 28, 655367, 2162678, 26, 655367, 2162678, 24, 655367, 2162678, 22, 655367, 2162677, 20, 655367, 2162677, 18, 655367, 2162678, 16, 655367, 2162679, 18, 655367, 2162679, 20, 655367, 2162680, 16, 655367, 2162680, 30, 1048584, 2162680, 24, 1048584, 2162682, 30, 1048584, 2162682, 24, 1048584, 2162684, 18, 1048584, 2162681, 20, 1048583, 2162681, 18, 1048583, 2162682, 16, 1048583, 2162683, 20, 1048583, 2162682, 18, 1048583, 2162684, 22, 1048583, 2162684, 24, 1048583, 2162684, 26, 1048583, 2162684, 28, 1048583, 2162684, 30, 1048583, 2162684, 32, 1048583, 2293748, 14, 0, 2293750, 14, 0, 2293752, 14, 0, 2293754, 14, 0, 2293754, 34, 655360, 2293752, 34, 655360, 2293750, 34, 655360, 2293748, 34, 655360, 2293756, 31, 655360, 2293756, 19, 655360, 2293756, 17, 655360, 2293756, 33, 655360, 2293756, 15, 655360, 2293756, 25, 655365, 3080186, 16, 655374, 3080184, 16, 655374, 3080182, 16, 655374, 3080180, 16, 655374, 3080180, 18, 655374, 3080180, 20, 655374, 3080180, 22, 655374, 3080180, 24, 655374, 3080180, 26, 655374, 3080180, 28, 655374, 3080180, 30, 655374, 3080180, 32, 655374, 3080182, 32, 655374, 3080184, 32, 655374, 3080186, 32, 655374, 3080186, 30, 655374, 3080186, 28, 655374, 3080186, 26, 655374, 3080186, 24, 655374, 3080186, 22, 655374, 3080186, 20, 655374, 3080186, 18, 655374, 3080182, 30, 655380, 3080182, 18, 1048596, 3080184, 18, 20, 3080184, 30, 1441812, 3080184, 28, 17, 3080182, 28, 655377, 3080182, 26, 655377, 3080184, 26, 17, 3080182, 24, 655377, 3080182, 22, 655377, 3080182, 20, 655377, 3080184, 24, 17, 3080184, 22, 17, 3080184, 20, 17, 983039, 26, 1441807, 983037, 26, 1441807, 196594, 19, 655360, 36, 30, 12, 36, 16, 12, 40, 28, 10, 40, 22, 10, 46, 22, 10, 46, 28, 10, 38, 34, 10, 44, 34, 10, 44, 40, 10, 38, 40, 10, 38, 12, 10, 38, 6, 10, 44, 12, 10, 43, 6, 10, 48, 14, 12, 48, 12, 12, 48, 10, 12, 47, 8, 12, 47, 6, 12, 47, 4, 12, 48, 32, 12, 48, 34, 12, 48, 36, 12, 48, 38, 12, 48, 40, 12, 48, 42, 12, 52, 40, 10, 58, 40, 10, 58, 34, 10, 52, 34, 10, 52, 28, 10, 58, 28, 10, 52, 22, 10, 52, 16, 10, 58, 22, 10, 58, 16, 10, 58, 10, 10, 50, 12, 12, 50, 10, 12, 49, 8, 12, 51, 8, 12, 52, 10, 12, 52, 12, 12, 54, 12, 12, 54, 10, 12, 53, 8, 12, 54, 8, 12, 49, 6, 12, 49, 4, 12, 51, 4, 12, 51, 6, 12, 53, 6, 12, 53, 4, 12, 55, 6, 12, 55, 4, 12, 57, 6, 12, 57, 4, 12, 59, 4, 12, 59, 6, 12, 36, 18, 12, 38, 18, 12, 38, 16, 12, 40, 18, 12, 40, 16, 12, 42, 16, 12, 42, 18, 12, 44, 18, 12, 44, 16, 12, 46, 18, 12, 46, 16, 12, 48, 16, 12, 48, 18, 12, 64, 40, 10, 64, 34, 10, 64, 28, 10, 64, 22, 10, 64, 16, 10, 64, 10, 10, 61, 6, 12, 61, 4, 12, 63, 4, 12, 63, 6, 12, 65, 6, 12, 65, 4, 12, 67, 4, 12, 67, 6, 12, 131127, 2, 1441797, 131126, 44, 1441797, 131140, 29, 655366, 131139, 34, 655360, 131140, 36, 655360, 131140, 38, 655360, 131140, 40, 655360, 131132, 44, 655360, 131134, 44, 655360, 131140, 24, 655360, 131140, 22, 655360, 131140, 20, 655360, 131140, 18, 655360, 131140, 16, 655360, 131140, 14, 655360, 131140, 12, 655360, 131140, 10, 655360, 131140, 8, 655360, 131140, 6, 655360, 131139, 4, 655360, 131137, 3, 655360, 131135, 2, 655360, 131133, 2, 655360, 131139, 42, 655360, 131138, 44, 655360, 131136, 44, 655360, 131121, 2, 655360, 131119, 2, 655360, 131117, 2, 655360, 131115, 2, 655360, 131113, 2, 655360, 131111, 2, 655360, 131109, 2, 655360, 131108, 2, 655360, 131106, 2, 655360, 131106, 4, 655360, 131106, 6, 655360, 131106, 8, 655360, 131106, 10, 655360, 131106, 12, 655360, 131106, 14, 655360, 131120, 44, 655360, 131118, 44, 655360, 131116, 44, 655360, 131114, 44, 655360, 131112, 44, 655360, 131110, 44, 655360, 131108, 44, 655360, 131106, 42, 655360, 131106, 40, 655360, 131106, 38, 655360, 131106, 36, 655360, 131106, 34, 655360, 131106, 32, 655360, 131106, 30, 655360, 131105, 16, 655360, 131107, 16, 655360, 131107, 34, 655360, 131132, 3, 655360, 131122, 3, 655360, 131139, 24, 655360, 131120, 43, 655360, 131132, 43, 1441792, 917568, 40, 16, 917562, 40, 16, 917556, 40, 16, 917550, 40, 16, 917544, 40, 16, 917540, 38, 14, 917540, 40, 14, 917540, 42, 14, 917539, 36, 14, 917568, 34, 16, 917568, 28, 16, 917568, 22, 16, 917568, 16, 16, 917568, 10, 16, 917568, 4, 16, 917562, 6, 16, 917556, 6, 16, 917550, 6, 16, 917544, 6, 16, 917540, 6, 1441807, 917542, 12, 1441808, 917539, 34, 1441806, 917541, 36, 1441806, 917541, 34, 1441806, 917541, 32, 1441806, 917541, 30, 1441806, 917541, 28, 1441806, 917541, 26, 1441806, 917541, 24, 1441806, 917541, 22, 1441806, 917541, 20, 1441806, 917541, 18, 1441806, 917541, 16, 1441806, 917543, 18, 1441807, 917543, 24, 1441807, 917543, 30, 1441807, 917543, 34, 1441806, 917543, 36, 1441806, 917544, 16, 1441806, 917543, 16, 1441806, 917544, 18, 1441806, 917544, 20, 1441806, 917544, 22, 1441806, 917544, 24, 1441806, 917544, 26, 1441806, 917544, 28, 1441806, 917544, 30, 1441806, 917544, 32, 1441806, 917544, 34, 1441806, 917544, 36, 1441806, 917548, 34, 655376, 917548, 28, 655376, 917548, 22, 655376, 917548, 16, 655376, 917554, 16, 655376, 917554, 22, 655376, 917554, 28, 655376, 917554, 34, 655376, 917560, 34, 655376, 917560, 28, 655376, 917560, 22, 655376, 917560, 16, 655376, 917562, 12, 15, 917562, 10, 15, 917556, 10, 15, 917556, 12, 15, 917550, 12, 15, 917550, 10, 15, 917546, 12, 14, 917546, 10, 14, 917564, 16, 1441807, 917564, 22, 1441807, 917564, 28, 1441807, 917564, 34, 1441807, 52, 44, 655367, 54, 44, 655367, 56, 44, 655367, 50, 44, 655367, 48, 44, 655367, 58, 44, 655367, 60, 44, 655367, 54, 47, 655369, 54, 52, 655369, 54, 58, 655369, 131120, 60, 655360, 131120, 58, 655360, 131120, 56, 655360, 131120, 54, 655360, 131120, 52, 655360, 131120, 50, 655360, 131120, 48, 655360, 131120, 46, 655360, 131132, 46, 655360, 131132, 48, 655360, 131132, 50, 655360, 131132, 55, 655362, 131132, 60, 655360, 52, 64, 655369, 52, 70, 655369, 48, 58, 655369, 48, 52, 655369, 60, 48, 655369, 59, 55, 655369, 60, 61, 655369, 56, 62, 655367, 50, 46, 655367, 50, 48, 655367, 58, 51, 655367, 56, 64, 655367, 58, 65, 655367, 56, 66, 655367, 58, 67, 655367, 56, 68, 655367, 56, 70, 655367, 56, 72, 655367, 58, 72, 655367, 58, 69, 655367, 58, 70, 655367, 131120, 62, 655360, 131132, 62, 655360, 131120, 67, 655366, 131132, 69, 655366, 131132, 64, 655360, 60, 68, 655367, 60, 70, 655367, 48, 66, 655367, 48, 68, 655367, 44, 64, 655370, 44, 70, 655370, 38, 64, 655370, 38, 70, 655370, 64, 67, 655370, 70, 67, 655370, 62, 71, 655372, 64, 71, 655372, 66, 71, 655372, 68, 71, 655372, 70, 71, 655372, 72, 71, 655372, 131132, 74, 655360, 131120, 72, 655360, 131120, 74, 655360, 131118, 74, 655360, 131116, 74, 655360, 131114, 74, 655360, 131112, 74, 655360, 131110, 74, 655360, 131108, 74, 655360, 131106, 72, 655360, 131106, 67, 2, 131106, 62, 0, 131118, 60, 0, 131116, 60, 0, 131114, 60, 0, 131112, 60, 0, 131110, 60, 0, 131108, 60, 0, 131134, 63, 0, 131136, 63, 0, 131138, 63, 0, 131140, 63, 0, 131142, 63, 0, 131144, 63, 0, 131144, 73, 0, 131142, 73, 0, 131140, 73, 0, 131138, 73, 0, 131136, 73, 0, 131134, 73, 0, 131146, 68, 655362, 131146, 73, 655360, 131146, 63, 655360, 131126, 74, 1048581, 54, 76, 1048585, 54, 82, 1048585, 54, 88, 1048585, 60, 88, 1048585, 66, 88, 1048585, 60, 83, 1048585, 66, 83, 1048585, 48, 88, 1048585, 48, 83, 1048585, 54, 94, 1048585, 60, 94, 1048585, 66, 94, 1048585, 72, 94, 1048585, 72, 88, 1048585, 72, 83, 1048585, 54, 100, 1048585, 60, 100, 1048585, 66, 100, 1048585, 72, 100, 1048585, 60, 106, 1048585, 66, 106, 1048585, 72, 106, 1048585, 78, 106, 1048585, 78, 100, 1048585, 78, 94, 1048585, 78, 88, 1048585, 78, 82, 1048585, 131147, 110, 1048577, 131142, 110, 1048577, 131137, 110, 1048577, 131151, 110, 1048576, 131153, 110, 1048576, 131153, 108, 1048576, 131133, 109, 1048576, 131131, 108, 1048576, 131129, 107, 1048576, 131128, 105, 1048576, 131128, 103, 1048576, 131126, 103, 1048576, 131124, 101, 1048576, 131122, 99, 1048576, 131122, 97, 1048576, 131122, 95, 1048576, 131122, 93, 1048576, 131122, 91, 1048576, 131120, 91, 1048576, 131118, 90, 1048576, 131116, 80, 1048576, 131122, 76, 1048576, 131122, 78, 1048576, 131118, 79, 1048576, 131120, 79, 1048576, 49, 79, 1048589, 131130, 76, 1048576, 131130, 78, 1048576, 131130, 80, 1048576, 131132, 80, 1048576, 131134, 80, 1048576, 131136, 80, 1048576, 131138, 80, 1048576, 131140, 80, 1048576, 131142, 80, 1048576, 131144, 80, 1048576, 131146, 79, 1048576, 131148, 78, 1048576, 131150, 78, 1048576, 131152, 78, 1048576, 131153, 106, 1048576, 131153, 104, 1048576, 131153, 102, 1048576, 131153, 90, 1048576, 131153, 88, 1048576, 131153, 86, 1048576, 131153, 84, 1048576, 131153, 82, 1048576, 131153, 80, 1048576, 131153, 96, 5, 131116, 85, 2, 83, 96, 9, 89, 96, 9, 95, 96, 9, 95, 90, 9, 95, 84, 9, 95, 78, 9, 85, 102, 1048585, 91, 102, 1048585, 97, 102, 1048585, 101, 96, 1048585, 101, 90, 1048585, 101, 84, 1048585, 101, 78, 1048585, 89, 78, 1048585, 89, 84, 1048585, 89, 90, 1048585, 83, 92, 1048583, 85, 92, 1048583, 131155, 102, 1048576, 131157, 102, 1048576, 131162, 102, 1048578, 131167, 102, 1048576, 131169, 102, 1048576, 131171, 102, 1048576, 131173, 100, 1048576, 131155, 90, 1048576, 131157, 90, 1048576, 131159, 90, 1048576, 131161, 90, 1048576, 131173, 98, 1048576, 131173, 96, 1048576, 131173, 92, 655361, 131161, 88, 655360, 131161, 86, 655360, 131173, 88, 655360, 131173, 86, 655360, 131161, 84, 655360, 131161, 82, 655360, 131173, 84, 655360, 131173, 82, 655360, 131161, 80, 655360, 131173, 80, 655360, 131161, 78, 655360, 131173, 78, 655360, 70, 29, 655370, 76, 29, 655370, 82, 29, 655370, 88, 29, 655370, 70, 23, 655370, 76, 23, 655370, 82, 23, 655370, 88, 23, 655370, 88, 35, 655370, 82, 35, 655370, 76, 35, 655370, 70, 35, 655370, 131142, 34, 655360, 131142, 24, 655360, 94, 35, 655370, 100, 35, 655370, 106, 35, 655370, 112, 35, 655370, 112, 29, 655370, 112, 23, 655370, 106, 23, 655370, 100, 23, 655370, 94, 23, 655370, 94, 29, 655370, 100, 29, 655370, 106, 29, 655370, 131142, 39, 655360, 131144, 39, 655360, 131146, 39, 655360, 131148, 39, 655360, 131150, 39, 655360, 131152, 39, 655360, 131154, 39, 655360, 131182, 39, 655360, 131184, 39, 655360, 131186, 39, 655360, 131142, 19, 655360, 131144, 19, 655360, 131146, 19, 655360, 131148, 19, 655360, 131150, 19, 655360, 131152, 19, 655360, 131154, 19, 655360, 131156, 19, 655360, 131158, 19, 655360, 131160, 19, 655360, 131162, 19, 655360, 131164, 19, 655360, 131166, 19, 655360, 131168, 19, 655360, 131170, 19, 655360, 131172, 19, 655360, 131174, 19, 655360, 131186, 19, 655360, 131156, 39, 0, 131158, 39, 0, 131160, 39, 0, 131162, 39, 0, 131167, 39, 1048582, 131172, 39, 1048576, 131174, 39, 1048576, 131176, 39, 1048576, 131178, 39, 1048576, 131180, 39, 1048576, 131154, 40, 0, 131154, 42, 0, 131154, 44, 0, 131154, 46, 0, 131154, 51, 2, 131154, 56, 0, 131154, 58, 0, 131155, 59, 1048576, 131157, 59, 1048576, 131159, 59, 1048576, 131161, 59, 655360, 131162, 57, 1048576, 131164, 59, 1048576, 131167, 57, 1048582, 131170, 59, 1048576, 131172, 57, 1048576, 131173, 59, 655360, 131175, 59, 1048576, 131177, 59, 1048576, 131179, 59, 1048576, 131180, 41, 1048576, 131180, 43, 1048576, 131180, 45, 1048576, 131180, 47, 1048576, 131180, 49, 1048576, 131180, 51, 1048576, 131180, 53, 1048576, 131180, 55, 1048576, 131180, 57, 1048576, 86, 42, 1048586, 86, 48, 1048586, 86, 54, 1048586, 92, 42, 1048586, 92, 48, 1048586, 92, 54, 1048586, 98, 42, 1048586, 98, 48, 1048586, 98, 54, 1048586, 104, 42, 1048586, 104, 48, 1048586, 104, 54, 1048586, 106, 58, 655372, 102, 58, 655372, 104, 58, 655372, 88, 58, 655372, 84, 57, 655372, 86, 58, 655372, 94, 39, 655372, 96, 39, 655372, 95, 72, 655369, 95, 66, 655369, 95, 60, 655369, 99, 72, 1048584, 99, 66, 1048584, 99, 60, 1048584, 91, 72, 1048584, 91, 66, 1048584, 91, 60, 1048584, 131173, 76, 1048576, 131173, 74, 1048576, 131173, 72, 1048576, 131173, 70, 1048576, 131173, 68, 1048576, 131173, 66, 1048576, 131173, 64, 1048576, 131173, 62, 1048576, 131173, 61, 1048576, 131161, 76, 1048576, 131161, 74, 1048576, 131161, 72, 1048576, 131161, 70, 1048576, 131161, 68, 1048576, 131161, 66, 1048576, 131161, 64, 1048576, 131161, 61, 1048576, 131161, 62, 1048576, 917608, 55, 1048592, 917608, 49, 1048592, 917608, 43, 1048592, 917602, 43, 1048592, 917602, 49, 1048592, 917602, 55, 1048592, 917596, 55, 1048592, 917596, 49, 1048592, 917596, 43, 1048592, 917590, 43, 1048592, 917590, 49, 1048592, 917590, 55, 1048592, 917597, 61, 1048592, 917603, 61, 1048592, 917597, 67, 1048592, 917603, 67, 1048592, 917603, 73, 1048592, 917597, 73, 1048592, 917597, 79, 1048592, 917603, 79, 1048592, 917597, 85, 1048592, 917603, 85, 1048592, 917597, 91, 1048592, 917603, 91, 1048592, 917603, 97, 1048592, 917597, 97, 1048592, 917595, 101, 1048590, 917597, 101, 1048590, 917599, 101, 1048590, 917601, 101, 1048590, 917603, 101, 1048590, 917591, 93, 1048592, 917591, 99, 1048592, 917585, 99, 1048592, 917585, 93, 1048592, 917583, 103, 1048590, 917583, 105, 1048590, 917583, 107, 1048590, 917583, 109, 1048590, 917581, 108, 1048590, 917579, 108, 1048590, 917577, 108, 1048590, 917575, 108, 1048590, 917573, 108, 1048590, 917571, 108, 1048590, 917569, 108, 1048590, 917567, 108, 1048590, 917565, 107, 1048590, 917563, 106, 1048590, 917561, 106, 1048590, 917562, 104, 1048590, 917562, 102, 1048590, 917560, 101, 1048590, 917558, 101, 1048590, 917556, 99, 1048590, 917556, 97, 1048590, 917556, 95, 1048590, 917556, 93, 1048590, 917556, 91, 1048590, 917554, 89, 1048590, 917552, 89, 1048590, 917550, 88, 1048590, 917550, 86, 1048590, 917550, 84, 1048590, 917550, 82, 1048590, 917550, 80, 1048590, 917552, 81, 1048590, 917554, 80, 1048590, 917556, 76, 1048590, 917556, 78, 1048590, 917558, 76, 1048590, 917560, 76, 1048590, 917560, 78, 1048590, 917560, 80, 1048590, 917560, 82, 1048590, 917562, 82, 1048590, 917564, 82, 1048590, 917566, 82, 1441806, 917568, 82, 1048590, 917570, 82, 1048590, 917572, 82, 1048590, 917574, 82, 1048590, 917576, 82, 1048590, 917578, 81, 1048590, 917580, 79, 1048590, 917580, 81, 1048590, 917582, 80, 1048590, 917584, 80, 1048590, 917583, 82, 1048590, 917583, 84, 1048590, 917583, 86, 1048590, 917583, 88, 1048590, 917583, 89, 1048590, 917572, 95, 1048595, 917566, 89, 1048596, 917566, 101, 655380, 917578, 89, 20, 917578, 101, 1441812, 917578, 99, 17, 917578, 97, 17, 917578, 95, 17, 917578, 93, 17, 917578, 91, 17, 917576, 89, 1048593, 917574, 89, 1048593, 917572, 89, 1048593, 917570, 89, 1048593, 917568, 89, 1048593, 917566, 91, 655377, 917566, 93, 655377, 917566, 95, 655377, 917566, 97, 655377, 917566, 99, 655377, 917568, 101, 1441809, 917570, 101, 1441809, 917572, 101, 1441809, 917574, 101, 1441809, 917576, 101, 1441809, 917554, 85, 1441808, 917554, 81, 1441806, 917556, 80, 1441806, 917556, 81, 1441806, 917558, 78, 1441806, 917558, 80, 1441806, 917558, 82, 1441806, 917556, 89, 1441806, 917560, 86, 1441808, 917560, 92, 1441808, 917566, 103, 1441806, 917566, 105, 1441806, 917568, 103, 1441806, 917568, 105, 1441806, 917567, 106, 1441806, 917568, 106, 1441806, 917570, 106, 1441806, 917572, 106, 1441806, 917574, 106, 1441806, 917576, 106, 1441806, 917578, 106, 1441806, 917580, 106, 1441806, 917581, 106, 1441806, 917581, 104, 1441806, 917579, 104, 1441806, 917577, 104, 1441806, 917575, 104, 1441806, 917573, 104, 1441806, 917571, 104, 1441806, 917570, 104, 1441806, 917581, 93, 1441806, 917581, 95, 1441806, 917581, 97, 1441806, 917581, 99, 1441806, 917581, 103, 1441806, 917581, 101, 1441806, 917581, 91, 1441806, 917581, 89, 1441806, 917581, 87, 1441806, 917581, 85, 1441806, 917581, 83, 1441806, 917582, 81, 1441806, 917579, 83, 1441806, 917579, 85, 1441806, 917579, 87, 1441806, 917577, 87, 1441806, 917575, 87, 1441806, 917573, 87, 1441806, 917571, 87, 1441806, 917569, 87, 1441806, 917567, 87, 1441806, 917565, 87, 1441806, 917564, 89, 1441806, 917564, 91, 1441806, 917564, 93, 1441806, 917564, 95, 1441806, 917564, 97, 1441806, 917564, 99, 1441806, 917564, 101, 1441806, 917564, 104, 1441806, 917564, 103, 1441806, 917565, 106, 1441806, 917562, 100, 1441806, 917562, 98, 1441806, 917562, 96, 1441806, 917560, 96, 1441806, 917560, 98, 1441806, 917560, 100, 1441806, 917558, 100, 1441806, 917558, 98, 1441806, 917558, 96, 1441806, 917570, 103, 1441806, 917572, 103, 1441806, 917574, 103, 1441806, 917576, 103, 1441806, 917578, 103, 1441806, 917580, 103, 1441806, 917580, 101, 1441806, 917580, 99, 1441806, 917580, 97, 1441806, 917580, 95, 1441806, 917580, 93, 1441806, 917580, 91, 1441806, 917580, 89, 1441806, 917578, 83, 1441806, 917577, 85, 1441806, 917575, 85, 1441806, 917573, 85, 1441806, 917571, 85, 1441806, 917569, 85, 1441806, 917567, 85, 1441806, 917565, 85, 1441806, 917564, 85, 1441806, 917564, 87, 1441806, 917564, 83, 1441806, 917566, 83, 1441806, 917568, 83, 1441806, 917570, 83, 1441806, 917572, 83, 1441806, 917574, 83, 1441806, 917576, 83, 1441806, 917568, 64, 1441808, 917568, 70, 1441808, 917574, 64, 1441808, 917574, 70, 1441808, 917548, 64, 1441808, 917548, 70, 1441808, 917542, 70, 1441808, 917542, 64, 1441808, 917557, 70, 1441808, 917557, 64, 1441808, 917557, 58, 1441808, 917557, 52, 1441808, 917557, 46, 1441808, 917561, 46, 1441807, 917563, 46, 1441807, 917563, 52, 1441807, 917563, 58, 1441807, 917563, 64, 1441807, 917563, 70, 1441807, 917561, 70, 1441807, 917561, 64, 1441807, 917561, 58, 1441807, 917561, 52, 1441807, 917553, 46, 1441807, 917553, 52, 1441807, 917553, 58, 1441807, 917553, 64, 1441807, 917553, 70, 1441807, 917576, 21, 1441808, 917582, 21, 1441808, 917588, 21, 1441808, 917594, 21, 1441808, 917600, 21, 1441808, 917606, 21, 1441808, 917612, 21, 1441808, 917616, 37, 1441808, 917610, 37, 1441808, 917604, 37, 1441808, 917598, 37, 1441808, 917592, 37, 1441808, 917586, 37, 1441808, 917580, 37, 1441808, 917574, 37, 1441808, 917576, 27, 1441808, 917582, 27, 1441808, 917588, 27, 1441808, 917594, 27, 1441808, 917600, 27, 1441808, 917606, 27, 1441808, 917612, 27, 1441808, 917576, 31, 655375, 917576, 33, 655375, 917582, 31, 655375, 917582, 33, 655375, 917588, 33, 655375, 917588, 31, 655375, 917594, 31, 655375, 917594, 33, 655375, 917600, 31, 655375, 917600, 33, 655375, 917606, 31, 655375, 917606, 33, 655375, 917612, 31, 655375, 917612, 33, 655375, 131180, 19, 1441797, 131188, 28, 655366, 131188, 33, 0, 131188, 35, 0, 131188, 37, 0, 131188, 23, 0, 131188, 21, 0, 131174, 21, 0, 131185, 21, 0, 131186, 25, 0, 131186, 31, 0, 50, 79, 1048583, 59, 145, 1048583, 917618, 31, 1048592, 917618, 25, 1048592, 917616, 21, 1048590, 917616, 19, 1048590, 917618, 21, 1048590, 55, 0, 1048585, 55, 65530, 1048585, 55, 65524, 1048585, 55, 65518, 1048585, 61, 65518, 1048585, 67, 65518, 1048585, 73, 65518, 1048585, 79, 65518, 1048585, 85, 65518, 1048585, 108, 17, 1048585, 108, 11, 1048585, 108, 5, 1048585, 108, 65535, 1048585, 108, 65529, 1048585, 108, 65523, 1048585, 108, 65517, 1048585, 91, 65518, 1048585, 97, 65518, 1048585, 102, 65518, 1048585, 104, 65522, 1048583, 104, 65524, 1048583, 104, 65526, 1048583, 104, 65528, 1048583, 104, 65529, 1048583, 104, 65531, 1048583, 104, 65533, 1048583, 104, 65535, 1048583, 104, 1, 1048583, 104, 3, 1048583, 104, 5, 1048583, 104, 7, 1048583, 104, 6, 1048583, 104, 9, 1048583, 104, 11, 1048583, 104, 13, 1048583, 104, 15, 1048583, 104, 17, 1048583, 112, 18, 1048583, 112, 16, 1048583, 112, 15, 1048583, 112, 13, 1048583, 112, 11, 1048583, 112, 9, 1048583, 112, 7, 1048583, 112, 5, 1048583, 112, 3, 1048583, 112, 1, 1048583, 112, 65535, 1048583, 112, 65533, 1048583, 112, 65531, 1048583, 112, 65529, 1048583, 112, 65527, 1048583, 112, 65525, 1048583, 112, 65523, 1048583, 112, 65521, 1048583, 112, 65519, 1048583, 112, 65517, 1048583, 112, 65515, 1048583, 102, 65522, 1048583, 100, 65522, 1048583, 98, 65522, 1048583, 96, 65522, 1048583, 94, 65522, 1048583, 92, 65522, 1048583, 90, 65522, 1048583, 88, 65522, 1048583, 86, 65522, 1048583, 84, 65522, 1048583, 82, 65522, 1048583, 80, 65522, 1048583, 78, 65522, 1048583, 76, 65522, 1048583, 74, 65522, 1048583, 72, 65522, 1048583, 70, 65522, 1048583, 68, 65522, 1048583, 66, 65522, 1048583, 64, 65522, 1048583, 62, 65522, 1048583, 60, 65522, 1048583, 59, 65522, 1048583, 59, 65524, 1048583, 59, 65526, 1048583, 59, 65528, 1048583, 59, 65530, 1048583, 59, 65532, 1048583, 59, 65534, 1048583, 59, 0, 1048583, 51, 0, 1048583, 51, 65534, 1048583, 51, 65532, 1048583, 51, 65530, 1048583, 51, 65528, 1048583, 51, 65526, 1048583, 51, 65524, 1048583, 51, 65522, 1048583, 51, 65520, 1048583, 51, 65518, 1048583, 51, 65516, 1048583, 51, 65514, 1048583, 53, 65514, 1048583, 55, 65514, 1048583, 57, 65514, 1048583, 59, 65514, 1048583, 61, 65514, 1048583, 63, 65514, 1048583, 65, 65514, 1048583, 67, 65514, 1048583, 69, 65514, 1048583, 71, 65514, 1048583, 73, 65514, 1048583, 75, 65514, 1048583, 77, 65514, 1048583, 79, 65514, 1048583, 81, 65514, 1048583, 83, 65514, 1048583, 85, 65514, 1048583, 87, 65514, 1048583, 89, 65514, 1048583, 91, 65514, 1048583, 93, 65514, 1048583, 95, 65514, 1048583, 97, 65514, 1048583, 99, 65514, 1048583, 101, 65514, 1048583, 103, 65514, 1048583, 105, 65514, 1048583, 107, 65513, 1048583, 109, 65513, 1048583, 111, 65513, 1048583, 113, 65513, 1048583, 131174, 17, 1048576, 131174, 15, 1048576, 131174, 13, 1048576, 131174, 11, 1048576, 131174, 9, 1048576, 131174, 7, 1048576, 131174, 5, 1048576, 131174, 3, 1048576, 131174, 1, 1048576, 131174, 65535, 1048576, 131174, 65533, 1048576, 131174, 65531, 1048576, 131174, 65529, 1048576, 131174, 65527, 1048576, 131174, 65525, 1048576, 131172, 65524, 1048576, 131170, 65524, 1048576, 131169, 65524, 1048576, 102, 65524, 1048583, 131186, 17, 1048576, 131186, 15, 1048576, 131186, 13, 1048576, 131186, 11, 1048576, 131186, 9, 1048576, 131186, 7, 1048576, 131186, 5, 1048576, 131186, 3, 1048576, 131186, 1, 1441792, 131186, 65535, 1441792, 131186, 65533, 1441792, 131186, 65531, 1441792, 131186, 65529, 1441792, 131186, 65527, 1441792, 131186, 65525, 1441792, 131186, 65515, 1441792, 131186, 65513, 1441792, 131184, 65512, 1441792, 131182, 65512, 1441792, 131180, 65512, 1441792, 131178, 65512, 1441792, 131176, 65512, 1441792, 131174, 65512, 1441792, 131164, 65512, 1441792, 131162, 65512, 1441792, 131160, 65512, 1441792, 131158, 65512, 1441792, 131156, 65512, 1441792, 131154, 65512, 1441792, 131152, 65512, 1441792, 131150, 65512, 1441792, 131148, 65512, 1441792, 131146, 65512, 1441792, 131144, 65512, 1441792, 131142, 65512, 1441792, 131140, 65512, 1441792, 131130, 65512, 1441792, 131128, 65512, 1441792, 131126, 65512, 1441792, 131124, 65512, 1441792, 131122, 65512, 1441792, 131121, 65514, 1441792, 131121, 65524, 1441792, 131121, 65526, 1441792, 131121, 65528, 1441792, 131121, 65530, 1441792, 131121, 65532, 1441792, 131121, 65534, 1441792, 131121, 0, 1441792, 131133, 0, 1441792, 131133, 65534, 1441792, 131133, 65532, 1441792, 131133, 65530, 1441792, 131133, 65528, 1441792, 131133, 65526, 1441792, 131133, 65524, 1441792, 131135, 65524, 1441792, 131137, 65524, 1441792, 131139, 65524, 1441792, 131141, 65524, 1441792, 131143, 65524, 1441792, 131145, 65524, 1441792, 131147, 65524, 1441792, 131149, 65524, 1441792, 131151, 65524, 1441792, 131153, 65524, 1441792, 131155, 65524, 1441792, 131157, 65524, 1441792, 131167, 65524, 1441792, 131165, 65524, 1441792, 131163, 65524, 1441792, 131161, 65524, 1441792, 131159, 65524, 1441792, 917608, 15, 1441808, 917614, 15, 1441808, 917614, 9, 1441808, 917608, 9, 1441808, 917614, 3, 1441808, 917608, 3, 1441808, 917608, 65533, 1441808, 917614, 65533, 1441808, 917614, 65527, 1441808, 917608, 65527, 1441808, 917614, 65521, 1441808, 917608, 65521, 1441808, 917608, 65515, 1441808, 917614, 65515, 1441808, 917602, 65521, 1441808, 917596, 65521, 1441808, 917602, 65515, 1441808, 917596, 65515, 1441808, 917590, 65521, 1441808, 917590, 65515, 1441808, 917584, 65521, 1441808, 917584, 65515, 1441808, 917578, 65521, 1441808, 917578, 65515, 1441808, 917572, 65521, 1441808, 917572, 65515, 1441808, 917566, 65521, 1441808, 917566, 65515, 1441808, 917561, 65534, 1441808, 917561, 65528, 1441808, 917555, 65534, 1441808, 917555, 65528, 1441808, 917560, 65515, 1441808, 917560, 65521, 1441808, 917554, 65521, 1441808, 917554, 65515, 1441808, 917553, 65525, 1441806, 917555, 65525, 1441806, 917557, 65525, 1441806, 917559, 65525, 1441806, 917561, 65525, 1441806, 917563, 65525, 1441806, 131169, 65512, 1441798, 131135, 65512, 1441798, 99, 65510, 1441802, 93, 65510, 1441802, 99, 65504, 1441802, 93, 65504, 1441802, 103, 65510, 1441804, 103, 65508, 1441804, 103, 65506, 1441804, 103, 65504, 1441804, 103, 65502, 1441804, 107, 65504, 1441802, 107, 65510, 1441802, 87, 65504, 1441802, 87, 65510, 1441802, 107, 65498, 1441802, 101, 65498, 1441802, 95, 65498, 1441802, 89, 65498, 1441802, 85, 65498, 1048587, 66, 65510, 1048586, 60, 65510, 1048586, 60, 65504, 1048586, 66, 65504, 1048586, 72, 65504, 1048586, 72, 65510, 1048586, 54, 65504, 1048586, 54, 65510, 1048586, 72, 65498, 1048586, 66, 65498, 1048586, 60, 65498, 1048586, 54, 65498, 1048586, 131143, 65494, 1441794, 131127, 65494, 1441794, 131132, 65494, 1441792, 131134, 65494, 1441792, 131136, 65494, 1441792, 131138, 65494, 1441792, 131148, 65510, 1441792, 131148, 65508, 1441792, 131148, 65506, 1441792, 131148, 65504, 1441792, 131148, 65502, 1441792, 131148, 65500, 1441792, 131148, 65498, 1441792, 131148, 65496, 1441792, 131122, 65510, 0, 131122, 65508, 0, 131122, 65504, 1, 131122, 65500, 0, 131122, 65498, 0, 131122, 65496, 0, 131160, 65494, 1441794, 131178, 65494, 1441794, 131165, 65494, 1441792, 131167, 65494, 1441792, 131169, 65494, 1441792, 131171, 65494, 1441792, 131173, 65494, 1441792, 131183, 65510, 655360, 131183, 65508, 655360, 131183, 65504, 655361, 131183, 65500, 655360, 131183, 65498, 655360, 131183, 65496, 655360, 131155, 65496, 655360, 131155, 65498, 655360, 131155, 65500, 655360, 131155, 65502, 655360, 131155, 65504, 655360, 131155, 65506, 655360, 131155, 65508, 655360, 131155, 65510, 655360, 917576, 65508, 1441808, 917570, 65508, 1441808, 917564, 65508, 1441808, 917558, 65508, 1441808, 917576, 65502, 1441808, 917570, 65502, 1441808, 917564, 65502, 1441808, 917558, 65502, 1441808, 917576, 65496, 1441808, 917570, 65496, 1441808, 917564, 65496, 1441808, 917558, 65496, 1441808, 917591, 65508, 1441808, 917597, 65508, 1441808, 917603, 65508, 1441808, 917609, 65508, 1441808, 917615, 65508, 1441808, 917615, 65502, 1441808, 917615, 65496, 1441808, 917609, 65496, 1441808, 917609, 65502, 1441808, 917603, 65502, 1441808, 917603, 65496, 1441808, 917597, 65496, 1441808, 917591, 65496, 1441808, 917591, 65502, 1441808, 917597, 65502, 1441808, 118, 31, 655370, 118, 25, 655370, 124, 31, 655370, 124, 25, 655370, 130, 31, 655370, 130, 25, 655370, 136, 31, 655370, 136, 25, 655370, 142, 25, 655370, 142, 31, 655370, 148, 31, 655370, 148, 25, 655370, 131190, 21, 655360, 131192, 21, 655360, 131200, 21, 655360, 131214, 21, 655360, 131216, 21, 655360, 131218, 21, 655360, 131220, 21, 655360, 131222, 21, 655360, 131222, 35, 655360, 131220, 35, 655360, 131218, 35, 655360, 131216, 35, 655360, 131214, 35, 655360, 131212, 35, 655360, 131210, 35, 655360, 131200, 35, 655360, 131198, 35, 655360, 131196, 35, 655360, 131194, 35, 655360, 131192, 35, 655360, 131190, 35, 655360, 131224, 28, 655365, 131224, 34, 655360, 131224, 22, 655360, 131186, 65520, 655362, 131121, 65519, 2, 131204, 21, 1441793, 131210, 21, 1441793, 131194, 21, 655360, 131196, 21, 655360, 131198, 21, 655360, 131205, 35, 1048582, 133, 37, 1048585, 127, 37, 1048585, 139, 37, 1048585, 139, 43, 1048585, 133, 43, 1048585, 127, 43, 1048585, 127, 49, 1048585, 133, 49, 1048585, 139, 49, 1048585, 131215, 44, 655362, 131209, 53, 1048577, 131201, 53, 1048577, 131205, 53, 1048576, 131197, 53, 1048576, 131213, 53, 1048576, 131215, 51, 1048576, 131215, 49, 1048576, 131215, 37, 1048576, 131215, 39, 1048576, 131195, 37, 1048576, 131195, 39, 1048576, 131195, 41, 1048576, 131195, 43, 1048576, 131195, 45, 1048576, 131195, 47, 1048576, 131195, 49, 1048576, 131195, 51, 1048576, 131195, 52, 1048576, 131195, 53, 1048576, 917637, 44, 19, 917641, 38, 1048593, 917639, 38, 1048593, 917637, 38, 1048593, 917635, 38, 1048593, 917633, 38, 1048593, 917643, 40, 17, 917643, 42, 17, 917643, 44, 17, 917643, 46, 17, 917643, 48, 17, 917641, 50, 1441809, 917639, 50, 1441809, 917637, 50, 1441809, 917635, 50, 1441809, 917633, 50, 1441809, 917631, 40, 655377, 917631, 42, 655377, 917631, 44, 655377, 917631, 46, 655377, 917631, 48, 655377, 917631, 38, 1048596, 917643, 38, 20, 917643, 50, 1441812, 917631, 50, 655380, 917641, 52, 655374, 917639, 52, 655374, 917637, 52, 655374, 917635, 52, 655374, 917633, 52, 655374, 917631, 52, 655374, 917643, 52, 655374, 917645, 52, 655374, 917645, 50, 655374, 917645, 48, 655374, 917645, 46, 655374, 917645, 44, 655374, 917645, 43, 655374, 917645, 42, 655374, 917645, 41, 655374, 917645, 40, 655374, 917645, 38, 655374, 917645, 36, 655374, 917643, 36, 655374, 917641, 36, 655374, 917639, 36, 655374, 917637, 36, 655374, 917635, 36, 655374, 917633, 36, 655374, 917631, 36, 655374, 917629, 36, 655374, 917629, 37, 655374, 917629, 38, 655374, 917629, 40, 655374, 917629, 42, 655374, 917629, 44, 655374, 917629, 46, 655374, 917629, 47, 655374, 917629, 48, 655374, 917629, 50, 655374, 917629, 52, 655374, 917624, 31, 655376, 917624, 25, 655376, 917630, 31, 655376, 917630, 25, 655376, 917636, 31, 655376, 917636, 25, 655376, 917642, 31, 655376, 917642, 25, 655376, 917648, 31, 655376, 917648, 25, 655376, 1048725, 32, 1441799, 1048726, 30, 1441799, 1048725, 34, 1441799, 1048726, 36, 1441799, 1048726, 28, 1441799, 1048726, 26, 1441799, 1048726, 24, 1441799, 1048726, 22, 1441799, 1048726, 20, 1441799, 1048724, 20, 1441799, 1048724, 22, 1441799, 1048724, 24, 1441799, 1048724, 26, 1441799, 1048724, 28, 1441799, 1048724, 30, 1441799, 1048724, 36, 1441799, 1048723, 34, 1441799, 1048722, 36, 1441799, 1048723, 32, 1441799, 1048722, 30, 1441799, 1048722, 28, 1441799, 1048722, 26, 1441799, 1048722, 24, 1441799, 1048722, 22, 1441799, 1048722, 20, 1441799, 1048720, 20, 1441799, 1048720, 22, 1441799, 1048720, 24, 1441799, 1048720, 26, 1441799, 1048720, 28, 1441799, 1048720, 30, 1441799, 1048721, 32, 1441799, 1048721, 34, 1441799, 1048720, 36, 1441799, 1048719, 34, 1441799, 1048719, 32, 1441799, 1179792, 38, 1441792, 1179794, 38, 1441792, 1179796, 38, 1441792, 1179798, 38, 1441792, 1179798, 36, 1441792, 1179798, 18, 1441792, 1179796, 18, 1441792, 1179794, 18, 1441792, 1179792, 18, 1441792, 1179790, 18, 1441792, 1179790, 20, 1441792, 1179790, 22, 1441792, 1179790, 32, 655365, 1179790, 24, 655360, 1179790, 26, 655360, 1179790, 38, 655360, 1966226, 22, 655376, 1966226, 28, 655376, 1966226, 34, 655376, 1966230, 30, 655374, 1966230, 28, 655374, 1966230, 26, 655374, 1966230, 24, 655374, 1966230, 22, 655374, 1966230, 20, 655374, 1966230, 32, 655374, 1966230, 34, 655374, 1966230, 36, 655374, 2097301, 32, 1048583, 2097301, 34, 1048583, 2097302, 36, 1048583, 2097302, 30, 1048583, 2097302, 28, 1048583, 2097302, 26, 1048583, 2097302, 24, 1048583, 2097302, 22, 1048583, 2097302, 20, 1048583, 2097298, 22, 1048585, 2097298, 28, 1048585, 2097299, 32, 1048583, 2097299, 34, 1048583, 2097300, 36, 1048583, 2097298, 36, 1048583, 2097296, 36, 1048583, 2097296, 34, 1048583, 2097296, 32, 1048583, 2097298, 32, 1048583, 2097298, 34, 1048583, 2228368, 18, 1048576, 2228370, 18, 1048576, 2228372, 18, 1048576, 2228374, 18, 1048576, 2228366, 18, 1048576, 2228366, 20, 1048576, 2228366, 22, 1048576, 2228366, 36, 1048576, 2228366, 38, 1048576, 2228368, 38, 1048576, 2228370, 38, 1048576, 2228372, 38, 1048576, 2228374, 38, 1048576, 2228366, 24, 1048576, 2228366, 30, 5, 3014802, 34, 16, 3014802, 28, 16, 3014802, 22, 16, 3014808, 22, 16, 3014808, 28, 16, 3014808, 34, 16, 917654, 23, 14, 917654, 25, 14, 917654, 27, 14, 917654, 29, 14, 917654, 31, 14, 917654, 33, 14, 917652, 33, 14, 917652, 31, 14, 917652, 29, 14, 917652, 27, 14, 917652, 25, 14, 917652, 23, 14, 1048718, 30, 1441799, 2097294, 29, 1441799, 2097294, 31, 1441799, 2097294, 33, 1441799, 2097294, 27, 1441799, 2097290, 30, 1441801, 2097284, 30, 1441801, 2097278, 30, 1441801, 2097272, 30, 1441801, 2097272, 36, 1441801, 2097272, 42, 1441801, 2097272, 24, 1441801, 2097272, 18, 1441801, 2097272, 12, 1441801, 2097272, 6, 1441801, 2097272, 48, 1441801, 2097272, 54, 1441801, 2097276, 26, 1441799, 2097278, 26, 1441799, 2097280, 26, 1441799, 2097282, 26, 1441799, 2097284, 26, 1441799, 2097286, 26, 1441799, 2097288, 26, 1441799, 2097290, 26, 1441799, 2097292, 26, 1441799, 2097292, 34, 1441799, 2097290, 34, 1441799, 2097288, 34, 1441799, 2097286, 34, 1441799, 2097284, 34, 1441799, 2097282, 34, 1441799, 2097280, 34, 1441799, 2097278, 34, 1441799, 2097276, 34, 1441799, 2097276, 24, 1441799, 2097276, 22, 1441799, 2097276, 20, 1441799, 2097276, 18, 1441799, 2097276, 16, 1441799, 2097276, 14, 1441799, 2097276, 12, 1441799, 2097276, 10, 1441799, 2097276, 8, 1441799, 2097276, 6, 1441799, 2097276, 36, 1441799, 2097276, 38, 1441799, 2097276, 40, 1441799, 2097276, 42, 1441799, 2097276, 43, 1441799, 2097276, 45, 1441799, 2097276, 47, 1441799, 2097276, 49, 1441799, 2097276, 51, 1441799, 2097276, 53, 1441799, 2097276, 55, 1441799, 2097276, 57, 1441799, 2097274, 60, 1048586, 2097274, 66, 1048586, 2097274, 72, 1048586, 2097274, 78, 1048586, 2097274, 84, 1048586, 2228344, 58, 1048581, 2228344, 2, 1048581, 2097270, 58, 1048588, 2097268, 58, 1048588, 2097268, 6, 1048584, 2097268, 12, 1048584, 2097268, 18, 1048584, 2097268, 24, 1048584, 2097268, 30, 1048584, 2097268, 36, 1048584, 2097268, 42, 1048584, 2097268, 48, 1048584, 2097268, 54, 1048584, 2097268, 62, 1048586, 2097268, 68, 1048586, 2097268, 74, 1048586, 2097268, 80, 1048586, 2097268, 84, 11, 2097268, 86, 11, 2097278, 86, 12, 2097278, 84, 12, 2097278, 82, 12, 2097278, 80, 12, 2097278, 78, 12, 2097278, 76, 12, 2097278, 74, 12, 2097278, 72, 12, 2097278, 70, 12, 2097278, 68, 12, 2097278, 66, 12, 2097278, 64, 12, 2097278, 62, 12, 2097278, 60, 12, 2097282, 62, 10, 2097288, 62, 10, 2097262, 62, 10, 2097256, 62, 10, 2097256, 68, 10, 2097262, 68, 10, 2097262, 74, 10, 2097256, 74, 10, 2097256, 80, 10, 2097262, 80, 10, 2097282, 80, 10, 2097288, 80, 10, 2097288, 74, 10, 2097282, 74, 10, 2097282, 68, 10, 2097288, 68, 10, 2097256, 84, 11, 2097256, 86, 11, 2097262, 86, 11, 2097262, 84, 11, 2097282, 84, 11, 2097282, 86, 11, 2097288, 86, 11, 2097288, 84, 11, 2097256, 90, 10, 2097262, 90, 10, 2097268, 90, 10, 2097288, 90, 10, 2097282, 90, 10, 2097276, 90, 10, 2097272, 90, 1441803, 2097256, 96, 1441802, 2097262, 96, 1441802, 2097268, 96, 1441802, 2097274, 96, 1441802, 2097280, 96, 1441802, 2097286, 96, 1441802, 2097290, 96, 1048587, 2097255, 65502, 10, 2097255, 65508, 10, 2097255, 65514, 10, 2097255, 65520, 10, 2097255, 65524, 11, 2097255, 65526, 11, 2097255, 65530, 10, 2097255, 0, 1441802, 2097261, 65502, 10, 2097261, 65508, 10, 2097261, 65514, 10, 2097261, 65520, 10, 2097261, 65524, 11, 2097261, 65526, 11, 2097261, 65530, 10, 2097261, 0, 1441802, 2097266, 2, 1048588, 2097267, 65502, 1048586, 2097267, 65508, 1048586, 2097267, 65514, 1048586, 2097267, 65520, 1048586, 2097267, 65524, 11, 2097267, 65526, 11, 2097267, 65530, 10, 2097267, 0, 1441802, 2097268, 2, 1048588, 2097270, 2, 1048588, 2097271, 65530, 1441803, 2097272, 2, 1048588, 2097273, 65500, 1048586, 2097273, 65506, 1048586, 2097273, 65512, 1048586, 2097273, 65518, 1048586, 2097273, 65524, 1048586, 2097273, 0, 1441802, 2097274, 4, 1441799, 2097275, 65530, 10, 2097277, 65500, 12, 2097277, 65502, 12, 2097277, 65504, 12, 2097277, 65506, 12, 2097277, 65508, 12, 2097277, 65510, 12, 2097277, 65512, 12, 2097277, 65514, 12, 2097277, 65516, 12, 2097277, 65518, 12, 2097277, 65520, 12, 2097277, 65522, 12, 2097277, 65524, 12, 2097277, 65526, 12, 2097279, 0, 1441802, 2097281, 65502, 10, 2097281, 65508, 10, 2097281, 65514, 10, 2097281, 65520, 10, 2097281, 65524, 11, 2097281, 65526, 11, 2097281, 65530, 10, 2097285, 0, 1441802, 2097287, 65502, 10, 2097287, 65508, 10, 2097287, 65514, 10, 2097287, 65520, 10, 2097287, 65524, 11, 2097287, 65526, 11, 2097287, 65530, 10, 2097289, 0, 1048587, 2162803, 65497, 262155, 2162797, 65497, 262155, 2162791, 65497, 262155, 2162815, 65497, 262155, 2162821, 65497, 262155, 2162825, 65497, 262156, 2097249, 65519, 1048585, 2097244, 65519, 1048585, 2097238, 65519, 1048585, 2097232, 65519, 1048585, 2097226, 65519, 1048585, 2097220, 65519, 1048585, 2097214, 65519, 1048585, 2097176, 48, 1441800, 2097176, 42, 1441800, 2097176, 36, 1441800, 2097176, 30, 1441800, 2097176, 24, 1441800, 2097176, 18, 1441800, 2097176, 12, 1441800, 2097172, 48, 1048585, 2097172, 42, 1048585, 2097172, 36, 1048585, 2097172, 30, 1048585, 2097172, 24, 1048585, 2097172, 18, 1048585, 2097172, 12, 1048585, 2097170, 50, 1048583, 2097168, 48, 1048583, 2097168, 46, 1048583, 2097168, 44, 1048583, 2097168, 42, 1048583, 2097168, 40, 1048583, 2097168, 38, 1048583, 2097168, 36, 1048583, 2097168, 34, 1048583, 2097168, 32, 1048583, 2097168, 30, 1048583, 2097168, 28, 1048583, 2097168, 20, 1048583, 2097168, 18, 1048583, 2097168, 16, 1048583, 2097168, 14, 1048583, 2097168, 12, 1048583, 2097168, 11, 1048583, 2097166, 28, 1048583, 2097166, 24, 1048585, 2097166, 20, 1048583, 2097164, 28, 1048583, 2097164, 20, 1048583, 2097162, 28, 1048583, 2097162, 20, 1048583, 2097160, 28, 1048583, 2097160, 24, 1048585, 2097160, 20, 1048583, 2097158, 28, 1048583, 2097158, 20, 1048583, 2097156, 28, 1048583, 2097156, 20, 1048583, 2097154, 28, 1048583, 2097154, 24, 1048585, 2097154, 20, 1048583, 2097152, 28, 1048583, 2097152, 20, 1048583, 2162686, 27, 1048583, 2162686, 25, 1048583, 2162686, 23, 1048583, 2162686, 21, 1048583, 2097208, 65519, 9, 2097202, 65519, 9, 2097198, 65519, 1441800, 2097196, 65519, 1441800, 2097158, 65497, 11, 2097158, 65501, 10, 2097158, 65507, 10, 2097158, 65513, 10, 2097158, 65519, 10, 2097158, 65523, 11, 2097158, 65525, 11, 2097158, 65529, 10, 2097158, 65535, 1441802, 2097164, 65497, 11, 2097164, 65501, 10, 2097164, 65507, 10, 2097164, 65513, 10, 2097164, 65519, 10, 2097164, 65523, 11, 2097164, 65525, 11, 2097164, 65529, 10, 2097164, 65535, 1441802, 2097168, 65533, 1048588, 2097168, 65535, 1048588, 2097168, 1, 1048588, 2097170, 65497, 11, 2097170, 65501, 1048586, 2097170, 65507, 1048586, 2097170, 65513, 1048586, 2097170, 65519, 1048586, 2097170, 65523, 11, 2097170, 65525, 11, 2097170, 65529, 10, 2097170, 65533, 1048588, 2097170, 65535, 1048588, 2097170, 1, 1048588, 2097172, 65535, 1048587, 2097174, 65529, 1441803, 2097176, 65499, 1048586, 2097176, 65505, 1048586, 2097176, 65511, 1048586, 2097176, 65517, 1048586, 2097176, 65523, 1048586, 2097176, 65535, 1048586, 2097178, 65529, 10, 2097180, 65499, 12, 2097180, 65501, 12, 2097180, 65503, 12, 2097180, 65505, 12, 2097180, 65507, 12, 2097180, 65509, 12, 2097180, 65511, 12, 2097180, 65513, 12, 2097180, 65515, 12, 2097180, 65517, 12, 2097180, 65519, 12, 2097180, 65521, 12, 2097180, 65523, 12, 2097180, 65525, 12, 2097182, 65497, 11, 2097182, 65535, 1441802, 2097184, 65501, 10, 2097184, 65507, 10, 2097184, 65513, 10, 2097184, 65519, 10, 2097184, 65523, 11, 2097184, 65525, 11, 2097184, 65529, 10, 2097188, 65497, 11, 2097188, 65535, 1441802, 2097190, 65501, 10, 2097190, 65507, 10, 2097190, 65513, 10, 2097190, 65519, 10, 2097190, 65523, 11, 2097190, 65525, 11, 2097190, 65529, 10, 2097192, 65497, 12, 2097192, 65535, 1048587, 2097194, 65521, 1441799, 2097194, 65519, 1441799, 2097194, 65517, 1441799, 2097168, 3, 1441799, 2097168, 5, 1441799, 2097168, 7, 1441799, 2097168, 9, 1441799, 2097170, 3, 1441799, 2097170, 5, 1441799, 2097170, 7, 1441799, 2097172, 7, 1441799, 2097172, 5, 1441799, 2097172, 3, 1441799, 2097174, 3, 1441799, 2097174, 7, 1441799, 2097174, 5, 1441799, 2097176, 3, 1441799, 2097176, 5, 1441799, 2097176, 7, 1441799, 2097172, 8, 655368, 2097176, 8, 655367, 2228244, 1, 1048581, 2097160, 60, 11, 2097160, 64, 10, 2097160, 70, 10, 2097160, 76, 10, 2097160, 82, 10, 2097160, 86, 11, 2097160, 88, 11, 2097160, 92, 10, 2097160, 98, 1441802, 2097166, 60, 11, 2097166, 64, 10, 2097166, 70, 10, 2097166, 76, 10, 2097166, 82, 10, 2097166, 86, 11, 2097166, 88, 11, 2097166, 92, 10, 2097166, 98, 1441802, 2097170, 96, 1048588, 2097170, 98, 1048588, 2097170, 100, 1048588, 2097172, 60, 11, 2097172, 64, 1048586, 2097172, 70, 1048586, 2097172, 76, 1048586, 2097172, 82, 1048586, 2097172, 86, 11, 2097172, 88, 11, 2097172, 92, 10, 2097172, 96, 1048588, 2097172, 98, 1048588, 2097172, 100, 1048588, 2097174, 98, 1048587, 2097176, 92, 1441803, 2097178, 62, 1048586, 2097178, 68, 1048586, 2097178, 74, 1048586, 2097178, 80, 1048586, 2097178, 86, 1048586, 2097178, 98, 1048586, 2097180, 92, 10, 2097182, 62, 12, 2097182, 64, 12, 2097182, 66, 12, 2097182, 68, 12, 2097182, 70, 12, 2097182, 72, 12, 2097182, 74, 12, 2097182, 76, 12, 2097182, 78, 12, 2097182, 80, 12, 2097182, 82, 12, 2097182, 84, 12, 2097182, 86, 12, 2097182, 88, 12, 2097184, 60, 11, 2097184, 98, 1441802, 2097186, 64, 10, 2097186, 70, 10, 2097186, 76, 10, 2097186, 82, 10, 2097186, 86, 11, 2097186, 88, 11, 2097186, 92, 10, 2097190, 60, 11, 2097190, 98, 1441802, 2097192, 64, 10, 2097192, 70, 10, 2097192, 76, 10, 2097192, 82, 10, 2097192, 86, 11, 2097192, 88, 11, 2097192, 92, 10, 2097194, 60, 12, 2097194, 98, 1048587, 2097196, 80, 1441799, 2097196, 82, 1441799, 2097196, 84, 1441799, 2097198, 82, 1441800, 2097200, 82, 1441800, 2097168, 50, 1048583, 2097168, 52, 1048583, 2097168, 54, 1048583, 2097168, 56, 1048583, 2097168, 58, 1048583, 2097176, 52, 1048583, 2097176, 54, 1048583, 2097176, 56, 1048583, 2097176, 58, 1048583, 2097174, 58, 1048583, 2097174, 56, 1048583, 2097174, 54, 1048583, 2097174, 52, 1048583, 2097172, 52, 1048583, 2097172, 54, 1048583, 2097172, 56, 1048583, 2097172, 58, 1048583, 2097170, 58, 1048583, 2097170, 56, 1048583, 2097170, 54, 1048583, 2097170, 52, 1048583, 2097194, 65523, 1048583, 2097196, 65523, 1048583, 2097198, 65523, 1048583, 2097200, 65523, 1048583, 2097202, 65523, 1048583, 2097204, 65523, 1048583, 2097206, 65523, 1048583, 2097208, 65523, 1048583, 2097210, 65523, 1048583, 2097212, 65523, 1048583, 2097214, 65523, 1048583, 2097216, 65523, 1048583, 2097218, 65523, 1048583, 2097220, 65523, 1048583, 2097222, 65523, 1048583, 2097224, 65523, 1048583, 2097226, 65523, 1048583, 2097228, 65523, 1048583, 2097230, 65523, 1048583, 2097232, 65523, 1048583, 2097234, 65523, 1048583, 2097236, 65523, 1048583, 2097238, 65523, 1048583, 2097240, 65523, 1048583, 2097242, 65523, 1048583, 2097244, 65523, 1048583, 2097246, 65523, 1048583, 2097248, 65523, 1048583, 2097250, 65523, 1048583, 2097251, 65523, 1048583, 2097251, 65515, 1048583, 2097249, 65515, 1048583, 2097247, 65515, 1048583, 2097245, 65515, 1048583, 2097243, 65515, 1048583, 2097241, 65515, 1048583, 2097239, 65515, 1048583, 2097237, 65515, 1048583, 2097235, 65515, 1048583, 2097233, 65515, 1048583, 2097231, 65515, 1048583, 2097229, 65515, 1048583, 2097227, 65515, 1048583, 2097225, 65515, 1048583, 2097223, 65515, 1048583, 2097221, 65515, 1048583, 2097219, 65515, 1048583, 2097217, 65515, 1048583, 2097215, 65515, 1048583, 2097216, 65515, 1048583, 2097213, 65515, 1048583, 2097211, 65515, 1048583, 2097209, 65515, 1048583, 2097207, 65515, 1048583, 2097205, 65515, 1048583, 2097203, 65515, 1048583, 2097201, 65515, 1048583, 2097199, 65515, 1048583, 2097197, 65515, 1048583, 2097195, 65515, 1048583, 2097194, 65515, 1048583, 2097276, 4, 1048583, 2228244, 60, 1048581, 2097204, 82, 1048585, 2097210, 82, 1048585, 2097216, 82, 1048585, 2097222, 82, 1048585, 2097228, 82, 1048585, 2097234, 82, 1048585, 2097240, 82, 1048585, 2097246, 82, 1048585, 2097250, 82, 1048584, 2097252, 82, 1048584, 2097250, 86, 8, 2097244, 86, 8, 2097238, 86, 8, 2097232, 86, 8, 2097226, 86, 8, 2097220, 86, 8, 2097214, 86, 8, 2097208, 86, 8, 2097202, 86, 8, 2097198, 86, 7, 2097196, 86, 7, 2097198, 78, 655368, 2097204, 78, 655368, 2097210, 78, 655368, 2097216, 78, 655368, 2097222, 78, 655368, 2097228, 78, 655368, 2097234, 78, 655368, 2097240, 78, 655368, 2097246, 78, 655368, 2097252, 78, 655367, 2097250, 78, 655367, 2228246, 100, 1048578, 2228230, 80, 2, 2228230, 87, 1, 2228230, 73, 1, 2228228, 65522, 1, 2228228, 65516, 1, 2228228, 65510, 1, 2228228, 65528, 1, 2228238, 65497, 1441794, 2228251, 65497, 1441794, 2228361, 65513, 655362, 2228361, 65527, 655362, 2228330, 65498, 1441793, 2228355, 65498, 1441793, 2228362, 75, 655361, 2228362, 83, 655361, 2228362, 91, 655361, 2228362, 67, 655361, 2228343, 98, 1048578, 2228338, 98, 1048576, 2228336, 98, 1048576, 2228334, 98, 1048576, 2228332, 98, 1048576, 2228330, 98, 1048576, 2228328, 98, 1048576, 2228326, 98, 1048576, 2228326, 96, 1048576, 2228326, 94, 1048576, 2228326, 92, 1048576, 2228326, 90, 1048576, 2228326, 88, 1048576, 2228326, 76, 1048576, 2228326, 82, 5, 2228326, 74, 0, 2228326, 72, 0, 2228326, 70, 0, 2228326, 68, 0, 2228326, 66, 0, 2228326, 64, 0, 2228326, 62, 0, 2228326, 60, 0, 2228328, 60, 0, 2228330, 60, 0, 2228332, 60, 0, 2228334, 60, 0, 2228336, 60, 0, 2228338, 60, 0, 2228350, 60, 0, 2228352, 60, 0, 2228354, 60, 0, 2228356, 60, 0, 2228358, 60, 0, 2228360, 60, 0, 2228362, 60, 0, 2228362, 62, 0, 2228362, 63, 0, 2228362, 71, 0, 2228362, 79, 0, 2228362, 87, 0, 2228362, 95, 0, 2228362, 97, 0, 2228360, 98, 0, 2228358, 98, 0, 2228356, 98, 0, 2228354, 98, 0, 2228352, 98, 0, 2228350, 98, 0, 2228348, 98, 0, 2228251, 100, 0, 2228253, 100, 0, 2228266, 100, 0, 2228264, 100, 0, 2228262, 100, 0, 2228260, 100, 0, 2228258, 100, 0, 2228255, 100, 0, 2228256, 100, 0, 2228266, 98, 0, 2228266, 96, 0, 2228230, 100, 0, 2228232, 100, 0, 2228233, 100, 0, 2228235, 100, 0, 2228237, 100, 0, 2228239, 100, 0, 2228241, 100, 0, 2228266, 65, 1441792, 2228266, 67, 1441792, 2228266, 68, 1441792, 2228266, 70, 1441792, 2228266, 72, 1441792, 2228266, 74, 1441792, 2228266, 76, 1441792, 2228266, 63, 0, 2228266, 61, 0, 2228266, 59, 0, 2228264, 60, 0, 2228262, 60, 0, 2228260, 60, 0, 2228266, 82, 5, 2228266, 88, 0, 2228266, 90, 0, 2228266, 92, 0, 2228266, 94, 0, 2228258, 60, 0, 2228256, 60, 0, 2228254, 60, 0, 2228252, 60, 0, 2228250, 60, 0, 2228238, 60, 0, 2228236, 60, 0, 2228234, 60, 0, 2228232, 60, 0, 2228230, 60, 0, 2228230, 62, 0, 2228230, 64, 0, 2228230, 66, 0, 2228230, 69, 0, 2228230, 67, 0, 2228230, 91, 0, 2228230, 93, 0, 2228230, 95, 0, 2228230, 97, 0, 2228230, 98, 0, 2228268, 76, 655360, 2228270, 76, 655360, 2228272, 76, 655360, 2228274, 76, 655360, 2228276, 76, 655360, 2228278, 76, 655360, 2228280, 76, 655360, 2228282, 76, 655360, 2228284, 76, 655360, 2228286, 76, 655360, 2228288, 76, 655360, 2228300, 76, 655360, 2228302, 76, 655360, 2228304, 76, 655360, 2228306, 76, 655360, 2228308, 76, 655360, 2228310, 76, 655360, 2228312, 76, 655360, 2228314, 76, 655360, 2228316, 76, 655360, 2228318, 76, 655360, 2228320, 76, 655360, 2228322, 76, 655360, 2228324, 76, 655360, 2228268, 88, 655360, 2228270, 88, 655360, 2228272, 88, 655360, 2228274, 88, 655360, 2228276, 88, 655360, 2228278, 88, 655360, 2228280, 88, 655360, 2228282, 88, 655360, 2228284, 88, 655360, 2228286, 88, 655360, 2228288, 88, 655360, 2228290, 88, 655360, 2228292, 88, 655360, 2228294, 88, 655360, 2228296, 88, 655360, 2228298, 88, 655360, 2228300, 88, 655360, 2228302, 88, 655360, 2228304, 88, 655360, 2228306, 88, 655360, 2228308, 88, 655360, 2228310, 88, 655360, 2228312, 88, 655360, 2228314, 88, 655360, 2228316, 88, 655360, 2228318, 88, 655360, 2228320, 88, 655360, 2228322, 88, 655360, 2228324, 88, 655360, 2228326, 86, 0, 2228322, 65525, 0, 2228322, 65513, 0, 2228320, 65525, 0, 2228320, 65513, 0, 2228318, 65525, 0, 2228318, 65513, 0, 2228316, 65525, 0, 2228316, 65513, 0, 2228314, 65525, 0, 2228314, 65513, 0, 2228312, 65525, 0, 2228312, 65513, 0, 2228310, 65525, 0, 2228310, 65513, 0, 2228308, 65525, 0, 2228308, 65513, 0, 2228306, 65525, 0, 2228306, 65513, 0, 2228304, 65525, 0, 2228304, 65513, 0, 2228302, 65525, 0, 2228302, 65513, 0, 2228300, 65525, 0, 2228300, 65513, 0, 2228298, 65513, 0, 2228296, 65513, 0, 2228294, 65513, 0, 2228292, 65513, 0, 2228290, 65513, 0, 2228288, 65525, 0, 2228288, 65513, 0, 2228286, 65525, 0, 2228286, 65513, 0, 2228284, 65525, 0, 2228284, 65513, 0, 2228282, 65525, 0, 2228282, 65513, 0, 2228280, 65525, 0, 2228280, 65513, 0, 2228278, 65525, 0, 2228278, 65513, 0, 2228276, 65525, 0, 2228276, 65513, 0, 2228274, 65525, 0, 2228274, 65513, 0, 2228272, 65525, 0, 2228272, 65513, 0, 2228270, 65525, 0, 2228270, 65513, 0, 2228268, 65525, 0, 2228268, 65513, 0, 2228266, 65525, 0, 2228266, 65513, 0, 2228323, 65525, 655360, 2228323, 65513, 655360, 2228350, 24, 655360, 2228352, 24, 655360, 2228354, 24, 655360, 2228356, 24, 655360, 2228358, 24, 655360, 2228360, 24, 655360, 2228362, 24, 655360, 2228364, 24, 655360, 2228350, 22, 655360, 2228350, 20, 655360, 2228350, 18, 655360, 2228350, 16, 655360, 2228350, 14, 655360, 2228350, 12, 655360, 2228350, 10, 655360, 2228350, 8, 655360, 2228350, 6, 655360, 2228350, 4, 655360, 2228338, 4, 655360, 2228338, 6, 655360, 2228338, 8, 655360, 2228338, 10, 655360, 2228338, 12, 655360, 2228338, 14, 655360, 2228338, 16, 655360, 2228338, 18, 655360, 2228338, 20, 655360, 2228338, 22, 655360, 2228338, 24, 655360, 2228338, 26, 655360, 2228338, 28, 655360, 2228338, 30, 655360, 2228338, 32, 655360, 2228338, 34, 655360, 2228338, 36, 655360, 2228338, 38, 655360, 2228338, 40, 655360, 2228338, 42, 655360, 2228338, 44, 655360, 2228338, 46, 655360, 2228338, 48, 655360, 2228338, 50, 655360, 2228338, 52, 655360, 2228338, 54, 655360, 2228338, 56, 655360, 2228338, 58, 655360, 2228350, 58, 655360, 2228350, 56, 655360, 2228350, 54, 655360, 2228350, 52, 655360, 2228350, 50, 655360, 2228350, 48, 655360, 2228350, 46, 655360, 2228350, 44, 655360, 2228350, 42, 655360, 2228350, 40, 655360, 2228350, 36, 655360, 2228350, 38, 655360, 2228352, 36, 655360, 2228354, 36, 655360, 2228356, 36, 655360, 2228358, 36, 655360, 2228360, 36, 655360, 2228362, 36, 655360, 2228364, 36, 655360, 2228350, 2, 655360, 2228352, 2, 655360, 2228354, 2, 655360, 2228356, 2, 655360, 2228358, 2, 655360, 2228360, 2, 655360, 2228362, 2, 655360, 2228361, 0, 655360, 2228361, 65534, 655360, 2228361, 65532, 655360, 2228361, 65522, 655360, 2228361, 65520, 655360, 2228361, 65518, 655360, 2228361, 65508, 655360, 2228361, 65506, 655360, 2228361, 65504, 655360, 2228361, 65502, 655360, 2228361, 65500, 655360, 2228359, 65498, 655360, 2228361, 65498, 655360, 2228351, 65498, 655360, 2228349, 65498, 655360, 2228347, 65498, 655360, 2228345, 65498, 655360, 2228343, 65498, 655360, 2228341, 65498, 655360, 2228339, 65498, 655360, 2228337, 65498, 655360, 2228335, 65498, 655360, 2228334, 65498, 655360, 2228326, 65498, 655360, 2228324, 65498, 655360, 2228325, 65500, 655360, 2228325, 65502, 655360, 2228325, 65504, 655360, 2228325, 65506, 655360, 2228325, 65508, 655360, 2228325, 65510, 655360, 2228325, 65512, 655360, 2228325, 65513, 655360, 2228325, 65525, 655360, 2228325, 65527, 655360, 2228325, 65529, 655360, 2228325, 65531, 655360, 2228325, 65533, 655360, 2228325, 65535, 655360, 2228325, 1, 655360, 2228325, 3, 655360, 2228327, 2, 655360, 2228329, 2, 655360, 2228331, 2, 655360, 2228333, 2, 655360, 2228335, 2, 655360, 2228336, 2, 655360, 2228338, 2, 655360, 2228264, 65525, 655360, 2228264, 65527, 655360, 2228264, 65529, 655360, 2228264, 65531, 655360, 2228264, 65533, 655360, 2228264, 65535, 655360, 2228264, 1, 655360, 2228262, 1, 655360, 2228260, 1, 655360, 2228258, 1, 655360, 2228256, 1, 655360, 2228254, 1, 655360, 2228252, 1, 655360, 2228250, 1, 655360, 2228238, 1, 655360, 2228236, 1, 655360, 2228234, 1, 655360, 2228232, 1, 655360, 2228230, 1, 655360, 2228228, 1, 655360, 2228228, 65535, 655360, 2228228, 65533, 655360, 2228228, 65532, 655360, 2228228, 65506, 655360, 2228228, 65504, 655360, 2228228, 65502, 655360, 2228228, 65500, 655360, 2228228, 65498, 655360, 2228228, 65496, 655360, 2228230, 65497, 655360, 2228232, 65497, 655360, 2228233, 65497, 655360, 2228243, 65497, 655360, 2228245, 65497, 655360, 2228246, 65497, 655360, 2228257, 65497, 655360, 2228259, 65497, 655360, 2228261, 65497, 655360, 2228263, 65497, 655360, 2228265, 65497, 655360, 2228264, 65499, 655360, 2228264, 65501, 655360, 2228264, 65503, 655360, 2228264, 65505, 655360, 2228264, 65507, 655360, 2228264, 65509, 655360, 2228264, 65511, 655360, 2228264, 65513, 655360, 2228238, 18, 655360, 2228238, 16, 655360, 2228238, 14, 655360, 2228238, 12, 655360, 2228238, 10, 655360, 2228238, 8, 655360, 2228238, 6, 655360, 2228238, 3, 655360, 2228238, 4, 655360, 2228238, 30, 655360, 2228238, 32, 655360, 2228238, 34, 655360, 2228238, 36, 655360, 2228238, 38, 655360, 2228238, 40, 655360, 2228238, 42, 655360, 2228238, 44, 655360, 2228238, 46, 655360, 2228238, 48, 655360, 2228238, 50, 655360, 2228238, 52, 655360, 2228238, 54, 655360, 2228238, 56, 655360, 2228238, 58, 655360, 2228250, 30, 655360, 2228250, 32, 655360, 2228250, 34, 655360, 2228250, 36, 655360, 2228250, 38, 655360, 2228250, 40, 655360, 2228250, 42, 655360, 2228250, 44, 655360, 2228250, 46, 655360, 2228250, 48, 655360, 2228250, 50, 655360, 2228250, 52, 655360, 2228250, 54, 655360, 2228250, 56, 655360, 2228250, 58, 655360, 2228250, 6, 655360, 2228250, 8, 655360, 2228250, 10, 655360, 2228250, 12, 655360, 2228250, 14, 655360, 2228250, 16, 655360, 2228250, 18, 655360, 2228250, 20, 655360, 2228250, 22, 655360, 2228250, 24, 655360, 2228250, 26, 655360, 2228250, 28, 655360, 2228250, 4, 655360, 2228250, 2, 655360, 2097222, 27, 655369, 2097222, 33, 655369, 2097216, 27, 655369, 2097228, 27, 655369, 2097222, 21, 655369, 2097216, 21, 655369, 2097228, 21, 655369, 2097228, 33, 655369, 2097216, 33, 655369, 2097210, 33, 655369, 2097210, 27, 655369, 2097210, 21, 655369, 2097234, 21, 655369, 2097234, 27, 655369, 2097234, 33, 655369, 2097234, 39, 655369, 2097228, 39, 655369, 2097222, 39, 655369, 2097216, 39, 655369, 2097210, 39, 655369, 2097210, 15, 655369, 2097216, 15, 655369, 2097222, 15, 655369, 2097228, 15, 655369, 2097234, 15, 655369, 2097222, 9, 655369, 2097222, 3, 655369, 2097222, 65533, 655369, 2097220, 65529, 655367, 2097222, 65529, 655367, 2097224, 65529, 655367, 2097224, 65527, 655367, 2097222, 65527, 655367, 2097220, 65527, 655367, 2097220, 42, 655367, 2097220, 44, 655367, 2097222, 42, 655367, 2097222, 44, 655367, 2097222, 48, 655369, 2097222, 54, 655369, 2097222, 60, 655369, 2097224, 42, 655367, 2097224, 44, 655367, 2097220, 64, 655367, 2097222, 64, 655367, 2097224, 64, 655367, 2097224, 66, 655367, 2097220, 66, 655367, 2097222, 66, 655367, 2097220, 68, 655367, 2097222, 68, 655367, 2097224, 68, 655367, 2097224, 70, 655367, 2097222, 70, 655367, 2097220, 70, 655367, 2097220, 72, 655367, 2097222, 72, 655367, 2097224, 72, 655367, 2097224, 74, 655367, 2097222, 74, 655367, 2097220, 74, 655367, 2228294, 65525, 1048582, 2228289, 65524, 1048576, 2228299, 65524, 1048576, 2228298, 65527, 1048576, 2228290, 65527, 1048576, 2228294, 76, 1048582, 2228289, 77, 1048576, 2228299, 77, 1048576, 2228298, 74, 1048576, 2228298, 72, 1048576, 2228298, 70, 1048576, 2228298, 68, 1048576, 2228298, 66, 1048576, 2228298, 64, 1048576, 2228298, 62, 1048576, 2228298, 60, 1048576, 2228298, 58, 1048576, 2228298, 56, 1048576, 2228298, 54, 1048576, 2228298, 52, 1048576, 2228298, 50, 1048576, 2228298, 48, 1048576, 2228298, 46, 1048576, 2228298, 44, 1048576, 2228290, 44, 1048576, 2228290, 46, 1048576, 2228290, 48, 1048576, 2228290, 50, 1048576, 2228290, 52, 1048576, 2228290, 54, 1048576, 2228290, 56, 1048576, 2228290, 58, 1048576, 2228290, 60, 1048576, 2228290, 62, 1048576, 2228290, 64, 1048576, 2228290, 66, 1048576, 2228290, 68, 1048576, 2228290, 70, 1048576, 2228290, 72, 1048576, 2228290, 74, 1048576, 2228290, 65529, 1048576, 2228290, 65531, 1048576, 2228290, 65533, 1048576, 2228290, 65535, 1048576, 2228290, 1, 1048576, 2228290, 3, 1048576, 2228290, 5, 1048576, 2228290, 7, 1048576, 2228290, 9, 1048576, 2228298, 65529, 1048576, 2228298, 65531, 1048576, 2228298, 65533, 1048576, 2228298, 65535, 1048576, 2228298, 1, 1048576, 2228298, 3, 1048576, 2228298, 5, 1048576, 2228298, 7, 1048576, 2228298, 9, 1048576, 2228300, 11, 1048576, 2228302, 11, 1048576, 2228304, 11, 1048576, 2228306, 11, 1048576, 2228308, 11, 1048576, 2228310, 13, 1048576, 2228310, 15, 1048576, 2228310, 17, 1048576, 2228310, 19, 1048576, 2228310, 21, 1048576, 2228310, 23, 1048576, 2228310, 25, 1048576, 2228310, 27, 1048576, 2228310, 29, 1048576, 2228310, 31, 1048576, 2228310, 33, 1048576, 2228310, 35, 1048576, 2228310, 37, 1048576, 2228310, 39, 1048576, 2228310, 41, 1048576, 2228308, 43, 1048576, 2228306, 43, 1048576, 2228304, 43, 1048576, 2228302, 43, 1048576, 2228300, 42, 1048576, 2228288, 42, 1048576, 2228286, 43, 1048576, 2228284, 43, 1048576, 2228282, 43, 1048576, 2228280, 43, 1048576, 2228278, 41, 1048576, 2228278, 39, 1048576, 2228278, 37, 1048576, 2228278, 35, 1048576, 2228278, 33, 1048576, 2228278, 31, 1048576, 2228278, 29, 1048576, 2228278, 27, 1048576, 2228278, 25, 1048576, 2228278, 23, 1048576, 2228278, 21, 1048576, 2228278, 19, 1048576, 2228288, 11, 1048576, 2228286, 11, 1048576, 2228284, 11, 1048576, 2228282, 11, 1048576, 2228280, 11, 1048576, 2228278, 13, 1048576, 2228278, 15, 1048576, 2228278, 17, 1048576, 2228294, 42, 1048581, 2228294, 11, 1048581, 2228256, 65497, 1048576, 2228325, 65519, 655365, 2228264, 65519, 655365)
+}
+metadata/_editor_floor_ = Vector3(0, 34, 0)
+
+[node name="OfficePosters" type="GridMap" parent="GridMaps" unique_id=729091911]
+mesh_library = ExtResource("12_xy2fk")
+cell_size = Vector3(1, 1, 1)
+cell_scale = 2.0
+collision_layer = 2
+collision_mask = 0
+data = {
+"cells": PackedInt32Array(327681, 17, 1048577, 589821, 5, 3, 327691, 19, 1441794, 393213, 29, 1048576, 393204, 19, 1441793, 393201, 21, 4, 1376242, 22, 4, 1376243, 22, 4, 2490355, 22, 4, 1441763, 19, 3, 327747, 21, 655363, 327717, 43, 1048579, 327743, 43, 1048576, 196663, 36, 2, 196664, 37, 1048578, 196666, 37, 1048578, 196667, 36, 655362, 393251, 20, 1, 393283, 64, 1441794, 393288, 64, 1441797, 393296, 104, 655363, 393284, 81, 1441792, 393282, 81, 1441792, 393280, 81, 1441792, 393278, 81, 1441792, 524350, 81, 1441792, 524352, 81, 1441792, 524354, 81, 1441792, 524356, 81, 1441792, 393296, 83, 655362, 393275, 65, 655361, 393313, 101, 1048578, 393316, 83, 655361, 393306, 68, 2, 393306, 64, 2, 393317, 40, 1441795, 393305, 40, 1441795, 393309, 20, 1441793, 393316, 38, 1048578, 393306, 38, 1048578, 393301, 20, 1441801, 393299, 44, 7, 393306, 56, 1048583, 524355, 29, 655366, 327747, 15, 655368, 327747, 13, 655368, 327747, 11, 655368, 458819, 13, 655368, 458819, 15, 655368, 458819, 11, 655368, 2359267, 24, 12, 720867, 24, 10, 1703907, 24, 11, 458811, 61, 655369, 458815, 64, 1441800, 458838, 91, 1441798, 458831, 65513, 1441794, 393299, 65513, 1441801, 393329, 65525, 655366, 393301, 65498, 0, 393300, 65507, 3, 458839, 65513, 1441799, 458803, 65509, 6, 458827, 65501, 655367, 458827, 65505, 655363, 458815, 65495, 1441801, 524384, 65495, 1441798, 327775, 65495, 1441800, 393319, 65530, 2, 393319, 0, 1, 393309, 65523, 1048576, 393305, 65523, 1048579, 393276, 65529, 655363, 393349, 52, 1048582, 393358, 38, 655367, 458876, 40, 3, 458876, 38, 8, 393356, 34, 1048576, 393340, 34, 1048585, 393367, 32, 655364, 327801, 22, 1441797, 458865, 4, 655365, 458865, 11, 655365, 589989, 28, 655370, 1638565, 28, 655371, 2293925, 28, 655372, 393378, 35, 1048583)
+}
+metadata/_editor_floor_ = Vector3(0, 11, 0)
+
+[node name="OfficeStairs" type="GridMap" parent="GridMaps" unique_id=1258506486]
+mesh_library = ExtResource("11_64w2a")
+cell_size = Vector3(1, 1, 1)
+collision_layer = 2
+collision_mask = 0
+data = {
+"cells": PackedInt32Array(262119, 19, 0, 262117, 19, 1, 327653, 21, 1048576, 327653, 22, 1048578, 393189, 23, 1048576, 393189, 24, 1048578, 458725, 25, 1048576, 458725, 26, 1048578, 524261, 27, 1048576, 524261, 28, 1048578, 589797, 29, 1048576, 655335, 31, 655360, 655336, 31, 655362, 720873, 31, 655360, 589797, 31, 1048577, 720874, 31, 655362, 786411, 31, 655360, 786413, 31, 655361, 851949, 29, 1441792, 851949, 28, 1441794, 196594, 32, 3, 196592, 31, 3, 196592, 33, 3, 65520, 25, 1441797, 65518, 20, 1441797, 65518, 26, 1441797, 65518, 32, 1441797, 65516, 32, 1441797, 65516, 26, 1441797, 65516, 20, 1441797, 65514, 20, 1441797, 65514, 26, 1441797, 65514, 32, 1441797, 65512, 30, 1441797, 65510, 30, 1441797, 65508, 30, 1441797, 65512, 24, 1441797, 65510, 24, 1441797, 65508, 24, 1441797, 65512, 18, 1441797, 65510, 18, 1441797, 65508, 18, 1441797, 917485, 26, 1441794, 983021, 25, 1441792, 983021, 24, 1441794, 1048557, 23, 1441792, 1048557, 22, 1441794, 1114093, 21, 1441792, 1114093, 19, 1441793, 851952, 16, 3, 851952, 18, 655369, 983024, 19, 655369, 983024, 18, 655369, 196591, 20, 8, 196591, 21, 8, 196591, 29, 8, 327663, 29, 8, 327663, 21, 8, 458735, 21, 8, 458735, 29, 8, 589807, 21, 8, 589807, 29, 8, 655343, 27, 8, 655343, 25, 8, 655343, 23, 8, 720879, 19, 8, 720879, 21, 8, 720879, 29, 8, 851951, 19, 8, 786415, 23, 8, 786415, 27, 8, 786415, 25, 8, 851951, 21, 655368, 917487, 23, 655368, 983023, 21, 655368, 983023, 23, 655368, 1114095, 22, 655368, 1245168, 22, 655369, 1376240, 22, 655369, 1245170, 22, 655369, 1245170, 16, 655369, 1376242, 16, 655369, 1376242, 22, 655369, 1245170, 24, 655369, 1245170, 26, 655369, 1245170, 28, 655369, 1245170, 30, 655369, 1376242, 30, 655369, 1376242, 28, 655369, 1376242, 26, 655369, 1376242, 24, 655369, 1376242, 32, 655369, 1245170, 32, 655369, 1507315, 31, 8, 1507315, 29, 8, 1507315, 27, 8, 1507315, 25, 8, 1507315, 23, 8, 1507315, 21, 8, 1507315, 19, 8, 1507315, 17, 8, 1638387, 21, 8, 1638387, 23, 8, 1638387, 25, 8, 1638387, 27, 8, 1638387, 29, 8, 1638387, 31, 8, 1638387, 19, 8, 1638387, 17, 8, 1769459, 17, 8, 1769459, 19, 8, 1769459, 21, 8, 1769459, 23, 8, 1769459, 25, 8, 1769459, 27, 8, 1769459, 29, 8, 1769459, 31, 8, 1900531, 17, 8, 1900531, 19, 8, 1900531, 21, 8, 1900531, 23, 8, 1900531, 25, 8, 1900531, 27, 8, 1900531, 29, 8, 1900531, 31, 8, 1179627, 19, 0, 1179626, 19, 2, 1245161, 19, 0, 1245160, 19, 2, 1310695, 19, 0, 1310693, 19, 1, 1376229, 21, 1048576, 1376229, 22, 1048578, 1441765, 23, 1048576, 1114096, 19, 1048586, 1114096, 22, 1376264, 1179632, 21, 1441800, 1245169, 21, 1179656, 1441765, 24, 1048578, 1507301, 25, 1048576, 1507301, 26, 1048578, 1572837, 27, 1048576, 1572837, 28, 1048578, 1638373, 29, 1048576, 1638373, 31, 1048577, 1703911, 31, 655360, 1703912, 31, 655362, 1769449, 31, 655360, 1769450, 31, 655362, 1834987, 31, 655360, 1834989, 31, 655361, 1900525, 29, 1441792, 1900525, 28, 1441794, 1966061, 27, 1441792, 1966061, 26, 1441794, 2031597, 25, 1441792, 2031597, 24, 1441794, 2097133, 23, 1441792, 2097133, 22, 1441794, 2162669, 21, 1441792, 2162669, 19, 1441793, 2162672, 19, 1048586, 1507314, 16, 1048579, 2162673, 30, 3, 2818032, 18, 6, 2818032, 23, 6, 2818032, 29, 6, 2818032, 35, 6, 2818026, 18, 6, 2818026, 24, 6, 2818026, 30, 6, 2818026, 36, 6, 2818020, 36, 6, 2818020, 30, 6, 2818020, 24, 6, 2818020, 18, 6, 1638386, 18, 9, 1638386, 20, 9, 1769458, 18, 9, 1769458, 20, 9, 1900530, 18, 9, 1900530, 20, 9, 2031602, 18, 9, 2031602, 20, 9, 2031601, 18, 9, 2031601, 20, 9, 2031599, 18, 9, 2031599, 20, 9, 1507312, 18, 9, 1638384, 18, 9, 1638384, 20, 9, 1769456, 18, 9, 1769456, 20, 9, 1900528, 18, 9, 1900528, 20, 9, 2686962, 18, 9, 2686962, 20, 9, 2555890, 18, 9, 2555890, 20, 9, 2555890, 22, 9, 2555890, 24, 9, 2555890, 26, 9, 2555890, 28, 9, 2686962, 22, 9, 2686962, 24, 9, 2686962, 26, 9, 2686962, 28, 9, 2424818, 28, 9, 2424818, 26, 9, 2424818, 24, 9, 2424818, 22, 9, 2293746, 22, 9, 2293746, 24, 9, 2293746, 26, 9, 2293746, 28, 9, 2162674, 26, 9, 2162674, 24, 9, 2293746, 30, 655369, 2293746, 32, 655369, 2424818, 30, 655369, 2424818, 32, 655369, 2555890, 30, 655369, 2555890, 32, 655369, 2686962, 30, 655369, 2686962, 32, 655369, 2818035, 32, 655368, 2818035, 30, 655368, 2818035, 28, 655368, 2818035, 26, 655368, 2818035, 24, 655368, 2818035, 22, 655368, 2818035, 20, 655368, 2818035, 18, 655368, 2818035, 16, 655368, 2949107, 16, 655368, 2949107, 18, 655368, 2949107, 20, 655368, 2949107, 22, 655368, 2949107, 24, 655368, 2949107, 26, 655368, 2949107, 28, 655368, 2949107, 30, 655368, 2949107, 32, 655368, 2162673, 21, 1048584, 917487, 25, 655368, 917487, 27, 655368, 917487, 28, 655368, 851951, 28, 655368, 1048559, 28, 655368, 1048559, 26, 655368, 1048559, 24, 655368, 1179631, 28, 655368, 1179631, 26, 655368, 1179631, 24, 655368, 1310703, 28, 655371, 1310703, 26, 655371, 1310703, 24, 655371, 1441775, 28, 655368, 1441775, 26, 655368, 1441775, 24, 655368, 917485, 27, 1441792, 983023, 28, 655371, 327663, 20, 655371, 983023, 18, 655371, 983023, 20, 655371, 983023, 22, 655371, 983023, 24, 655371, 983023, 26, 655371, 1310703, 22, 655371, 1310704, 28, 655369, 1310704, 26, 655369, 1310704, 24, 655369, 655343, 20, 11, 1966063, 20, 11, 1966063, 18, 11, 2293744, 21, 1441803, 2293746, 21, 1441803, 1310704, 21, 1441803, 1310706, 21, 1441803, 1310706, 17, 1441803, 1310704, 17, 1441803, 720879, 22, 655371, 720879, 24, 655371, 720879, 26, 655371, 720879, 28, 655371, 655430, 110, 655371, 655411, 108, 655362, 589801, 45, 1048578, 589802, 11, 1048580, 524268, 35, 1048578, 524269, 36, 1048578, 196592, 64, 1048579, 196592, 63, 1048579, 196597, 73, 1048579, 196593, 63, 1048579, 196587, 48, 1048579, 196580, 16, 1441795, 196578, 18, 3, 196578, 20, 3, 196578, 22, 3, 196578, 24, 3, 196578, 26, 3, 196578, 28, 3, 196578, 30, 3, 196578, 32, 3, 196580, 34, 1048579, 196582, 34, 1048579, 196584, 34, 1048579, 196586, 34, 1048579, 196588, 34, 1048579, 196590, 34, 1048579, 196582, 16, 1441795, 196584, 16, 1441795, 196586, 16, 1441795, 196588, 16, 1441795, 196590, 16, 1441795, 327663, 19, 655368, 458735, 19, 655368, 589807, 19, 655368, 327663, 32, 655371, 655343, 32, 655371, 655343, 30, 655371, 327663, 30, 655371, 851950, 16, 1441795, 851948, 16, 1441795, 851946, 16, 1441795, 851944, 16, 1441795, 851942, 16, 1441795, 851940, 16, 1441795, 851938, 18, 3, 851938, 20, 3, 851939, 16, 3, 851938, 22, 3, 851938, 24, 3, 851938, 26, 3, 851938, 28, 3, 851938, 30, 3, 851938, 32, 3, 851940, 34, 1048579, 851942, 34, 1048579, 851944, 34, 1048579, 851946, 34, 1048579, 851950, 34, 1048579, 851948, 34, 1048579, 851952, 32, 655363, 851951, 30, 655368, 983023, 30, 655371, 1114095, 30, 655368, 1245167, 30, 655368, 1376239, 30, 655368, 1310703, 30, 655371, 917487, 30, 8, 1048559, 30, 8, 983043, 77, 8, 983043, 76, 8, 983043, 75, 8, 983043, 73, 8, 983042, 72, 8, 983044, 74, 8, 1507312, 20, 9, 1507310, 16, 1441795, 1507312, 16, 1441795, 1507308, 16, 1441795, 1507306, 16, 1441795, 1507304, 16, 1441795, 1507302, 16, 1441795, 1507300, 16, 1441795, 1507298, 16, 1441795, 1507298, 18, 3, 1507298, 20, 3, 1507298, 22, 3, 1507298, 24, 3, 1507298, 26, 3, 1507298, 28, 3, 1507298, 30, 3, 1507298, 32, 3, 1507300, 34, 1048579, 1507302, 34, 1048579, 1507304, 34, 1048579, 1507306, 34, 1048579, 1507308, 34, 1048579, 1507310, 34, 1048579, 1507312, 32, 655363, 1507312, 30, 655363, 1507312, 28, 655363, 1507312, 26, 655363, 1507312, 24, 655363, 1507312, 22, 655363, 2162672, 22, 655363, 2162672, 24, 655363, 2162672, 26, 655363, 2162672, 28, 655363, 2162672, 30, 655363, 2162672, 32, 655363, 2162670, 34, 1048579, 2162668, 34, 1048579, 2162666, 34, 1048579, 2162664, 34, 1048579, 2162662, 34, 1048579, 2162660, 34, 1048579, 2162658, 32, 3, 2162658, 30, 3, 2162658, 28, 3, 2162658, 26, 3, 2162658, 24, 3, 2162658, 22, 3, 2162658, 20, 3, 2162658, 18, 3, 2162658, 16, 3, 2162660, 16, 1441795, 2162662, 16, 1441795, 2162664, 16, 1441795, 2162666, 16, 1441795, 2162668, 16, 1441795, 2162670, 16, 1441795, 2162672, 16, 1441795, 2162674, 16, 1441795, 196591, 18, 655368, 327663, 18, 655371, 458735, 17, 655368, 589807, 17, 655368, 720879, 17, 655368, 196592, 16, 655363, 655343, 18, 655371, 327663, 17, 655368, 327658, 13, 655368, 196584, 19, 2, 196585, 19, 0, 131238, 34, 655363, 131238, 32, 655363, 131238, 30, 655363, 131238, 28, 655363, 131238, 26, 655363, 131238, 24, 655363, 131238, 22, 655363, 131238, 20, 655363, 131236, 36, 1048579, 131236, 18, 1441795, 131234, 36, 1048579, 131234, 18, 1441795, 131232, 36, 1048579, 131232, 33, 655362, 131232, 18, 1441795, 131231, 33, 655360, 131230, 36, 1048579, 131230, 18, 1441795, 131228, 36, 1048579, 131228, 18, 1441795, 131226, 36, 1048579, 131226, 18, 1441795, 131225, 23, 655368, 131224, 36, 3, 131222, 20, 655363, 164, 35, 1048581, 164, 29, 1048581, 164, 23, 1048581, 162, 35, 1048581, 162, 29, 1048581, 162, 23, 1048581, 160, 35, 1048581, 160, 29, 1048581, 160, 23, 1048581, 158, 33, 1048581, 158, 27, 1048581, 158, 21, 1048581, 156, 33, 1048581, 156, 27, 1048581, 156, 21, 1048581, 154, 33, 1048581, 154, 27, 1048581, 154, 21, 1048581, 152, 28, 1048581, 131224, 20, 3, 160, 19, 4, 162, 19, 4, 164, 19, 4, 131225, 24, 655368, 131225, 22, 655368, 131225, 32, 655368, 131225, 34, 655368, 262297, 32, 655368, 262297, 34, 655371, 262297, 24, 655368, 262297, 22, 655371, 393369, 22, 655368, 393369, 24, 655368, 393369, 32, 655368, 393369, 34, 655368, 524441, 24, 655368, 524441, 22, 655368, 524441, 32, 655368, 524441, 34, 655368, 655513, 34, 655368, 655513, 32, 655368, 655513, 30, 655368, 655513, 28, 655368, 655513, 26, 655368, 655513, 24, 655368, 655513, 22, 655368, 786585, 22, 655368, 786585, 24, 655368, 786585, 26, 655368, 786585, 28, 655368, 786585, 30, 655368, 786585, 32, 655368, 786585, 34, 655368, 589977, 30, 655368, 589977, 28, 655368, 589977, 26, 655368, 589977, 22, 655371, 589977, 34, 655371, 196769, 33, 655360, 196771, 33, 655361, 262307, 31, 1441792, 262307, 30, 1441794, 327843, 29, 1441792, 327843, 28, 1441794, 393379, 27, 1441792, 393379, 26, 1441794, 458915, 25, 1441792, 458915, 24, 1441794, 524451, 23, 1441792, 524451, 21, 1441793, 589985, 21, 0, 589984, 21, 2, 655519, 21, 0, 655518, 21, 2, 721053, 21, 0, 721051, 21, 1, 786587, 23, 1048576, 786587, 24, 1048578, 852123, 25, 1048576, 852123, 26, 1048578, 917659, 27, 1048576, 917659, 28, 1048578, 983195, 29, 1048576, 983195, 30, 1048578, 1048731, 31, 1048576, 1048731, 33, 1048577, 1114269, 33, 655360, 1114270, 33, 655362, 1179807, 33, 655360, 1179808, 33, 655362, 1245345, 33, 655360, 1245347, 33, 655361, 786596, 36, 1048579, 786594, 36, 1048579, 786592, 36, 1048579, 786590, 36, 1048579, 786588, 36, 1048579, 786586, 36, 1048579, 786598, 34, 655363, 786598, 32, 655363, 786598, 30, 655363, 786598, 28, 655363, 786598, 26, 655363, 786598, 24, 655363, 786598, 22, 655363, 786598, 20, 655363, 786596, 18, 1441795, 786594, 18, 1441795, 786592, 18, 1441795, 786590, 18, 1441795, 786588, 18, 1441795, 786586, 18, 1441795, 786584, 20, 3, 1310883, 31, 1441792, 1310883, 30, 1441794, 1376419, 29, 1441792, 1376419, 28, 1441794, 1441955, 27, 1441792, 1441955, 26, 1441794, 1507491, 25, 1441792, 1507491, 24, 1441794, 1573027, 23, 1441792, 1573027, 21, 1441793, 1638561, 21, 0, 1638560, 21, 2, 1704095, 21, 0, 1704094, 21, 2, 1769629, 21, 0, 1769627, 21, 1, 1835163, 23, 1048576, 1835163, 24, 1048578, 1900699, 25, 1048576, 1900699, 26, 1048578, 1441956, 36, 1048579, 1441954, 36, 1048579, 1441952, 36, 1048579, 1441950, 36, 1048579, 1441948, 36, 1048579, 1441946, 36, 1048579, 1441958, 34, 655363, 1441958, 32, 655363, 1441958, 30, 655363, 1441958, 28, 655363, 1441958, 26, 655363, 1441958, 24, 655363, 1441958, 22, 655363, 1441958, 20, 655363, 1441956, 18, 1441795, 1441954, 18, 1441795, 1441952, 18, 1441795, 1441950, 18, 1441795, 1441948, 18, 1441795, 1441946, 18, 1441795, 1441944, 20, 3, 1441944, 22, 3, 1441944, 24, 3, 1441944, 26, 3, 1441944, 28, 3, 1441944, 30, 3, 1441944, 32, 3, 1441944, 34, 3, 917656, 35, 11, 917656, 34, 9, 917656, 32, 9, 917656, 30, 9, 917656, 28, 9, 917656, 26, 9, 917656, 24, 9, 917656, 22, 9, 917657, 34, 11, 917657, 32, 11, 917657, 30, 11, 917657, 28, 11, 917657, 26, 11, 917657, 24, 11, 917657, 22, 11, 2097318, 34, 655363, 2097318, 32, 655363, 2097318, 30, 655363, 2097318, 28, 655363, 2097318, 26, 655363, 2097318, 24, 655363, 2097318, 22, 655363, 2097318, 20, 655363, 2097316, 18, 1441795, 2097314, 18, 1441795, 2097312, 18, 1441795, 2097310, 18, 1441795, 2097308, 18, 1441795, 2097306, 18, 1441795, 2097304, 20, 3, 2097304, 28, 3, 2097306, 36, 1048579, 2097308, 36, 1048579, 2097310, 36, 1048579, 2097312, 36, 1048579, 2097314, 36, 1048579, 2097316, 36, 1048579, 1966235, 27, 1048576, 1966235, 28, 1048578, 2031771, 29, 1048576, 2031771, 30, 1048578, 2097307, 31, 1048576, 2097307, 33, 1048577, 2097304, 22, 3, 2097304, 26, 3, 2097304, 24, 3, 2097304, 30, 3, 2097304, 33, 1441802, 2097304, 36, 1048579, 2228376, 31, 1048587, 2490520, 32, 1048585, 2490520, 34, 1048585, 2621592, 34, 1048585, 2621592, 32, 1048585, 2556057, 32, 655371, 2556057, 34, 655371, 1048728, 33, 1441802, 1048728, 22, 1441801, 1048728, 24, 1441801, 1048728, 26, 1441801, 1048728, 28, 1441801, 1048728, 30, 1441801, 1179800, 30, 1441801, 1179800, 28, 1441801, 1179800, 26, 1441801, 1179800, 24, 1441801, 1179800, 22, 1441801, 1310872, 22, 1441801, 1310872, 24, 1441801, 1310872, 26, 1441801, 1310872, 28, 1441801, 1310872, 30, 1441801, 1114264, 36, 1441801, 1245336, 36, 1441801, 1376408, 36, 1441801, 2752674, 32, 6, 2752674, 26, 6, 2752674, 20, 6, 2752668, 20, 6, 2752668, 26, 6, 2752668, 32, 6, 2752664, 36, 9, 2752664, 34, 9, 2752664, 32, 9, 2752664, 30, 9, 2752664, 28, 9, 2752664, 26, 9, 2752664, 24, 9, 2752664, 22, 9, 2752664, 20, 9, 2883736, 36, 9, 2883736, 34, 9, 2883736, 32, 9, 2883736, 30, 9, 2883736, 28, 9, 2883736, 26, 9, 2883736, 24, 9, 2883736, 22, 9, 2883736, 20, 9)
+}
+metadata/_editor_floor_ = Vector3(0, 46, 0)
+
+[node name="OficeRailingStairs" type="GridMap" parent="GridMaps" unique_id=609841316]
+mesh_library = ExtResource("14_h6wmr")
+cell_size = Vector3(0.5, 0.5, 0.5)
+collision_layer = 2
+collision_mask = 0
+data = {
+"cells": PackedInt32Array(3538691, 214, 1048589, 6749966, 302, 655374, 2162458, 206, 15, 8847162, 294, 1441805, 11992879, 207, 14, 14089987, 215, 1048589, 17235726, 301, 655374, 19332921, 293, 1441805, 21888825, 195, 655370, 21888840, 181, 1048586, 458706, 41, 2, 720845, 43, 1048576, 1376207, 60, 655361, 1769432, 58, 1441792, 2424790, 41, 1, 2817997, 43, 1048576, 3473359, 60, 655361, 3866584, 58, 1441792, 4456408, 38, 1048579, 393535, 64, 655362, 655684, 62, 1441792, 1311042, 45, 1, 1704249, 47, 1048576, 2359611, 64, 655361, 2752836, 62, 1441792, 3408194, 45, 1, 3801401, 47, 1048576, 4391225, 67, 1048579)
+}
+metadata/_editor_floor_ = Vector3(0, 67, 0)
+
 [node name="Player" parent="." unique_id=1811338525 instance=ExtResource("4_mx8sn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0476818, 5.198172, 4.2858205)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81.39351, 4.1201043, 27.66719)
+
+[node name="SoundManager" type="Node3D" parent="Player" unique_id=299582900]
+
+[node name="PlayerSounds" type="Node3D" parent="Player/SoundManager" unique_id=1088618874]
+script = ExtResource("14_wc255")
+
+[node name="FootstepsCarpet" type="AudioStreamPlayer3D" parent="Player/SoundManager/PlayerSounds" unique_id=1737825384]
+stream = ExtResource("15_wc255")
+volume_db = 7.0
+pitch_scale = 0.81
+
+[node name="FootstepsStairwell" type="AudioStreamPlayer3D" parent="Player/SoundManager/PlayerSounds" unique_id=1626904997]
+stream = ExtResource("16_82cfe")
+volume_db = 18.0
+pitch_scale = 0.89
+
+[node name="RunCarpet" type="AudioStreamPlayer3D" parent="Player/SoundManager/PlayerSounds" unique_id=291865058]
+stream = ExtResource("16_wu01b")
+volume_db = -25.0
+
+[node name="RunStairwell" type="AudioStreamPlayer3D" parent="Player/SoundManager/PlayerSounds" unique_id=608388739]
+stream = ExtResource("17_3ies3")
+
+[node name="DoorSounds" type="Node3D" parent="Player/SoundManager" unique_id=1836613467]
+script = ExtResource("16_h6wmr")
+
+[node name="DoorOpen" type="AudioStreamPlayer3D" parent="Player/SoundManager/DoorSounds" unique_id=757833140]
+stream = ExtResource("16_8gofh")
+volume_db = -20.0
+
+[node name="DoorClose" type="AudioStreamPlayer3D" parent="Player/SoundManager/DoorSounds" unique_id=1526015762]
+stream = ExtResource("17_h6wmr")
+volume_db = -20.0
+pitch_scale = 0.7
+
+[node name="UI" parent="." unique_id=653024877 instance=ExtResource("22_pqd0y")]
+
+[node name="SoundAreas" type="Node" parent="." unique_id=1358604633]
+
+[node name="StairwayEntrance1" type="Node" parent="SoundAreas" unique_id=1226313314]
+
+[node name="EnterArea" type="Area3D" parent="SoundAreas/StairwayEntrance1" unique_id=412233698]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.629784, 3.195373, 18.401114)
+collision_layer = 0
+script = ExtResource("16_ux5qa")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SoundAreas/StairwayEntrance1/EnterArea" unique_id=1333816171]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.87253, 0, 1.0968628)
+shape = SubResource("BoxShape3D_wc255")
+
+[node name="ExitArea" type="Area3D" parent="SoundAreas/StairwayEntrance1" unique_id=547738128]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.755081, 3.2215002, 23.132988)
+collision_layer = 0
+script = ExtResource("17_82cfe")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SoundAreas/StairwayEntrance1/ExitArea" unique_id=1977873568]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8177128, 0, 2.3009644)
+shape = SubResource("BoxShape3D_arp2o")
+
+[node name="StairwayEntrance2" type="Node" parent="SoundAreas" unique_id=804824507]
+
+[node name="EnterArea" type="Area3D" parent="SoundAreas/StairwayEntrance2" unique_id=1156798354]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 159.44261, 3.195373, 35.31914)
+collision_layer = 0
+script = ExtResource("16_ux5qa")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SoundAreas/StairwayEntrance2/EnterArea" unique_id=1597549960]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.87253, 0, 1.0968628)
+shape = SubResource("BoxShape3D_wc255")
+
+[node name="ExitArea" type="Area3D" parent="SoundAreas/StairwayEntrance2" unique_id=173689168]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 152.40923, 3.2215002, 30.826515)
+collision_layer = 0
+script = ExtResource("17_82cfe")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SoundAreas/StairwayEntrance2/ExitArea" unique_id=1978387169]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.8177128, 0, 2.4067383)
+shape = SubResource("BoxShape3D_arp2o")
+
+[node name="Stairway2Other" type="Node" parent="SoundAreas" unique_id=1801325027]
+
+[node name="ExitArea" type="Area3D" parent="SoundAreas/Stairway2Other" unique_id=1036627212]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 150.7534, 20.186134, 34.285484)
+collision_layer = 0
+script = ExtResource("17_82cfe")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SoundAreas/Stairway2Other/ExitArea" unique_id=2040366688]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.38568115, 0, 1.1069336)
+shape = SubResource("BoxShape3D_arp2o")
+
+[node name="EnterArea" type="Area3D" parent="SoundAreas/Stairway2Other" unique_id=1501529983]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 152.04536, 19.148943, 34.488773)
+collision_layer = 0
+script = ExtResource("16_ux5qa")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SoundAreas/Stairway2Other/EnterArea" unique_id=775099598]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.87253, 0, 1.0968628)
+shape = SubResource("BoxShape3D_wc255")
+
+[node name="ExitArea2" type="Area3D" parent="SoundAreas/Stairway2Other" unique_id=982265469]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 149.94048, 35.13314, 34.630207)
+collision_layer = 0
+script = ExtResource("17_82cfe")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SoundAreas/Stairway2Other/ExitArea2" unique_id=1114136567]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.38568115, 0, 1.1069336)
+shape = SubResource("BoxShape3D_arp2o")
+
+[node name="EnterArea2" type="Area3D" parent="SoundAreas/Stairway2Other" unique_id=821912952]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 151.23244, 34.09595, 34.833496)
+collision_layer = 0
+script = ExtResource("16_ux5qa")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SoundAreas/Stairway2Other/EnterArea2" unique_id=795105826]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.87253, 0, 1.0968628)
+shape = SubResource("BoxShape3D_wc255")
+
+[node name="Stairway1Other" type="Node" parent="SoundAreas" unique_id=2055324236]
+
+[node name="ExitArea" type="Area3D" parent="SoundAreas/Stairway1Other" unique_id=870815964]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -21.137497, 20.186134, 21.677732)
+collision_layer = 0
+script = ExtResource("17_82cfe")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SoundAreas/Stairway1Other/ExitArea" unique_id=313837429]
+transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, -7.105874, -0.94125366, 2.004797)
+shape = SubResource("BoxShape3D_arp2o")
+
+[node name="EnterArea" type="Area3D" parent="SoundAreas/Stairway1Other" unique_id=1174230750]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -16.152412, 18.49284, 20.51324)
+collision_layer = 0
+script = ExtResource("16_ux5qa")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SoundAreas/Stairway1Other/EnterArea" unique_id=1399243298]
+transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, -0.87253, 0, 1.0968628)
+shape = SubResource("BoxShape3D_wc255")
+
+[node name="ExitArea2" type="Area3D" parent="SoundAreas/Stairway1Other" unique_id=1539726268]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -21.137497, 35.861797, 21.677732)
+collision_layer = 0
+script = ExtResource("17_82cfe")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SoundAreas/Stairway1Other/ExitArea2" unique_id=545981581]
+transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, -7.9363146, -0.94125366, 2.004797)
+shape = SubResource("BoxShape3D_arp2o")
+
+[node name="EnterArea2" type="Area3D" parent="SoundAreas/Stairway1Other" unique_id=1471470739]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -16.152412, 34.168503, 20.51324)
+collision_layer = 0
+script = ExtResource("16_ux5qa")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SoundAreas/Stairway1Other/EnterArea2" unique_id=698638281]
+transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, -0.6302433, 0, 1.0968628)
+shape = SubResource("BoxShape3D_wc255")
+
+[connection signal="body_entered" from="SoundAreas/StairwayEntrance1/EnterArea" to="SoundAreas/StairwayEntrance1/EnterArea" method="_on_body_entered"]
+[connection signal="body_entered" from="SoundAreas/StairwayEntrance1/ExitArea" to="SoundAreas/StairwayEntrance1/ExitArea" method="_on_body_entered"]
+[connection signal="body_entered" from="SoundAreas/StairwayEntrance2/EnterArea" to="SoundAreas/StairwayEntrance2/EnterArea" method="_on_body_entered"]
+[connection signal="body_entered" from="SoundAreas/StairwayEntrance2/ExitArea" to="SoundAreas/StairwayEntrance2/ExitArea" method="_on_body_entered"]
+[connection signal="body_entered" from="SoundAreas/Stairway2Other/ExitArea" to="SoundAreas/Stairway2Other/ExitArea" method="_on_body_entered"]
+[connection signal="body_entered" from="SoundAreas/Stairway2Other/EnterArea" to="SoundAreas/Stairway2Other/EnterArea" method="_on_body_entered"]
+[connection signal="body_entered" from="SoundAreas/Stairway2Other/ExitArea2" to="SoundAreas/Stairway2Other/ExitArea2" method="_on_body_entered"]
+[connection signal="body_entered" from="SoundAreas/Stairway2Other/EnterArea2" to="SoundAreas/Stairway2Other/EnterArea2" method="_on_body_entered"]
+[connection signal="body_entered" from="SoundAreas/Stairway1Other/ExitArea" to="SoundAreas/Stairway1Other/ExitArea" method="_on_body_entered"]
+[connection signal="body_entered" from="SoundAreas/Stairway1Other/EnterArea" to="SoundAreas/Stairway1Other/EnterArea" method="_on_body_entered"]
+[connection signal="body_entered" from="SoundAreas/Stairway1Other/ExitArea2" to="SoundAreas/Stairway1Other/ExitArea2" method="_on_body_entered"]
+[connection signal="body_entered" from="SoundAreas/Stairway1Other/EnterArea2" to="SoundAreas/Stairway1Other/EnterArea2" method="_on_body_entered"]

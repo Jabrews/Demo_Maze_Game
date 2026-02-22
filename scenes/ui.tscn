@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://ci5jwosxjf1r2"]
+
+[ext_resource type="Script" uid="uid://ybikvaxa2vll" path="res://scripts/UI/stamina_bar.gd" id="1_gdt2y"]
+[ext_resource type="Texture2D" uid="uid://dh0e72rgwkgc2" path="res://models/UI/stamina_bar/Stamina-Bar-BG.png" id="1_nt7q6"]
+[ext_resource type="Texture2D" uid="uid://burpg3v527jdx" path="res://models/UI/stamina_bar/Stamina-Bar-Increment-export.png" id="2_x4jx1"]
+[ext_resource type="Texture2D" uid="uid://dncm421wt472v" path="res://models/UI/stamina_bar/Stamina-Bar-Speed.png" id="3_yev5y"]
+
+[node name="UI" type="Control" unique_id=653024877]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 320.0
+offset_bottom = 240.0
+mouse_filter = 2
+
+[node name="StaminaBar" type="Control" parent="." unique_id=541784968]
+modulate = Color(0.9004175, 0.80598444, 0.5833873, 1)
+anchors_preset = 0
+offset_left = 2.0
+offset_right = 145.0
+offset_bottom = 17.0
+script = ExtResource("1_gdt2y")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="StaminaBar" unique_id=1525287956]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 5.0
+offset_right = 142.0
+offset_bottom = 13.0
+max_value = 15.0
+value = 15.0
+texture_under = ExtResource("1_nt7q6")
+texture_progress = ExtResource("2_x4jx1")
+
+[node name="StaminaBarSpeed" type="Sprite2D" parent="StaminaBar" unique_id=1606342232]
+position = Vector2(7, 9)
+texture = ExtResource("3_yev5y")
+
+[node name="RunIncrementDown" type="Timer" parent="StaminaBar" unique_id=526121140]
+wait_time = 0.5
+
+[node name="RunIncrementUp" type="Timer" parent="StaminaBar" unique_id=144408338]
+wait_time = 0.5
+
+[connection signal="timeout" from="StaminaBar/RunIncrementDown" to="StaminaBar" method="_on_run_increment_down_timeout"]
+[connection signal="timeout" from="StaminaBar/RunIncrementUp" to="StaminaBar" method="_on_run_increment_up_timeout"]

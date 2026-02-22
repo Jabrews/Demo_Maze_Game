@@ -5,23 +5,43 @@
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_u8vuu"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3vyb7"]
-radius = 0.5415039
-height = 2.064209
+height = 3.1704156
 
-[node name="Player" type="CharacterBody3D" unique_id=1811338525]
-collision_mask = 3
+[node name="Player" type="CharacterBody3D" unique_id=1811338525 groups=["player"]]
+collision_mask = 7
+floor_max_angle = 0.5235988
 script = ExtResource("1_3vyb7")
 metadata/_edit_group_ = true
 
 [node name="PlayerMesh" type="MeshInstance3D" parent="." unique_id=1704945630]
+transform = Transform3D(1, 0, 0, 0, 1.6156801, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("CapsuleMesh_u8vuu")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1944261595]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.011352539, 0)
+[node name="BoxCollider" type="CollisionShape3D" parent="." unique_id=1944261595]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.015558481, 0)
 shape = SubResource("CapsuleShape3D_3vyb7")
 
 [node name="CameraPivot" type="Node3D" parent="." unique_id=925769152]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.35439235)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.15506802)
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot" unique_id=1265583756]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7582646, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.11884558, 0)
+fov = 65.0
+far = 150.0
+
+[node name="FlashLightPivot" type="Node3D" parent="." unique_id=1834482696]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.23413157, -0.7703701)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="FlashLightPivot" unique_id=1168250196]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18306589, 0)
+shadow_enabled = true
+spot_range = 38.0
+spot_angle = 26.0
+
+[node name="BodyLightPivoit" type="Node3D" parent="." unique_id=752222344]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.6304784, -0.46691236)
+
+[node name="OmniLight3D" type="SpotLight3D" parent="BodyLightPivoit" unique_id=441564465]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.54590166, -0.13987282)
+spot_range = 38.0
+spot_angle = 30.0

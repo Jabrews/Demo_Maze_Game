@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://b3i6rxq0kq080"]
+
+[ext_resource type="Script" uid="uid://dkjgbuja5e551" path="res://scripts/ceiling_light.gd" id="1_c4vp4"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_c7dda"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_c4vp4"]
+radius = 4.0843573
+
+[node name="CeilingLight" type="StaticBody3D" unique_id=1277116122 groups=["lights"]]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("1_c4vp4")
+metadata/light_type = "ceiling"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1809600858]
+transform = Transform3D(1.8960408, 0, 0, 0, 0.03682989, 0, 0, 0, 1.9927629, 0, 0, 0)
+mesh = SubResource("BoxMesh_c7dda")
+
+[node name="BlockLight" type="OmniLight3D" parent="." unique_id=1881725130]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.13067052, 0)
+light_color = Color(0.71, 0.06389998, 0.06389998, 1)
+distance_fade_shadow = 2727.14
+omni_range = 1.0
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1237501574]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -0.3116178, 0)
+light_energy = 10.0
+shadow_bias = 1.0
+shadow_normal_bias = 2.0
+shadow_reverse_cull_face = true
+spot_range = 16.391
+spot_angle = 89.0
+
+[node name="CeilingLight" type="OmniLight3D" parent="." unique_id=1491886526]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.16442657, 0)
+light_energy = 2.0
+light_volumetric_fog_energy = 16.0
+shadow_normal_bias = 2.0
+shadow_reverse_cull_face = true
+omni_range = 10.0
+omni_attenuation = 0.8
+
+[node name="BlinkIntervalTimer" type="Timer" parent="." unique_id=286958033]
+wait_time = 0.5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=384328737]
+shape = SubResource("SphereShape3D_c4vp4")
+
+[connection signal="timeout" from="BlinkIntervalTimer" to="." method="_on_blink_interval_timer_timeout"]
