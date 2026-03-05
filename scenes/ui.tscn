@@ -4,6 +4,19 @@
 [ext_resource type="Texture2D" uid="uid://dh0e72rgwkgc2" path="res://models/UI/stamina_bar/Stamina-Bar-BG.png" id="1_nt7q6"]
 [ext_resource type="Texture2D" uid="uid://burpg3v527jdx" path="res://models/UI/stamina_bar/Stamina-Bar-Increment-export.png" id="2_x4jx1"]
 [ext_resource type="Texture2D" uid="uid://dncm421wt472v" path="res://models/UI/stamina_bar/Stamina-Bar-Speed.png" id="3_yev5y"]
+[ext_resource type="Script" uid="uid://d25j5diox2lwu" path="res://scripts/UI/paper_count.gd" id="5_p7vwb"]
+[ext_resource type="Texture2D" uid="uid://ccxbkpfw5us41" path="res://models/UI/paper_count/paper_ui.png" id="5_wm3ai"]
+[ext_resource type="FontFile" uid="uid://dx3p381dbs6w5" path="res://models/UI/munro-narrow.ttf" id="6_8dubc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_p7vwb"]
+font = ExtResource("6_8dubc")
+font_size = 10
+font_color = Color(0.3044419, 0.9695342, 0.07516525, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_cgfq5"]
+font = ExtResource("6_8dubc")
+font_size = 10
+font_color = Color(0.2683017, 0.8649032, 0.06391092, 1)
 
 [node name="UI" type="Control" unique_id=653024877]
 layout_mode = 3
@@ -36,10 +49,42 @@ position = Vector2(7, 9)
 texture = ExtResource("3_yev5y")
 
 [node name="RunIncrementDown" type="Timer" parent="StaminaBar" unique_id=526121140]
-wait_time = 0.5
+wait_time = 0.4
 
 [node name="RunIncrementUp" type="Timer" parent="StaminaBar" unique_id=144408338]
-wait_time = 0.5
+wait_time = 0.35
+
+[node name="PaperCount" type="Control" parent="." unique_id=1483551146]
+modulate = Color(0.9004175, 0.80598444, 0.5833873, 1)
+anchors_preset = 0
+offset_left = 241.0
+offset_right = 320.0
+offset_bottom = 19.0
+script = ExtResource("5_p7vwb")
+
+[node name="background" type="Sprite2D" parent="PaperCount" unique_id=1408159344]
+position = Vector2(35, 13)
+texture = ExtResource("5_wm3ai")
+
+[node name="Label" type="Label" parent="PaperCount" unique_id=1987383959]
+modulate = Color(0, 1, 1, 1)
+layout_mode = 0
+offset_left = 34.0
+offset_top = 7.0
+offset_right = 40.0
+offset_bottom = 20.0
+text = "0"
+label_settings = SubResource("LabelSettings_p7vwb")
+
+[node name="Label3" type="Label" parent="PaperCount" unique_id=747347489]
+modulate = Color(0, 1, 1, 1)
+layout_mode = 0
+offset_left = 46.0
+offset_top = 7.0
+offset_right = 52.0
+offset_bottom = 20.0
+text = "6"
+label_settings = SubResource("LabelSettings_cgfq5")
 
 [connection signal="timeout" from="StaminaBar/RunIncrementDown" to="StaminaBar" method="_on_run_increment_down_timeout"]
 [connection signal="timeout" from="StaminaBar/RunIncrementUp" to="StaminaBar" method="_on_run_increment_up_timeout"]

@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://c6x7nxa0bi5hu"]
+
+[ext_resource type="Texture2D" uid="uid://i2gxiuvilkq" path="res://scenes/hover_bouncing_sprites/arrow_up.png" id="1_fn2ka"]
+[ext_resource type="Script" uid="uid://bg8oen0areu20" path="res://reusable/hover_mesh_system/bouncing_sprite/bouncing_sprite.gd" id="2_2y0pl"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2y0pl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_fn2ka")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="ArrowUpSprite" type="AnimatedSprite3D" unique_id=1171211221]
+billboard = 1
+sprite_frames = SubResource("SpriteFrames_2y0pl")
+script = ExtResource("2_2y0pl")

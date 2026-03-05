@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://ba4vanb8utsvy"]
+
+[ext_resource type="Script" uid="uid://du01f7k6w0oi5" path="res://reusable/hover_mesh_system/hoverable/hoverable_mesh.gd" id="1_odys6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rtn3e"]
+size = Vector3(0.58420944, 0.6494942, 0.5192108)
+
+[node name="hoverable_mesh" type="StaticBody3D" unique_id=2031760550 groups=["hoverable"]]
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("1_odys6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=147933944]
+shape = SubResource("BoxShape3D_rtn3e")
+debug_color = Color(0.84223014, 0.0011008466, 0.9193978, 0.41960785)

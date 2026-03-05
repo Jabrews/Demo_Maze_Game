@@ -247,7 +247,7 @@ data = PackedVector3Array(-0.49510723, 0.00852567, 0.553092, -0.49510723, 2.9438
 [resource]
 item/0/name = "Computer"
 item/0/mesh = SubResource("ArrayMesh_jyxlj")
-item/0/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.21, -0.695, 0)
+item/0/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.21, -0.845, 0)
 item/0/mesh_cast_shadow = 1
 item/0/shapes = [SubResource("ConcavePolygonShape3D_r6vjb"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)]
 item/0/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)

@@ -19,14 +19,14 @@ config/icon="res://icon.svg"
 
 GlLightingManager="*uid://cd28vca7h2w1j"
 GlSoundManager="*uid://bnan0d1okuen0"
-Dither3DGlobals="*uid://cdfmq2vdpwd5d"
 GlSignalBus="*uid://cycug5gv4aqds"
+Dither3DGlobals="*uid://cdfmq2vdpwd5d"
 
 [display]
 
 window/size/viewport_width=320
 window/size/viewport_height=240
-window/size/mode=2
+window/size/mode=3
 window/stretch/mode="viewport"
 
 [editor_plugins]
@@ -37,6 +37,8 @@ enabled=PackedStringArray("res://addons/dither3d/plugin.cfg", "res://addons/rela
 
 player=""
 lights=""
+hoverable=""
+vents=""
 
 [input]
 
@@ -78,6 +80,8 @@ run={
 3d_physics/layer_3="stairs"
 3d_physics/layer_4="paper"
 3d_physics/layer_5="lights"
+3d_physics/layer_6="hoverable"
+3d_physics/layer_7="vents"
 
 [physics]
 

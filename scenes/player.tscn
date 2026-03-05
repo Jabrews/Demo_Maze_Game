@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://b45wx2nog1t4w"]
 
-[ext_resource type="Script" uid="uid://hkgtqatxiba1" path="res://scripts/player.gd" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://hkgtqatxiba1" path="res://scripts/player/player.gd" id="1_3vyb7"]
+[ext_resource type="PackedScene" uid="uid://ctex34yexeplb" path="res://reusable/hover_mesh_system/hover_detect/hover_detect.tscn" id="2_g2els"]
+[ext_resource type="PackedScene" uid="uid://dfa481y7g1kng" path="res://scenes/vents/vent_detect.tscn" id="3_qhqgy"]
+[ext_resource type="Script" uid="uid://dpnxh74mxvmxo" path="res://scripts/player/vent_state.gd" id="4_dqkch"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_u8vuu"]
 
@@ -26,22 +29,48 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.15506802)
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot" unique_id=1265583756]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.11884558, 0)
+current = true
 fov = 65.0
-far = 150.0
+far = 100.0
 
-[node name="FlashLightPivot" type="Node3D" parent="." unique_id=1834482696]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.23413157, -0.7703701)
+[node name="HoverRay" type="RayCast3D" parent="CameraPivot/Camera3D" unique_id=894879786]
+transform = Transform3D(3.6, 0, 0, 0, -1.57361e-07, -3.473, 0, 3.6, -1.5180966e-07, 0, 0, -0.32564843)
+collision_mask = 32
 
-[node name="SpotLight3D" type="SpotLight3D" parent="FlashLightPivot" unique_id=1168250196]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18306589, 0)
+[node name="HoverDetect" parent="CameraPivot/Camera3D/HoverRay" unique_id=1610712864 node_paths=PackedStringArray("ray") instance=ExtResource("2_g2els")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.08074081, -0.64592445)
+ray = NodePath("..")
+
+[node name="VentRay" type="RayCast3D" parent="CameraPivot/Camera3D" unique_id=2043676198]
+transform = Transform3D(3.6, 0, 0, 0, -1.57361e-07, -3.473, 0, 3.6, -1.5180966e-07, 0, 0, -0.32564843)
+collision_mask = 64
+
+[node name="VentDetect" parent="CameraPivot/Camera3D/VentRay" unique_id=543325597 node_paths=PackedStringArray("ray") instance=ExtResource("3_qhqgy")]
+ray = NodePath("..")
+
+[node name="FlashLightPivot" type="Node3D" parent="CameraPivot" unique_id=1834482696]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7658684, -0.6153021)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="CameraPivot/FlashLightPivot" unique_id=1168250196]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.64507675, 0.09538746)
+light_energy = 5.0
 shadow_enabled = true
+shadow_bias = 5.0
+shadow_normal_bias = 5.0
 spot_range = 38.0
 spot_angle = 26.0
 
-[node name="BodyLightPivoit" type="Node3D" parent="." unique_id=752222344]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.6304784, -0.46691236)
+[node name="BodyLightPivoit" type="Node3D" parent="CameraPivot" unique_id=752222344]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.6304784, -0.31184435)
 
-[node name="OmniLight3D" type="SpotLight3D" parent="BodyLightPivoit" unique_id=441564465]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.54590166, -0.13987282)
+[node name="OmniLight3D" type="SpotLight3D" parent="CameraPivot/BodyLightPivoit" unique_id=441564465]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7017045, -0.13987282)
+visible = false
+shadow_enabled = true
 spot_range = 38.0
 spot_angle = 30.0
+
+[node name="VentState" type="Node" parent="." unique_id=1041251707 node_paths=PackedStringArray("player", "camera")]
+script = ExtResource("4_dqkch")
+player = NodePath("..")
+camera = NodePath("../CameraPivot/Camera3D")

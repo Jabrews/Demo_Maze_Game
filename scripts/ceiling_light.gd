@@ -15,9 +15,6 @@ var curr_spot_light_range : float = 13.00
 
 func _ready() -> void:
 	GlLightingManager.connect("paper_collected", _handle_paper_collected)
-	# check if blinking	
-	if can_blink :
-		blink_interval_timer.start()
 
 
 func _handle_paper_collected() :
@@ -47,8 +44,6 @@ func set_can_blink(value: bool) -> void:
 
 	if can_blink:
 		blink_interval_timer.start()
-	else:
-		blink_interval_timer.stop()	
 	
 ## ONLY OCCURS ON BLINKING
 func _on_blink_interval_timer_timeout() -> void:

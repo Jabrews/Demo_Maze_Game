@@ -6,7 +6,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1"]
 shader = ExtResource("1_shader")
 shader_parameter/dark_color = Color(0, 0, 0, 1)
-shader_parameter/light_color = Color(0.9004175, 0.80598444, 0.5833873, 1)
+shader_parameter/light_color = Color(0.4117647, 1, 1, 1)
 shader_parameter/monochrome_1bit = false
 shader_parameter/threshold = 0.5
 shader_parameter/bit_depth = 5

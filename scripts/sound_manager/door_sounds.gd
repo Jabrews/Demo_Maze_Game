@@ -10,7 +10,6 @@ func _ready() -> void:
 	GlSoundManager.connect("door_closed", _on_door_closed)
 	
 func _on_door_opened() :
-	print('open')
 	s_door_open.play()
 
 func _on_door_closed() :

@@ -3,10 +3,9 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b3ey0va243l6y"
-path.s3tc="res://.godot/imported/Mazegame-Stairs122_StairWellWallBlockUV.png-1e97a86bc671ed80311ea7f223c30b6a.s3tc.ctex"
+path="res://.godot/imported/Mazegame-Stairs122_StairWellWallBlockUV.png-1e97a86bc671ed80311ea7f223c30b6a.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 generator_parameters={
 "md5": "1ca1435463bdaaac1f0268bb291047fd"
@@ -15,11 +14,11 @@ generator_parameters={
 [deps]
 
 source_file="res://models/gridmaps/office_stairwell/Mazegame-Stairs122_StairWellWallBlockUV.png"
-dest_files=["res://.godot/imported/Mazegame-Stairs122_StairWellWallBlockUV.png-1e97a86bc671ed80311ea7f223c30b6a.s3tc.ctex"]
+dest_files=["res://.godot/imported/Mazegame-Stairs122_StairWellWallBlockUV.png-1e97a86bc671ed80311ea7f223c30b6a.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

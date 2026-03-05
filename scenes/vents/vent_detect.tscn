@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dfa481y7g1kng"]
+
+[ext_resource type="Script" uid="uid://bwvw5bx2lskho" path="res://scripts/vents/vent_detect.gd" id="1_dtbk1"]
+
+[node name="VentDetect" type="Node3D" unique_id=543325597]
+script = ExtResource("1_dtbk1")

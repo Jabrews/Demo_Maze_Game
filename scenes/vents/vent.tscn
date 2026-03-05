@@ -1,0 +1,68 @@
+[gd_scene format=4 uid="uid://dau3qrob1773s"]
+
+[ext_resource type="Texture2D" uid="uid://n8iu0wxpf6sx" path="res://models/vent/Vent_VentUV.png" id="1_cp5ku"]
+[ext_resource type="Script" uid="uid://yih4qys63whp" path="res://scripts/vents/vent.gd" id="1_ive3w"]
+[ext_resource type="PackedScene" uid="uid://ba4vanb8utsvy" path="res://reusable/hover_mesh_system/hoverable/hoverable_mesh.tscn" id="2_hhoh0"]
+[ext_resource type="PackedScene" uid="uid://b7va26fitqv8e" path="res://scenes/hover_meshes/vent_mesh.tscn" id="3_42pey"]
+[ext_resource type="PackedScene" uid="uid://c6x7nxa0bi5hu" path="res://scenes/hover_bouncing_sprites/arrow_up_sprite.tscn" id="6_n7r3n"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rvh51"]
+resource_name = "Material"
+cull_mode = 2
+albedo_texture = ExtResource("1_cp5ku")
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_34hm1"]
+_surfaces = [{
+"aabb": AABB(-0.025000036, 0, -0.9000001, 0.050000012, 1.0999999, 1.8000001),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAwACAAEAAAAEAAEAAwAFAAIABQAAAAIABgAEAAAABQAGAAAABwABAAQABwADAAEABgAHAAQABQADAAcABQAHAAYA"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("/////wAAAAAAAP////8AAAAA//8AAAAAAAAAAP//AAD///////8AAAAAAAAAAAAA//8AAAAAAAD//wAA//8AAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_42pey"]
+resource_name = "Vent_Cube"
+_surfaces = [{
+"aabb": AABB(-0.025000036, 0, -0.9000001, 0.050000012, 1.0999999, 1.8000001),
+"attribute_data": PackedByteArray("tYa9Bf2Ey4P9hAMEt4YQgjT1QoL9hMuDt4YQguz2/IM/eN/8TwMeiz94HotPA9/87PY0BDT1QoIy9e4F7Pb8g8SB4HzKAR8LxIEfC8oB4Hzs9jQEtYa9Bf2EAwQy9e4F"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_rvh51"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("/////wAA7cEAAP////8GwgAA//8AAA3C////////JsL//wAA///KvwAA/////8q/////////yr8AAAAA///KvwAAAAD///+/AAD//wAA/78AAP//////vwAAAAAAAP+/AAAAAAAAF/P//wAA//9n8///AAAAALHyAAAAAP//APP//wAAAAD/v/////////+//////wAA/7///wAA////vwAAAAAAAP///////wAA//8AAP//AAD/////AAAAAP//QeyEWNHXFpTO651X7taHlP9//3//f/9//3//f/9//3//f////3////9/////f/7/bjnb8ihza0Y9OXnyxnKcRv9/AAD/fwAA/38AAP9/AAApQCjAKUAowClAKMApQCjA")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_34hm1")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qcowo"]
+size = Vector3(0.1630249, 1.1658497, 1.8510132)
+
+[node name="Vent" type="StaticBody3D" unique_id=1286842283 groups=["vents"]]
+collision_layer = 64
+collision_mask = 0
+script = ExtResource("1_ive3w")
+
+[node name="Vent" type="MeshInstance3D" parent="." unique_id=2126991074]
+transform = Transform3D(0.99999994, 0, 0, 0, 1.5, 0, 0, 0, 0.99999994, 0, 0, 0)
+mesh = SubResource("ArrayMesh_42pey")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=808891670]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5440283, 0)
+shape = SubResource("BoxShape3D_qcowo")
+
+[node name="hoverable_mesh" parent="." unique_id=2031760550 node_paths=PackedStringArray("orignal_mesh", "original_coll_shape") instance=ExtResource("2_hhoh0")]
+collision_mask = 1
+hover_mesh_scene = ExtResource("3_42pey")
+orignal_mesh = NodePath("../Vent")
+bouncing_sprite_scene = ExtResource("6_n7r3n")
+original_coll_shape = NodePath("../CollisionShape3D")

@@ -3,10 +3,9 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://gcnmkg0xk544"
-path.s3tc="res://.godot/imported/Mazegame-Stairs122_StairwellWallUV.png-bfa5937e08bbfb2cb0af50f67a29cc65.s3tc.ctex"
+path="res://.godot/imported/Mazegame-Stairs122_StairwellWallUV.png-bfa5937e08bbfb2cb0af50f67a29cc65.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 generator_parameters={
 "md5": "f92044aa955fce57e8d9c657d77113bf"
@@ -15,11 +14,11 @@ generator_parameters={
 [deps]
 
 source_file="res://models/gridmaps/office_stairwell/Mazegame-Stairs122_StairwellWallUV.png"
-dest_files=["res://.godot/imported/Mazegame-Stairs122_StairwellWallUV.png-bfa5937e08bbfb2cb0af50f67a29cc65.s3tc.ctex"]
+dest_files=["res://.godot/imported/Mazegame-Stairs122_StairwellWallUV.png-bfa5937e08bbfb2cb0af50f67a29cc65.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -28,7 +27,7 @@ compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
-mipmaps/limit=-1
+mipmaps/limit=0
 roughness/mode=0
 roughness/src_normal=""
 process/channel_remap/red=0

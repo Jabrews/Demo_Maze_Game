@@ -12,8 +12,7 @@ var t_bob = 0.0
 ## components
 @onready var camera_pivot : Node3D = $CameraPivot
 @onready var camera := $CameraPivot/Camera3D
-@onready var flash_light_pivot : Node3D = $FlashLightPivot
-@onready var body_light_pivot : Node3D = $BodyLightPivoit
+@onready var spot_light := $CameraPivot/FlashLightPivot/SpotLight3D
 
 var speed := 5.0
 var can_run : bool = true
@@ -29,7 +28,7 @@ func _ready():
 
 func _physics_process(delta: float) -> void:
 	
-	# grav
+	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	
@@ -77,10 +76,6 @@ func _physics_process(delta: float) -> void:
 	
 	
 	## dealing with flashlights ###
-	flash_light_pivot.position = camera_pivot.position
-	flash_light_pivot.rotation = camera_pivot.rotation
-	body_light_pivot.rotation = camera_pivot.rotation
-	
 	## other 
 	handle_run()
 	camera_bobble(delta)

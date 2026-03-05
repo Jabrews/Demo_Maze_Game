@@ -1,0 +1,38 @@
+[gd_scene format=4 uid="uid://b7va26fitqv8e"]
+
+[ext_resource type="Material" uid="uid://chj4bj7fdfuss" path="res://reusable/hover_mesh_system/hover-outline_mat.tres" id="1_sqx8l"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_34hm1"]
+_surfaces = [{
+"aabb": AABB(-0.025000036, 0, -0.9000001, 0.050000012, 1.0999999, 1.8000001),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAwACAAEAAAAEAAEAAwAFAAIABQAAAAIABgAEAAAABQAGAAAABwABAAQABwADAAEABgAHAAQABQADAAcABQAHAAYA"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("/////wAAAAAAAP////8AAAAA//8AAAAAAAAAAP//AAD///////8AAAAAAAAAAAAA//8AAAAAAAD//wAA//8AAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_sqx8l"]
+resource_name = "Vent_Cube"
+_surfaces = [{
+"aabb": AABB(-0.025000036, 0, -0.9000001, 0.050000012, 1.0999999, 1.8000001),
+"attribute_data": PackedByteArray("tYa9Bf2Ey4P9hAMEt4YQgjT1QoL9hMuDt4YQguz2/IM/eN/8TwMeiz94HotPA9/87PY0BDT1QoIy9e4F7Pb8g8SB4HzKAR8LxIEfC8oB4Hzs9jQEtYa9Bf2EAwQy9e4F"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": ExtResource("1_sqx8l"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("/////wAA7cEAAP////8GwgAA//8AAA3C////////JsL//wAA///KvwAA/////8q/////////yr8AAAAA///KvwAAAAD///+/AAD//wAA/78AAP//////vwAAAAAAAP+/AAAAAAAAF/P//wAA//9n8///AAAAALHyAAAAAP//APP//wAAAAD/v/////////+//////wAA/7///wAA////vwAAAAAAAP///////wAA//8AAP//AAD/////AAAAAP//QeyEWNHXFpTO651X7taHlP9//3//f/9//3//f/9//3//f////3////9/////f/7/bjnb8ihza0Y9OXnyxnKcRv9/AAD/fwAA/38AAP9/AAApQCjAKUAowClAKMApQCjA")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_34hm1")
+
+[node name="Vent" type="MeshInstance3D" unique_id=684848166]
+mesh = SubResource("ArrayMesh_sqx8l")

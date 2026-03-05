@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b45wx2nog1t4w" path="res://scenes/player.tscn" id="1_cr7vb"]
 [ext_resource type="MeshLibrary" uid="uid://chpdpdsl5w3b0" path="res://models/gridmaps/office_props/furniture01/office_furniture_tilemap_1.tres" id="2_ctmmb"]
-[ext_resource type="MeshLibrary" uid="uid://bmkrdxth1xiyi" path="res://models/gridmaps/office_structure/office_tileset_007.tres" id="3_cr7vb"]
+[ext_resource type="MeshLibrary" path="res://models/gridmaps/office_structure/office_tileset_007.tres" id="3_cr7vb"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_cr7vb"]
 

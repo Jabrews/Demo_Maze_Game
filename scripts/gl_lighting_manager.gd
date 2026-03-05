@@ -1,5 +1,7 @@
 extends Node
 
+# for handling dimming of lights
+
 ## signals
 signal paper_collected
 

@@ -5,8 +5,6 @@ extends Node
 @onready var s_running_carpet := $RunCarpet
 @onready var s_running_stairwell := $RunStairwell
 
-@onready var stop_footstep_delay_timer := $StopFootstepDelayTimer
-
 enum MoveState { IDLE, WALK, RUN }
 
 var player_in_stairway : bool = false
